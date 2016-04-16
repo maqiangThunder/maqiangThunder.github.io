@@ -1,0 +1,812 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python语法,局部变量,全局变量," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x5F53;&amp;#x4F60;&amp;#x5728;&amp;#x51FD;&amp;#x6570;&amp;#x5B9A;&amp;#x4E49;&amp;#x5185;&amp;#x58F0;&amp;#x660E;&amp;#x53D8;&amp;#x91CF;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#xFF0C;&amp;#x5B83;&amp;#x4EEC;&amp;#x4E0E;&amp;#x51FD;&amp;#x6570;&amp;#x5916;&amp;#x5177;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解Python的局部变量和全局变量">
+<meta property="og:url" content="http://yoursite.com/2016/04/02/python/python语法/理解Python的局部变量和全局变量/index.html">
+<meta property="og:site_name" content="忍者神龟">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x5F53;&amp;#x4F60;&amp;#x5728;&amp;#x51FD;&amp;#x6570;&amp;#x5B9A;&amp;#x4E49;&amp;#x5185;&amp;#x58F0;&amp;#x660E;&amp;#x53D8;&amp;#x91CF;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#xFF0C;&amp;#x5B83;&amp;#x4EEC;&amp;#x4E0E;&amp;#x51FD;&amp;#x6570;&amp;#x5916;&amp;#x5177;">
+<meta property="og:updated_time" content="2016-04-02T15:15:40.173Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解Python的局部变量和全局变量">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x5F53;&amp;#x4F60;&amp;#x5728;&amp;#x51FD;&amp;#x6570;&amp;#x5B9A;&amp;#x4E49;&amp;#x5185;&amp;#x58F0;&amp;#x660E;&amp;#x53D8;&amp;#x91CF;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#xFF0C;&amp;#x5B83;&amp;#x4EEC;&amp;#x4E0E;&amp;#x51FD;&amp;#x6570;&amp;#x5916;&amp;#x5177;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6261769725999580000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 理解Python的局部变量和全局变量 | 忍者神龟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7840c40eebaccc88eb16af700e755c7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">忍者神龟</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">thunder</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                理解Python的局部变量和全局变量
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-02T22:45:51+08:00" content="2016-04-02">
+              2016-04-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python语法/" itemprop="url" rel="index">
+                    <span itemprop="name">python语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/02/python/python语法/理解Python的局部变量和全局变量/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/02/python/python语法/理解Python的局部变量和全局变量/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/02/python/python语法/理解Python的局部变量和全局变量/" class="leancloud_visitors" data-flag-title="理解Python的局部变量和全局变量">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x5F53;&#x4F60;&#x5728;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x5185;&#x58F0;&#x660E;&#x53D8;&#x91CF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5B83;&#x4EEC;&#x4E0E;&#x51FD;&#x6570;&#x5916;&#x5177;&#x6709;&#x76F8;&#x540C;&#x540D;&#x79F0;&#x7684;&#x5176;&#x4ED6;&#x53D8;&#x91CF;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5173;&#x7CFB;&#xFF0C;&#x5373;&#x53D8;&#x91CF;&#x540D;&#x79F0;&#x5BF9;&#x4E8E;&#x51FD;&#x6570;&#x6765;&#x8BF4;&#x662F; &#x5C40;&#x90E8; &#x7684;&#x3002;&#x8FD9;&#x79F0;&#x4E3A;&#x53D8;&#x91CF;&#x7684; &#x4F5C;&#x7528;&#x57DF; &#x3002;&#x6240;&#x6709;&#x53D8;&#x91CF;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x5B83;&#x4EEC;&#x88AB;&#x5B9A;&#x4E49;&#x7684;&#x5757;&#xFF0C;&#x4ECE;&#x5B83;&#x4EEC;&#x7684;&#x540D;&#x79F0;&#x88AB;&#x5B9A;&#x4E49;&#x7684;&#x90A3;&#x70B9;&#x5F00;&#x59CB;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;&#x5C40;&#x90E8;&#x53D8;&#x91CF;"><a href="#&#x4F7F;&#x7528;&#x5C40;&#x90E8;&#x53D8;&#x91CF;" class="headerlink" title="&#x4F7F;&#x7528;&#x5C40;&#x90E8;&#x53D8;&#x91CF;"></a>&#x4F7F;&#x7528;&#x5C40;&#x90E8;&#x53D8;&#x91CF;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># Filename: func_local.py</span><br><span class="line"></span><br><span class="line">def func(x):</span><br><span class="line">    print &apos;x is&apos;, x</span><br><span class="line">    x = 2</span><br><span class="line">    print &apos;Changed local x to&apos;, x</span><br><span class="line"></span><br><span class="line">x = 50</span><br><span class="line">func(x)</span><br><span class="line">print &apos;x is still&apos;, x</span><br></pre></td></tr></table></figure>
+<h2 id="&#x8F93;&#x51FA;"><a href="#&#x8F93;&#x51FA;" class="headerlink" title="&#x8F93;&#x51FA;"></a>&#x8F93;&#x51FA;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ python func_local.py</span><br><span class="line">x is 50</span><br><span class="line">Changed local x to 2</span><br><span class="line">x is still 50</span><br></pre></td></tr></table></figure>
+<h2 id="&#x5B83;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;"><a href="#&#x5B83;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x5B83;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;"></a>&#x5B83;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;</h2><blockquote>
+<p>&#x5728;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x7B2C;&#x4E00;&#x6B21;&#x4F7F;&#x7528;x&#x7684; &#x503C; &#x7684;&#x65F6;&#x5019;&#xFF0C;Python&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x7684;&#x5F62;&#x53C2;&#x7684;&#x503C;&#x3002;<br>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x503C;2&#x8D4B;&#x7ED9;x&#x3002;x&#x662F;&#x51FD;&#x6570;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x51FD;&#x6570;&#x5185;&#x6539;&#x53D8;x&#x7684;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5728;&#x4E3B;&#x5757;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;x&#x4E0D;&#x53D7;&#x5F71;&#x54CD;&#x3002;<br>&#x5728;&#x6700;&#x540E;&#x4E00;&#x4E2A;print&#x8BED;&#x53E5;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8BC1;&#x660E;&#x4E86;&#x4E3B;&#x5757;&#x4E2D;&#x7684;x&#x7684;&#x503C;&#x786E;&#x5B9E;&#x6CA1;&#x6709;&#x53D7;&#x5230;&#x5F71;&#x54CD;&#x3002;<br>&#x4F7F;&#x7528;global&#x8BED;&#x53E5;<br>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x4E3A;&#x4E00;&#x4E2A;&#x5B9A;&#x4E49;&#x5728;&#x51FD;&#x6570;&#x5916;&#x7684;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x4F60;&#x5C31;&#x5F97;&#x544A;&#x8BC9;Python&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x540D;&#x4E0D;&#x662F;&#x5C40;&#x90E8;&#x7684;&#xFF0C;&#x800C;&#x662F; &#x5168;&#x5C40; &#x7684;&#x3002;&#x6211;&#x4EEC;&#x4F7F;&#x7528;global&#x8BED;&#x53E5;&#x5B8C;&#x6210;&#x8FD9;&#x4E00;&#x529F;&#x80FD;&#x3002;&#x6CA1;&#x6709;global&#x8BED;&#x53E5;&#xFF0C;&#x662F;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;&#x5B9A;&#x4E49;&#x5728;&#x51FD;&#x6570;&#x5916;&#x7684;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x7684;&#x3002;<br>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B9A;&#x4E49;&#x5728;&#x51FD;&#x6570;&#x5916;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF08;&#x5047;&#x8BBE;&#x5728;&#x51FD;&#x6570;&#x5185;&#x6CA1;&#x6709;&#x540C;&#x540D;&#x7684;&#x53D8;&#x91CF;&#xFF09;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x6211;&#x5E76;&#x4E0D;&#x9F13;&#x52B1;&#x4F60;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x5E76;&#x4E14;&#x4F60;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x907F;&#x514D;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4F7F;&#x5F97;&#x7A0B;&#x5E8F;&#x7684;&#x8BFB;&#x8005;&#x4F1A;&#x4E0D;&#x6E05;&#x695A;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x662F;&#x5728;&#x54EA;&#x91CC;&#x5B9A;&#x4E49;&#x7684;&#x3002;&#x4F7F;&#x7528;global&#x8BED;&#x53E5;&#x53EF;&#x4EE5;&#x6E05;&#x695A;&#x5730;&#x8868;&#x660E;&#x53D8;&#x91CF;&#x662F;&#x5728;&#x5916;&#x9762;&#x7684;&#x5757;&#x5B9A;&#x4E49;&#x7684;&#x3002;</p>
+</blockquote>
+<h2 id="&#x4F7F;&#x7528;global&#x8BED;&#x53E5;"><a href="#&#x4F7F;&#x7528;global&#x8BED;&#x53E5;" class="headerlink" title="&#x4F7F;&#x7528;global&#x8BED;&#x53E5;"></a>&#x4F7F;&#x7528;global&#x8BED;&#x53E5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># Filename: func_global.py</span><br><span class="line"></span><br><span class="line">def func():</span><br><span class="line">    global x</span><br><span class="line"></span><br><span class="line">    print &apos;x is&apos;, x</span><br><span class="line">    x = 2</span><br><span class="line">    print &apos;Changed local x to&apos;, x</span><br><span class="line"></span><br><span class="line">x = 50</span><br><span class="line">func()</span><br><span class="line">print &apos;Value of x is&apos;, x</span><br></pre></td></tr></table></figure>
+<h2 id="&#x8F93;&#x51FA;-1"><a href="#&#x8F93;&#x51FA;-1" class="headerlink" title="&#x8F93;&#x51FA;"></a>&#x8F93;&#x51FA;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ python func_global.py</span><br><span class="line">x is 50</span><br><span class="line">Changed global x to 2</span><br><span class="line">Value of x is 2</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x5B83;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;<br>global&#x8BED;&#x53E5;&#x88AB;&#x7528;&#x6765;&#x58F0;&#x660E;x&#x662F;&#x5168;&#x5C40;&#x7684;&#x2014;&#x2014;&#x56E0;&#x6B64;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x51FD;&#x6570;&#x5185;&#x628A;&#x503C;&#x8D4B;&#x7ED9;x&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x53D8;&#x5316;&#x4E5F;&#x53CD;&#x6620;&#x5728;&#x6211;&#x4EEC;&#x5728;&#x4E3B;&#x5757;&#x4E2D;&#x4F7F;&#x7528;x&#x7684;&#x503C;&#x7684;&#x65F6;&#x5019;&#x3002;<br>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;global&#x8BED;&#x53E5;&#x6307;&#x5B9A;&#x591A;&#x4E2A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3002;&#x4F8B;&#x5982;global x, y, z&#x3002;</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python语法/" rel="tag">#python语法</a>
+          
+            <a href="/tags/局部变量/" rel="tag">#局部变量</a>
+          
+            <a href="/tags/全局变量/" rel="tag">#全局变量</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/02/python/python语法/理解Python的With语句/" rel="next" title="理解Python的With语句">
+                <i class="fa fa-chevron-left"></i> 理解Python的With语句
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/02/windows/windows开发-己必备的软件(持续更新)/" rel="prev" title="windows开发-己必备的软件(持续更新)">
+                windows开发-己必备的软件(持续更新) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/02/python/python语法/理解Python的局部变量和全局变量/"
+     data-title="理解Python的局部变量和全局变量"
+     data-content=""
+     data-url="http://yoursite.com/2016/04/02/python/python语法/理解Python的局部变量和全局变量/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/02/python/python语法/理解Python的局部变量和全局变量/"
+           data-title="理解Python的局部变量和全局变量" data-url="http://yoursite.com/2016/04/02/python/python语法/理解Python的局部变量和全局变量/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/thunder.jpg"
+               alt="忍者神龟" />
+          <p class="site-author-name" itemprop="name">忍者神龟</p>
+          <p class="site-description motion-element" itemprop="description">爱打篮球的程序狗</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maqiangThunder" target="_blank" title="github">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ma-qiang-97-67" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2357192812?is_all=1" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/54292285/" target="_blank" title="douban">
+                  
+                    <i class="fa fa-douban"></i>
+                  
+                  douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用局部变量"><span class="nav-number">2.</span> <span class="nav-text">使用局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#它如何工作"><span class="nav-number">4.</span> <span class="nav-text">它如何工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用global语句"><span class="nav-number">5.</span> <span class="nav-text">使用global语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-1"><span class="nav-number">6.</span> <span class="nav-text">输出</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">忍者神龟</span>
+</div>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"thunder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Jami1E0cgfUeRuh2tT7nCTiD-gzGzoHsz", "rMyNJtkJdjRpqpwbYBWrbkbt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

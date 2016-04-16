@@ -1,0 +1,832 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="rabbitMQ,python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x5B89;&amp;#x88C5;&amp;#x6211;&amp;#x7684;&amp;#x73AF;&amp;#x5883;&amp;#x662F;Ubuntu 14.04.1 LTS
+&amp;#x5B89;&amp;#x88C5;erlang1234sudo apt-get install build-essential   sudo apt-get install libncurses5-dev   sudo apt-get install">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rabbitMQ学习1">
+<meta property="og:url" content="http://yoursite.com/2016/04/03/rabbitMQ/rabbitMQ学习1/index.html">
+<meta property="og:site_name" content="忍者神龟">
+<meta property="og:description" content="&amp;#x5B89;&amp;#x88C5;&amp;#x6211;&amp;#x7684;&amp;#x73AF;&amp;#x5883;&amp;#x662F;Ubuntu 14.04.1 LTS
+&amp;#x5B89;&amp;#x88C5;erlang1234sudo apt-get install build-essential   sudo apt-get install libncurses5-dev   sudo apt-get install">
+<meta property="og:image" content="http://yoursite.com/2016/04/03/rabbitMQ/rabbitMQ学习1/QQ截图20160403231352.png">
+<meta property="og:updated_time" content="2016-04-03T15:16:34.062Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rabbitMQ学习1">
+<meta name="twitter:description" content="&amp;#x5B89;&amp;#x88C5;&amp;#x6211;&amp;#x7684;&amp;#x73AF;&amp;#x5883;&amp;#x662F;Ubuntu 14.04.1 LTS
+&amp;#x5B89;&amp;#x88C5;erlang1234sudo apt-get install build-essential   sudo apt-get install libncurses5-dev   sudo apt-get install">
+<meta name="twitter:image" content="http://yoursite.com/2016/04/03/rabbitMQ/rabbitMQ学习1/QQ截图20160403231352.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6261769725999580000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> rabbitMQ学习1 | 忍者神龟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7840c40eebaccc88eb16af700e755c7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">忍者神龟</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">thunder</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                rabbitMQ学习1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-03T21:26:00+08:00" content="2016-04-03">
+              2016-04-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/rabbitMQ/" itemprop="url" rel="index">
+                    <span itemprop="name">rabbitMQ</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/03/rabbitMQ/rabbitMQ学习1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/rabbitMQ/rabbitMQ学习1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/03/rabbitMQ/rabbitMQ学习1/" class="leancloud_visitors" data-flag-title="rabbitMQ学习1">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="&#x5B89;&#x88C5;"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</h2><p>&#x6211;&#x7684;&#x73AF;&#x5883;&#x662F;Ubuntu 14.04.1 LTS</p>
+<h3 id="&#x5B89;&#x88C5;erlang"><a href="#&#x5B89;&#x88C5;erlang" class="headerlink" title="&#x5B89;&#x88C5;erlang"></a>&#x5B89;&#x88C5;erlang</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential   </span><br><span class="line">sudo apt-get install libncurses5-dev   </span><br><span class="line">sudo apt-get install libssl-dev</span><br><span class="line">sudo apt-get install erlang</span><br></pre></td></tr></table></figure>
+<h3 id="&#x5B89;&#x88C5;rabbitMQ"><a href="#&#x5B89;&#x88C5;rabbitMQ" class="headerlink" title="&#x5B89;&#x88C5;rabbitMQ"></a>&#x5B89;&#x88C5;rabbitMQ</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install rabbitmq-server</span><br></pre></td></tr></table></figure>
+<h3 id="&#x5B89;&#x88C5;-RabbitMQWeb&#x7BA1;&#x7406;&#x63D2;&#x4EF6;"><a href="#&#x5B89;&#x88C5;-RabbitMQWeb&#x7BA1;&#x7406;&#x63D2;&#x4EF6;" class="headerlink" title="&#x5B89;&#x88C5; RabbitMQWeb&#x7BA1;&#x7406;&#x63D2;&#x4EF6;"></a>&#x5B89;&#x88C5; RabbitMQWeb&#x7BA1;&#x7406;&#x63D2;&#x4EF6;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rabbitmq-plugins enable rabbitmq_management</span><br></pre></td></tr></table></figure>
+<p>&#x767B;&#x5F55;&#x5BC6;&#x7801;&#x662F;:guest/guest</p>
+<h2 id="&#x542F;&#x52A8;"><a href="#&#x542F;&#x52A8;" class="headerlink" title="&#x542F;&#x52A8;"></a>&#x542F;&#x52A8;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service rabbitmq-service start</span><br></pre></td></tr></table></figure>
+<h2 id="&#x5B89;&#x88C5;RabbitMQ-libraries"><a href="#&#x5B89;&#x88C5;RabbitMQ-libraries" class="headerlink" title="&#x5B89;&#x88C5;RabbitMQ libraries"></a>&#x5B89;&#x88C5;RabbitMQ libraries</h2><p>RabbitMQ&#x9075;&#x5FAA;AMQP&#x534F;&#x8BAE;&#xFF0C;&#x4E3A;&#x4E86;&#x4F7F;&#x7528;rabbitmq&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5E93;&#x6765;&#x89E3;&#x8BFB;&#x8FD9;&#x4E2A;&#x534F;&#x8BAE;&#xFF0C;&#x5BF9;&#x4E8E;python&#x6765;&#x8BF4;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x4E0B;&#x9762;&#x5E93;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x5373;&#x53EF;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;py-amqplib</span><br><span class="line">&gt;txAMQP</span><br><span class="line">&gt;pika</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x91CC;&#x9009;&#x62E9;pika<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install pika</span><br></pre></td></tr></table></figure></p>
+<h2 id="&#x7B80;&#x5355;&#x7406;&#x89E3;"><a href="#&#x7B80;&#x5355;&#x7406;&#x89E3;" class="headerlink" title="&#x7B80;&#x5355;&#x7406;&#x89E3;"></a>&#x7B80;&#x5355;&#x7406;&#x89E3;</h2><p>RabbitMQ&#x76F8;&#x5F53;&#x4E8E;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x4EE3;&#x7406;&#xFF0C;&#x4ED6;&#x5B8C;&#x6210;&#x63A5;&#x6536;&#x548C;&#x8F6C;&#x53D1;&#x6D88;&#x606F;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x60F3;&#x6210;&#x4E00;&#x4E2A;&#x90AE;&#x5C40;&#xFF0C;&#x8D77;&#x5230;&#x4E2D;&#x8F6C;&#x4F5C;&#x7528;</p>
+<ol>
+<li>Producer:&#x7528;&#x6765;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x7A0B;&#x5E8F;&#x88AB;&#x79F0;&#x4E3A;&#x4E00;&#x4E2A;producer</li>
+<li>Queue: &#x961F;&#x5217;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x90AE;&#x7BB1;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x4ED6;&#x5728;&#x521B;&#x5EFA;&#x540E;&#x4E00;&#x76F4;&#x5B58;&#x6D3B;&#x4E0E;RabbitMQ&#x4E2D;&#xFF0C;&#x867D;&#x7136;&#x6D88;&#x606F;&#x53EF;&#x4EE5;&#x5728;&#x4F60;&#x7684;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x6D41;&#x52A8;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x8FD9;&#x4E2D;&#x95F4;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6D88;&#x606F;&#x5FC5;&#x987B;&#x5B58;&#x5728;queue&#x4E2D;&#xFF0C;&#x4E00;&#x4E0B;queue&#x6CA1;&#x6709;&#x5927;&#x5C0F;&#x9650;&#x5236;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5B58;&#x65E0;&#x6570;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#xFF08;&#x524D;&#x63D0;&#x4F60;&#x5FC5;&#x987B;&#x9884;&#x7559;1GB&#x7684;&#x786C;&#x76D8;&#x7A7A;&#x95F4;&#xFF09;&#xFF0C;&#x4ED6;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x9650;&#x5236;&#x7684;&#x7F13;&#x5B58;&#x3002;&#x591A;&#x4E2A;Producer&#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x5230;&#x540C;&#x4E00;&#x4E2A;queue&#xFF0C;&#x591A;&#x4E2A;Consumer&#x4E5F;&#x53EF;&#x4EE5;&#x4ECE;&#x540C;&#x4E00;&#x4E2A;queue&#x4E2D;&#x63A5;&#x6536;&#x6D88;&#x606F;</li>
+<li>Consumer: &#x4E00;&#x4E2A;&#x7528;&#x6765;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x7684;&#x7A0B;&#x5E8F;&#x79F0;&#x4E4B;&#x4E3A;Consumer</li>
+</ol>
+<h2 id="&#x70B9;&#x5BF9;&#x70B9;&#x901A;&#x4FE1;"><a href="#&#x70B9;&#x5BF9;&#x70B9;&#x901A;&#x4FE1;" class="headerlink" title="&#x70B9;&#x5BF9;&#x70B9;&#x901A;&#x4FE1;"></a>&#x70B9;&#x5BF9;&#x70B9;&#x901A;&#x4FE1;</h2><p>&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;helloword&#x7684;&#x4E00;&#x5BF9;&#x4E00;&#x7684;&#x901A;&#x4FE1;,&#x4E00;&#x4E2A;&#x53D1;&#x9001;&#x65B9;,&#x4E00;&#x4E2A;&#x63A5;&#x6536;&#x65B9;</p>
+<h3 id="&#x5BA2;&#x6237;&#x7AEF;-client-py"><a href="#&#x5BA2;&#x6237;&#x7AEF;-client-py" class="headerlink" title="&#x5BA2;&#x6237;&#x7AEF; client.py"></a>&#x5BA2;&#x6237;&#x7AEF; client.py</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#&#x5BFC;&#x5165;pika</span><br><span class="line">import pika</span><br><span class="line"></span><br><span class="line">#&#x5EFA;&#x7ACB;&#x4E0E;rabbitMQ-server&#x7684;&#x8FDE;&#x63A5;</span><br><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(host = &apos;localhost&apos;))</span><br><span class="line">channel = connection.channel()</span><br><span class="line">#&#x786E;&#x5B9A;queue&#x662F;&#x5426;&#x5B58;&#x5728;,&#x4E0D;&#x5B58;&#x5728;&#x5219;&#x5EFA;&#x7ACB;</span><br><span class="line">channel.queue_declare(queue = &apos;hello&apos;)</span><br><span class="line">#&#x6D88;&#x606F;&#x4E0D;&#x76F4;&#x63A5;&#x53D1;&#x9001;&#x7ED9;queue, &#x8981;&#x7ECF;&#x8FC7;&#x4E00;&#x4E2A;exchange</span><br><span class="line">channel.basic_publish(exchange=&apos;&apos;, routing_key=&apos;hello&apos;, body=&apos;Hello World!&apos;)</span><br><span class="line">print &quot;[x] send &apos;Hello World!&apos;&quot;</span><br><span class="line">#&#x5173;&#x95ED;&#x8FDE;&#x63A5;</span><br><span class="line">connection.close()</span><br></pre></td></tr></table></figure>
+<h3 id="&#x670D;&#x52A1;&#x7AEF;server-py"><a href="#&#x670D;&#x52A1;&#x7AEF;server-py" class="headerlink" title="&#x670D;&#x52A1;&#x7AEF;server.py"></a>&#x670D;&#x52A1;&#x7AEF;server.py</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import pika</span><br><span class="line"></span><br><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(host=&apos;localhost&apos;))</span><br><span class="line">channel = connection.channel()</span><br><span class="line"></span><br><span class="line">channel.queue_declare(queue=&apos;hello&apos;)</span><br><span class="line"></span><br><span class="line">print &apos; [*] Waiting for messages. To exit press CTRL+C&apos;</span><br><span class="line"></span><br><span class="line">#&#x6211;&#x4EEC;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;callback&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x63A5;&#x53D7;&#x5230;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5019;&#xFF0C;pika&#x5E93;&#x4F1A;&#x8C03;&#x7528;callback&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x91CC;&#xFF0C;callback&#x51FD;&#x6570;&#x5C31;&#x662F;&#x5C06;&#x63A5;&#x6536;&#x5230;&#x7684;&#x6D88;&#x606F;&#x6253;&#x5370;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;</span><br><span class="line">def callback(ch, method, properties, body):</span><br><span class="line">    print &quot; [x] Received %r&quot; % (body,)</span><br><span class="line"></span><br><span class="line">#&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x544A;&#x8BC9;Rabbitmq&#xFF0C;&#x8FD9;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x51FD;&#x6570;callback&#xFF08;&#xFF09;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5C31;&#x662F;&#x4ECE;hello&#x7684;queue&#x4E2D;&#x63A5;&#x6536;&#x6D88;&#x606F;</span><br><span class="line">channel.basic_consume(callback, queue=&apos;hello&apos;, no_ack=True)</span><br><span class="line">&#x5F00;&#x542F;&#x4E00;&#x4E2A;&#x6C38;&#x4E0D;&#x505C;&#x6B62;&#x7684;&#x7EBF;&#x7A0B;&#x6765;&#x7B49;&#x5F85;&#x6D88;&#x606F;&#xFF0C;&#x5728;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x8FD0;&#x884C;callback&#xFF08;&#xFF09;&#x51FD;&#x6570;</span><br><span class="line">channel.start_consuming()</span><br></pre></td></tr></table></figure>
+<h3 id="&#x8FD0;&#x884C;"><a href="#&#x8FD0;&#x884C;" class="headerlink" title="&#x8FD0;&#x884C;"></a>&#x8FD0;&#x884C;</h3><ol>
+<li><p>&#x8FD0;&#x884C;server.py</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python server.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x8FD0;&#x884C;client.py</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python client.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x67E5;&#x770B;web&#x754C;&#x9762;<br>web&#x754C;&#x9762;&#x5BF9;&#x5404;&#x4E2A;&#x5143;&#x7D20;&#x90FD;&#x6709;&#x8BB0;&#x5F55;, &#x6211;&#x4EEC;&#x80FD;&#x770B;&#x5230;&#x521A;&#x624D;&#x7684;&#x64CD;&#x4F5C;<br><img src="/2016/04/03/rabbitMQ/rabbitMQ&#x5B66;&#x4E60;1/QQ&#x622A;&#x56FE;20160403231352.png" alt=""></p>
+</li>
+</ol>
+<h2 id="&#x547D;&#x4EE4;"><a href="#&#x547D;&#x4EE4;" class="headerlink" title="&#x547D;&#x4EE4;"></a>&#x547D;&#x4EE4;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo rabbitmqctl list_queues</span><br><span class="line">sudo rabbitmqctl list_exchanges</span><br><span class="line">sudo rabbitmqctl list_bindings</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rabbitMQ/" rel="tag">#rabbitMQ</a>
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/03/linux/ubuntu/ubuntu kylin安装/" rel="next" title="ubuntu kylin安装">
+                <i class="fa fa-chevron-left"></i> ubuntu kylin安装
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/03/ELK/ES/ES安装/" rel="prev" title="ES安装">
+                ES安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/03/rabbitMQ/rabbitMQ学习1/"
+     data-title="rabbitMQ学习1"
+     data-content=""
+     data-url="http://yoursite.com/2016/04/03/rabbitMQ/rabbitMQ学习1/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/03/rabbitMQ/rabbitMQ学习1/"
+           data-title="rabbitMQ学习1" data-url="http://yoursite.com/2016/04/03/rabbitMQ/rabbitMQ学习1/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/thunder.jpg"
+               alt="忍者神龟" />
+          <p class="site-author-name" itemprop="name">忍者神龟</p>
+          <p class="site-description motion-element" itemprop="description">爱打篮球的程序狗</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maqiangThunder" target="_blank" title="github">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ma-qiang-97-67" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2357192812?is_all=1" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/54292285/" target="_blank" title="douban">
+                  
+                    <i class="fa fa-douban"></i>
+                  
+                  douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装erlang"><span class="nav-number">1.1.</span> <span class="nav-text">安装erlang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装rabbitMQ"><span class="nav-number">1.2.</span> <span class="nav-text">安装rabbitMQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-RabbitMQWeb管理插件"><span class="nav-number">1.3.</span> <span class="nav-text">安装 RabbitMQWeb管理插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动"><span class="nav-number">2.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装RabbitMQ-libraries"><span class="nav-number">3.</span> <span class="nav-text">安装RabbitMQ libraries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单理解"><span class="nav-number">4.</span> <span class="nav-text">简单理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点对点通信"><span class="nav-number">5.</span> <span class="nav-text">点对点通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端-client-py"><span class="nav-number">5.1.</span> <span class="nav-text">客户端 client.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端server-py"><span class="nav-number">5.2.</span> <span class="nav-text">服务端server.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行"><span class="nav-number">5.3.</span> <span class="nav-text">运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">6.</span> <span class="nav-text">命令</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">忍者神龟</span>
+</div>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"thunder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Jami1E0cgfUeRuh2tT7nCTiD-gzGzoHsz", "rMyNJtkJdjRpqpwbYBWrbkbt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

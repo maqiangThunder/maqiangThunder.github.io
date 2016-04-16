@@ -1,0 +1,826 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,flask,mysql,数据库,SQLAlchemy," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x6570;&amp;#x636E;&amp;#x5E93;&amp;#x6309;&amp;#x7167;&amp;#x4E00;&amp;#x5B9A;&amp;#x89C4;&amp;#x5219;&amp;#x4FDD;&amp;#x5B58;&amp;#x7A0B;&amp;#x5E8F;&amp;#x6570;&amp;#x636E;&amp;#xFF0C;&amp;#x7A0B;&amp;#x5E8F;&amp;#x518D;&amp;#x53D1;&amp;#x8D77;&amp;#x67E5;&amp;#x8BE2;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flask学习笔记-数据库">
+<meta property="og:url" content="http://yoursite.com/2016/04/04/python/flask/flask学习笔记-数据库/index.html">
+<meta property="og:site_name" content="忍者神龟">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x6570;&amp;#x636E;&amp;#x5E93;&amp;#x6309;&amp;#x7167;&amp;#x4E00;&amp;#x5B9A;&amp;#x89C4;&amp;#x5219;&amp;#x4FDD;&amp;#x5B58;&amp;#x7A0B;&amp;#x5E8F;&amp;#x6570;&amp;#x636E;&amp;#xFF0C;&amp;#x7A0B;&amp;#x5E8F;&amp;#x518D;&amp;#x53D1;&amp;#x8D77;&amp;#x67E5;&amp;#x8BE2;">
+<meta property="og:updated_time" content="2016-04-10T04:46:51.010Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flask学习笔记-数据库">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x6570;&amp;#x636E;&amp;#x5E93;&amp;#x6309;&amp;#x7167;&amp;#x4E00;&amp;#x5B9A;&amp;#x89C4;&amp;#x5219;&amp;#x4FDD;&amp;#x5B58;&amp;#x7A0B;&amp;#x5E8F;&amp;#x6570;&amp;#x636E;&amp;#xFF0C;&amp;#x7A0B;&amp;#x5E8F;&amp;#x518D;&amp;#x53D1;&amp;#x8D77;&amp;#x67E5;&amp;#x8BE2;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6261769725999580000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> flask学习笔记-数据库 | 忍者神龟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7840c40eebaccc88eb16af700e755c7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">忍者神龟</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">thunder</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                flask学习笔记-数据库
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-04T21:39:00+08:00" content="2016-04-04">
+              2016-04-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/flask/" itemprop="url" rel="index">
+                    <span itemprop="name">flask</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/04/python/flask/flask学习笔记-数据库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/04/python/flask/flask学习笔记-数据库/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/04/python/flask/flask学习笔记-数据库/" class="leancloud_visitors" data-flag-title="flask学习笔记-数据库">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x6570;&#x636E;&#x5E93;&#x6309;&#x7167;&#x4E00;&#x5B9A;&#x89C4;&#x5219;&#x4FDD;&#x5B58;&#x7A0B;&#x5E8F;&#x6570;&#x636E;&#xFF0C;&#x7A0B;&#x5E8F;&#x518D;&#x53D1;&#x8D77;&#x67E5;&#x8BE2;&#x53D6;&#x56DE;&#x6240;&#x9700;&#x7684;&#x6570;&#x636E;&#x3002;Web&#x7A0B;&#x5E8F;&#x6700;&#x5E38;&#x7528;&#x57FA;&#x4E8E;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#x7684;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x8FD9;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x4E5F;&#x79F0;&#x4E3A;SQL&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4F7F;&#x7528;&#x7ED3;&#x6784;&#x5316;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x3002;&#x4E0D;&#x8FC7;&#x6700;&#x8FD1;&#x51E0;&#x5E74;&#x6587;&#x6863;&#x6570;&#x636E;&#x5E93;&#x548C;&#x952E;&#x503C;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x6210;&#x4E86;&#x6D41;&#x884C;&#x7684;&#x66FF;&#x4EE3;&#x9009;&#x62E9;&#xFF0C;&#x8FD9;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5408;&#x79F0;&#x4E3A;NoSQL&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<p>&#x5927;&#x591A;&#x6570;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x90FD;&#x6709;&#x5BF9;&#x5E94;&#x7684;Python&#x5305;&#xFF0C;&#x5305;&#x62EC;&#x5F00;&#x6E90;&#x5B9D;&#x548C;&#x5546;&#x4E1A;&#x5305;&#x3002;Flask&#x5E76;&#x4E0D;&#x9650;&#x5236;&#x4F60;&#x4F7F;&#x7528;&#x4F55;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5305;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x559C;&#x597D;&#x9009;&#x62E9;&#x4F7F;&#x7528;MySQL&#x3001;Postgres&#x3001;SQLite&#xFF0C;Redis&#x3001;MongoDB&#x6216;&#x8005;CouchDB&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x90FD;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x5E93;&#x62BD;&#x8C61;&#x5C42;&#x4EE3;&#x7801;&#x5305;&#x4F9B;&#x9009;&#x62E9;&#xFF0C;&#x4F8B;&#x5982;SQLAlchemy&#x548C;MongoEngine&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x62BD;&#x8C61;&#x5305;&#x76F4;&#x63A5;&#x5904;&#x7406;&#x9AD8;&#x7B49;&#x7EA7;&#x7684;Python&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x5904;&#x7406;&#x5982;&#x8868;&#x3001;&#x6587;&#x6863;&#x6216;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;&#x6B64;&#x7C7B;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5B9E;&#x4F53;&#x3002;</p>
+<p>&#x9009;&#x62E9;&#x6846;&#x67B6;&#x65F6;&#xFF0C;&#x4F60;&#x4E0D;&#x4E00;&#x5B9A;&#x975E;&#x5F97;&#x9009;&#x62E9;&#x5DF2;&#x7ECF;&#x96C6;&#x6210;&#x4E86;Flask&#x7684;&#x6846;&#x67B6;&#xFF0C;&#x4F46;&#x9009;&#x62E9;&#x8FD9;&#x4E9B;&#x6846;&#x67B6;&#x53EF;&#x4EE5;&#x8282;&#x7EA6;&#x4F60;&#x7F16;&#x5199;&#x96C6;&#x6210;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x4F7F;&#x7528;&#x96C6;&#x6210;&#x4E86;Flask&#x7684;&#x6846;&#x67B6;&#x53EF;&#x4EE5;&#x7B80;&#x5316;&#x914D;&#x7F6E;&#x548C;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x4E13;&#x95E8;&#x4E3A;Flask&#x5F00;&#x53D1;&#x7684;&#x6269;&#x5C55;&#x662F;&#x4F60;&#x7684;&#x9996;&#x9009;&#x3002;</p>
+<p>&#x5173;&#x4E8E;&#x9009;&#x62E9;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6846;&#x67B6;&#xFF0C;&#x9009;&#x62E9;&#x7684;&#x662F;Flask-SQLAlchemy&#x3002;</p>
+<h2 id="&#x5B89;&#x88C5;Flask-SQLAlchemy"><a href="#&#x5B89;&#x88C5;Flask-SQLAlchemy" class="headerlink" title="&#x5B89;&#x88C5;Flask-SQLAlchemy"></a>&#x5B89;&#x88C5;Flask-SQLAlchemy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install flask-sqlalchemy</span><br></pre></td></tr></table></figure>
+<h2 id="&#x914D;&#x7F6E;"><a href="#&#x914D;&#x7F6E;" class="headerlink" title="&#x914D;&#x7F6E;"></a>&#x914D;&#x7F6E;</h2><p>&#x5728;Flask-SQLAlchemy&#x4E2D;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x4F7F;&#x7528;URL&#x6307;&#x5B9A;&#x3002;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MySQL : mysql://username:password@hostname/database</span><br><span class="line">Postgres &#xFF1A; postgresql://username:password@hostname/database</span><br><span class="line">SQLite : sqlite:////absolute/path/to/database</span><br></pre></td></tr></table></figure></p>
+<p>&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;URL&#x5FC5;&#x987B;&#x4FDD;&#x5B58;&#x5230;Flask&#x914D;&#x7F6E;&#x5BF9;&#x8C61;&#x7684;SQLALCHEMY_DATABASE_URI&#x952E;&#x4E2D;&#x3002;&#x914D;&#x7F6E;&#x5BF9;&#x8C61;&#x4E2D;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x5F88;&#x6709;&#x7528;&#x7684;&#x9009;&#x9879;&#xFF0C;&#x5373;SQLALCHEMY_ON_REARDOWN&#x952E;&#xFF0C;&#x5C06;&#x5176;&#x8BBE;&#x7F6E;&#x4E3A;True&#x65F6;&#xFF0C;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x7ED3;&#x675F;&#x540E;&#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x63D0;&#x4EA4;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x53D8;&#x52A8;&#x3002;<br>&#x6211;&#x4EEC;&#x4F7F;&#x7528;SQLite&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x914D;&#x7F6E;&#x4EE3;&#x7801; &#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask.ext.sqlalchemy import SQLAlchemy</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">baseDir = os.path.abspath(os.path.dirname(__file__))</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[&apos;SQLALCHEMY_DATABASE_URI&apos;] =\</span><br><span class="line">                                      &apos;sqlite:////&apos; + os.path.join(baseDir,&apos;data.sqlite&apos;)</span><br><span class="line">app.config[&apos;SQLALCHEMY_COMMIT_ON_TEARDOWN&apos;] = True</span><br><span class="line"></span><br><span class="line">db = SQLAlchemy(app)</span><br></pre></td></tr></table></figure></p>
+<h2 id="&#x5B9A;&#x4E49;&#x6A21;&#x578B;"><a href="#&#x5B9A;&#x4E49;&#x6A21;&#x578B;" class="headerlink" title="&#x5B9A;&#x4E49;&#x6A21;&#x578B;"></a>&#x5B9A;&#x4E49;&#x6A21;&#x578B;</h2><p>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x8868;users&#x548C;&#x4E00;&#x4E2A;&#x89D2;&#x8272;&#x8868;roles&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class User(db.Model):</span><br><span class="line">    __tablename__ = &apos;users&apos;</span><br><span class="line">    id = db.Column(db.Integer,primary_key=True)</span><br><span class="line">    username = db.Column(db.String(64),unique=True,index=True)</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return &apos;&lt;User %r&gt;&apos; % self.username</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Role(db.Model):</span><br><span class="line">    __tablename__ = &apos;roles&apos;</span><br><span class="line">    id = db.Column(db.Integer,primary_key=True)</span><br><span class="line">    name = db.Column(db.String(64),unique=True)</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return &apos;&lt;Role %r&gt;&apos; % self.name</span><br></pre></td></tr></table></figure></p>
+<p>&#x89E3;&#x91CA;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0.&#x4E24;&#x4E2A;&#x7C7B;User&#x548C;Role&#x7EE7;&#x627F;&#x81EA;db.Model</span><br><span class="line">1.__tablename__&#x7528;&#x6765;&#x6307;&#x5B9A;&#x8868;&#x540D;&#x79F0;</span><br><span class="line">2.db.Column&#x51FD;&#x6570;&#x6307;&#x5B9A;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x5B57;&#x6BB5;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x662F;&#x5426;&#x662F;&#x4E3B;&#x952E;&#xFF08;primary_key&#xFF09;&#xFF0C;&#x662F;&#x5426;&#x552F;&#x4E00;(unique)&#xFF0C;&#x662F;&#x5426;&#x52A0;&#x7D22;&#x5F15;(index),&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x6BD4;&#x5982;&#xFF1A;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;&#xFF08;nullable=True&#xFF09;,&#x9ED8;&#x8BA4;&#x503C;&#xFF08;default&#xFF09;</span><br></pre></td></tr></table></figure></p>
+<h2 id="&#x5173;&#x7CFB;"><a href="#&#x5173;&#x7CFB;" class="headerlink" title="&#x5173;&#x7CFB;"></a>&#x5173;&#x7CFB;</h2><p>&#x4F7F;&#x7528;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;&#x5173;&#x7CFB;&#x600E;&#x4E48;&#x80FD;&#x884C;&#x3002;&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x4E2D;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x5173;&#x7CFB;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x6709;&#x4E00;&#x4E2A;&#x89D2;&#x8272;&#xFF0C;&#x4E00;&#x4E2A;&#x89D2;&#x8272;&#x53EF;&#x4EE5;&#x5C5E;&#x4E8E;&#x591A;&#x4E2A;&#x7528;&#x6237;&#xFF0C;&#x5178;&#x578B;&#x7684;&#x4E00;&#x5BF9;&#x591A;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x5982;&#x4F55;&#x5728;Flask-SQLAlchemy&#x4E2D;&#x5B9A;&#x4E49;&#x5173;&#x7CFB;&#xFF1F;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class User(db.Model):</span><br><span class="line">    __tablename__ = &apos;users&apos;</span><br><span class="line">    id = db.Column(db.Integer,primary_key=True)</span><br><span class="line">    username = db.Column(db.String(64),unique=True,index=True)</span><br><span class="line"></span><br><span class="line">    role_id = db.Column(db.Integer,db.ForeignKey(&apos;roles.id&apos;))</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return &apos;&lt;User %r&gt;&apos; % self.username</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Role(db.Model):</span><br><span class="line">    __tablename__ = &apos;roles&apos;</span><br><span class="line">    id = db.Column(db.Integer,primary_key=True)</span><br><span class="line">    name = db.Column(db.String(64),unique=True)</span><br><span class="line"></span><br><span class="line">    users = db.relationship(&apos;User&apos;,backref=&apos;role&apos;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return &apos;&lt;Role %r&gt;&apos; % self.name</span><br></pre></td></tr></table></figure></p>
+<p>&#x6DFB;&#x52A0;&#x4E86;&#x4E24;&#x884C;&#x4EE3;&#x7801;:<br>&#x7B2C;&#x4E00;&#x884C;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">role_id = db.Column(db.Integer,db.ForeignKey(&apos;roles.id&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x53E5;&#x8BDD;&#x6BD4;&#x8F83;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x548C;&#x4E0A;&#x9762;&#x666E;&#x901A;&#x53D8;&#x91CF;&#x5DEE;&#x4E0D;&#x591A;&#xFF0C;&#x5C31;&#x662F;User&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;role_id&#x53D8;&#x91CF;&#xFF0C;&#x6570;&#x636E;&#x7C7B;&#x578B;db.Integer,&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x5916;&#x952E;&#x662F;&#x54EA;&#x4E2A;&#x8868;&#x4E2D;&#x54EA;&#x4E2A;id&#x3002;<br>&#x7B2C;&#x4E8C;&#x884C;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">users = db.Relationship(&apos;User&apos;,backref=&apos;role&apos;)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0.&#x6DFB;&#x52A0;&#x5230;Role&#x6A21;&#x578B;&#x4E2D;&#x7684;users&#x5C5E;&#x6027;&#x4EE3;&#x8868;&#x8FD9;&#x4E2A;&#x5173;&#x7CFB;&#x7684;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x89C6;&#x89D2;&#x3002;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;Role&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x5176;users&#x5C5E;&#x6027;&#x5C06;&#x8FD4;&#x56DE;&#x4E0E;&#x89D2;&#x8272;&#x76F8;&#x5173;&#x8054;&#x7684;&#x7528;&#x6237;&#x7EC4;&#x6210;&#x7684;&#x5217;&#x8868;&#x3002;</span><br><span class="line">1.db.Relationship()&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x660E;&#x8FD9;&#x4E2A;&#x5173;&#x7CFB;&#x7684;&#x53E6;&#x4E00;&#x7AEF;&#x662F;&#x54EA;&#x4E2A;&#x6A21;&#x578B;&#xFF08;&#x7C7B;&#xFF09;&#x3002;&#x5982;&#x679C;&#x6A21;&#x578B;&#x7C7B;&#x5C1A;&#x672A;&#x5B9A;&#x4E49;&#xFF0C;&#x53EF;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x6307;&#x5B9A;&#x3002;</span><br><span class="line">2.db.Relationship()&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;backref&#xFF0C;&#x5C06;&#x5411;User&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;role&#x5C5E;&#x6027;&#xFF0C;&#x4ECE;&#x800C;&#x5B9A;&#x4E49;&#x53CD;&#x5411;&#x5173;&#x7CFB;&#x3002;&#x8FD9;&#x4E00;&#x5C5E;&#x6027;&#x53EF;&#x66FF;&#x4EE3;role_id&#x8BBF;&#x95EE;Role&#x6A21;&#x578B;&#xFF0C;&#x6B64;&#x65F6;&#x83B7;&#x53D6;&#x7684;&#x662F;&#x6A21;&#x578B;&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5916;&#x952E;&#x7684;&#x503C;&#x3002;</span><br></pre></td></tr></table></figure>
+<h2 id="&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;"><a href="#&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;"></a>&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;</h2><h3 id="&#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#x548C;&#x8868;"><a href="#&#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#x548C;&#x8868;" class="headerlink" title="&#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#x548C;&#x8868;"></a>&#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#x548C;&#x8868;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.create_all()</span><br></pre></td></tr></table></figure>
+<h3 id="&#x5220;&#x9664;&#x6570;&#x636E;&#x5E93;"><a href="#&#x5220;&#x9664;&#x6570;&#x636E;&#x5E93;" class="headerlink" title="&#x5220;&#x9664;&#x6570;&#x636E;&#x5E93;"></a>&#x5220;&#x9664;&#x6570;&#x636E;&#x5E93;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.drop_all()</span><br></pre></td></tr></table></figure>
+<h3 id="&#x63D2;&#x5165;&#x884C;"><a href="#&#x63D2;&#x5165;&#x884C;" class="headerlink" title="&#x63D2;&#x5165;&#x884C;"></a>&#x63D2;&#x5165;&#x884C;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">role_admin = Role(name=&apos;Admin&apos;)</span><br><span class="line">user_tom = User(username=&apos;tom&apos;,role=role_admin)</span><br><span class="line">user_jim = User(username=&apos;jim&apos;,role=role_admin)</span><br><span class="line">user_tim = User(username=&apos;tim&apos;,role=role_admin)</span><br><span class="line">user_sam = User(username=&apos;sam&apos;,role=role_admin)</span><br><span class="line">db.session.add(role_admin)</span><br><span class="line">db.session.add(user_tom)</span><br><span class="line">db.session.add(user_jim)</span><br><span class="line">db.session.commit()</span><br></pre></td></tr></table></figure>
+<p>&#x901A;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x6240;&#x505A;&#x7684;&#x6539;&#x52A8;&#xFF0C;&#x5728;Flask-SQLAlchemy&#x4E2D;&#xFF0C;&#x4F1A;&#x8BDD;&#x7531;db.session&#x8868;&#x793A;&#xFF0C;&#x51C6;&#x5907;&#x628A;&#x961F;&#x5F62;&#x5199;&#x5165;&#x6570;&#x636E;&#x5E93;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x8981;&#x5C06;&#x5176;&#x6DFB;&#x52A0;&#x5230;&#x4F1A;&#x8BDD;&#x4E2D;&#x3002;&#x5199;&#x5165;&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;&#x8C03;&#x7528;db.session.commit()&#x65B9;&#x6CD5;&#x3002;</p>
+<h3 id="&#x4FEE;&#x6539;&#x884C;"><a href="#&#x4FEE;&#x6539;&#x884C;" class="headerlink" title="&#x4FEE;&#x6539;&#x884C;"></a>&#x4FEE;&#x6539;&#x884C;</h3><p>&#x6211;&#x4EEC;&#x5C06;role_admin&#x53D8;&#x91CF;&#x4E2D;name&#x4E3A;Admin&#x6539;&#x6210;Administrator<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">role_admin.name=&apos;Administrator&apos;</span><br><span class="line">db.session.add(role_admin)</span><br><span class="line">db.session.commit()</span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x5220;&#x9664;&#x884C;"><a href="#&#x5220;&#x9664;&#x884C;" class="headerlink" title="&#x5220;&#x9664;&#x884C;"></a>&#x5220;&#x9664;&#x884C;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.session.delete(user_jim)</span><br><span class="line">db.session.commit()</span><br></pre></td></tr></table></figure>
+<h3 id="&#x67E5;&#x8BE2;&#x884C;"><a href="#&#x67E5;&#x8BE2;&#x884C;" class="headerlink" title="&#x67E5;&#x8BE2;&#x884C;"></a>&#x67E5;&#x8BE2;&#x884C;</h3><p>&#x67E5;&#x8BE2;&#x6240;&#x6709;&#x7528;&#x6237;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User.query.all() #&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF1A;[&lt;User &apos;tom&apos;&gt;, &lt;User &apos;tim&apos;&gt;, &lt;User &apos;sam&apos;&gt;]</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/flask/" rel="tag">#flask</a>
+          
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
+          
+            <a href="/tags/数据库/" rel="tag">#数据库</a>
+          
+            <a href="/tags/SQLAlchemy/" rel="tag">#SQLAlchemy</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/04/python/flask/flask学习笔记-表单/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/10/杂/字符和编码/" rel="prev" title="字符和编码">
+                字符和编码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/04/python/flask/flask学习笔记-数据库/"
+     data-title="flask学习笔记-数据库"
+     data-content=""
+     data-url="http://yoursite.com/2016/04/04/python/flask/flask学习笔记-数据库/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/04/python/flask/flask学习笔记-数据库/"
+           data-title="flask学习笔记-数据库" data-url="http://yoursite.com/2016/04/04/python/flask/flask学习笔记-数据库/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/thunder.jpg"
+               alt="忍者神龟" />
+          <p class="site-author-name" itemprop="name">忍者神龟</p>
+          <p class="site-description motion-element" itemprop="description">爱打篮球的程序狗</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maqiangThunder" target="_blank" title="github">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ma-qiang-97-67" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2357192812?is_all=1" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/54292285/" target="_blank" title="douban">
+                  
+                    <i class="fa fa-douban"></i>
+                  
+                  douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Flask-SQLAlchemy"><span class="nav-number">2.</span> <span class="nav-text">安装Flask-SQLAlchemy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义模型"><span class="nav-number">4.</span> <span class="nav-text">定义模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系"><span class="nav-number">5.</span> <span class="nav-text">关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库操作"><span class="nav-number">6.</span> <span class="nav-text">数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库和表"><span class="nav-number">6.1.</span> <span class="nav-text">创建数据库和表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据库"><span class="nav-number">6.2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入行"><span class="nav-number">6.3.</span> <span class="nav-text">插入行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改行"><span class="nav-number">6.4.</span> <span class="nav-text">修改行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除行"><span class="nav-number">6.5.</span> <span class="nav-text">删除行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询行"><span class="nav-number">6.6.</span> <span class="nav-text">查询行</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">忍者神龟</span>
+</div>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"thunder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Jami1E0cgfUeRuh2tT7nCTiD-gzGzoHsz", "rMyNJtkJdjRpqpwbYBWrbkbt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

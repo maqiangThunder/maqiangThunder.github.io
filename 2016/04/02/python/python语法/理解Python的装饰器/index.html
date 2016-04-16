@@ -1,0 +1,835 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python语法,装饰器," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x88C5;&amp;#x9970;&amp;#x5668;&amp;#x5165;&amp;#x95E8;
+&amp;#x9700;&amp;#x6C42;&amp;#x662F;&amp;#x600E;&amp;#x4E48;&amp;#x6765;&amp;#x7684;&amp;#xFF1F;&amp;#x88C5;&amp;#x9970;&amp;#x5668;&amp;#x7684;&amp;#x5B9A;&amp;#x4E49;&amp;#x5F88;&amp;#x662F;&amp;#x62BD;&amp;#x8C61;&amp;#xFF0C;&amp;#x6211">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解Python的装饰器">
+<meta property="og:url" content="http://yoursite.com/2016/04/02/python/python语法/理解Python的装饰器/index.html">
+<meta property="og:site_name" content="忍者神龟">
+<meta property="og:description" content="&amp;#x88C5;&amp;#x9970;&amp;#x5668;&amp;#x5165;&amp;#x95E8;
+&amp;#x9700;&amp;#x6C42;&amp;#x662F;&amp;#x600E;&amp;#x4E48;&amp;#x6765;&amp;#x7684;&amp;#xFF1F;&amp;#x88C5;&amp;#x9970;&amp;#x5668;&amp;#x7684;&amp;#x5B9A;&amp;#x4E49;&amp;#x5F88;&amp;#x662F;&amp;#x62BD;&amp;#x8C61;&amp;#xFF0C;&amp;#x6211">
+<meta property="og:updated_time" content="2016-04-02T15:15:46.846Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解Python的装饰器">
+<meta name="twitter:description" content="&amp;#x88C5;&amp;#x9970;&amp;#x5668;&amp;#x5165;&amp;#x95E8;
+&amp;#x9700;&amp;#x6C42;&amp;#x662F;&amp;#x600E;&amp;#x4E48;&amp;#x6765;&amp;#x7684;&amp;#xFF1F;&amp;#x88C5;&amp;#x9970;&amp;#x5668;&amp;#x7684;&amp;#x5B9A;&amp;#x4E49;&amp;#x5F88;&amp;#x662F;&amp;#x62BD;&amp;#x8C61;&amp;#xFF0C;&amp;#x6211">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6261769725999580000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 理解Python的装饰器 | 忍者神龟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7840c40eebaccc88eb16af700e755c7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">忍者神龟</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">thunder</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                理解Python的装饰器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-02T22:44:45+08:00" content="2016-04-02">
+              2016-04-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python语法/" itemprop="url" rel="index">
+                    <span itemprop="name">python语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/02/python/python语法/理解Python的装饰器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/02/python/python语法/理解Python的装饰器/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/02/python/python语法/理解Python的装饰器/" class="leancloud_visitors" data-flag-title="理解Python的装饰器">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="&#x88C5;&#x9970;&#x5668;&#x5165;&#x95E8;"><a href="#&#x88C5;&#x9970;&#x5668;&#x5165;&#x95E8;" class="headerlink" title="&#x88C5;&#x9970;&#x5668;&#x5165;&#x95E8;"></a>&#x88C5;&#x9970;&#x5668;&#x5165;&#x95E8;</h2><ol>
+<li>&#x9700;&#x6C42;&#x662F;&#x600E;&#x4E48;&#x6765;&#x7684;&#xFF1F;<br>&#x88C5;&#x9970;&#x5668;&#x7684;&#x5B9A;&#x4E49;&#x5F88;&#x662F;&#x62BD;&#x8C61;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x5C0F;&#x4F8B;&#x5B50;&#x3002;<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    start = time.clock()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">&apos;in foo()&apos;</span></span><br><span class="line">    end = time.clock()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">&apos;used:&apos;</span>, end - start</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x65E0;&#x804A;&#x7684;&#x51FD;&#x6570;&#x6CA1;&#x9519;&#x3002;&#x4F46;&#x662F;&#x7A81;&#x7136;&#x6709;&#x4E00;&#x4E2A;&#x66F4;&#x65E0;&#x804A;&#x7684;&#x4EBA;&#xFF0C;&#x6211;&#x4EEC;&#x79F0;&#x547C;&#x4ED6;&#x4E3A;B&#x541B;&#xFF0C;&#x8BF4;&#x6211;&#x60F3;&#x770B;&#x770B;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7528;<br>&#x4E86;&#x591A;&#x957F;&#x65F6;&#x95F4;&#xFF0C;&#x597D;&#x5427;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x505A;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">def foo():</span><br><span class="line">    start = time.clock()</span><br><span class="line">    print &apos;in foo()&apos;</span><br><span class="line">    end = time.clock()</span><br><span class="line">    print &apos;used:&apos;, end - start</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure></p>
+<p>&#x5F88;&#x597D;&#xFF0C;&#x529F;&#x80FD;&#x770B;&#x8D77;&#x6765;&#x65E0;&#x61C8;&#x53EF;&#x51FB;&#x3002;&#x53EF;&#x662F;&#x86CB;&#x75BC;&#x7684;B&#x541B;&#x6B64;&#x523B;&#x7A81;&#x7136;&#x4E0D;&#x60F3;&#x770B;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E86;&#xFF0C;&#x4ED6;&#x5BF9;&#x53E6;&#x4E00;&#x4E2A;&#x53EB;foo2&#x7684;&#x51FD;&#x6570;&#x4EA7;&#x751F;&#x4E86;&#x66F4;&#x6D53;&#x539A;&#x7684;&#x5174;&#x8DA3;&#x3002;<br>&#x600E;&#x4E48;&#x529E;&#x5462;&#xFF1F;&#x5982;&#x679C;&#x628A;&#x4EE5;&#x4E0A;&#x65B0;&#x589E;&#x52A0;&#x7684;&#x4EE3;&#x7801;&#x590D;&#x5236;&#x5230;foo2&#x91CC;&#xFF0C;&#x8FD9;&#x5C31;&#x72AF;&#x4E86;&#x5927;&#x5FCC;&#x4E86;~&#x590D;&#x5236;&#x4EC0;&#x4E48;&#x7684;&#x96BE;&#x9053;&#x4E0D;&#x662F;&#x6700;&#x8BA8;&#x538C;&#x4E86;&#x4E48;&#xFF01;&#x800C;&#x4E14;&#xFF0C;&#x5982;&#x679C;B&#x541B;&#x7EE7;&#x7EED;&#x770B;&#x4E86;&#x5176;&#x4ED6;&#x7684;&#x51FD;&#x6570;&#x5462;&#xFF1F;</p>
+<ol>
+<li>&#x4EE5;&#x4E0D;&#x53D8;&#x5E94;&#x4E07;&#x53D8;&#xFF0C;&#x662F;&#x53D8;&#x4E5F;<br>&#x8FD8;&#x8BB0;&#x5F97;&#x5417;&#xFF0C;&#x51FD;&#x6570;&#x5728;Python&#x4E2D;&#x662F;&#x4E00;&#x7B49;&#x516C;&#x6C11;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x51FD;&#x6570;timeit&#xFF0C;&#x5C06;foo&#x7684;&#x5F15;&#x7528;&#x4F20;&#x9012;&#x7ED9;&#x4ED6;&#xFF0C;&#x7136;&#x540E;&#x5728;timeit&#x4E2D;&#x8C03;&#x7528;foo&#x5E76;&#x8FDB;&#x884C;&#x8BA1;&#x65F6;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x8FBE;&#x5230;&#x4E86;&#x4E0D;&#x6539;&#x52A8;foo&#x5B9A;&#x4E49;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#xFF0C;&#x4E0D;&#x8BBA;B&#x541B;&#x770B;&#x4E86;&#x591A;&#x5C11;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x4E0D;&#x7528;&#x53BB;&#x4FEE;&#x6539;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x4E86;&#xFF01;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">def foo():</span><br><span class="line">    print &apos;in foo()&apos;</span><br><span class="line">def timeit(func):</span><br><span class="line">    start = time.clock()</span><br><span class="line">    func()</span><br><span class="line">    end =time.clock()</span><br><span class="line">    print &apos;used:&apos;, end - start</span><br><span class="line">timeit(foo)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#x770B;&#x8D77;&#x6765;&#x903B;&#x8F91;&#x4E0A;&#x5E76;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x4E00;&#x5207;&#x90FD;&#x5F88;&#x7F8E;&#x597D;&#x5E76;&#x4E14;&#x8FD0;&#x4F5C;&#x6B63;&#x5E38;&#xFF01;&#x2026;&#x2026;&#x7B49;&#x7B49;&#xFF0C;&#x6211;&#x4EEC;&#x4F3C;&#x4E4E;&#x4FEE;&#x6539;&#x4E86;&#x8C03;&#x7528;&#x90E8;&#x5206;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x539F;&#x672C;&#x6211;&#x4EEC;&#x662F;&#x8FD9;&#x6837;&#x8C03;&#x7528;&#x7684;&#xFF1A;foo()&#xFF0C;&#x4FEE;&#x6539;&#x4EE5;&#x540E;&#x53D8;&#x6210;&#x4E86;&#xFF1A;timeit(foo)&#x3002;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#xFF0C;&#x5982;&#x679C;foo&#x5728;N&#x5904;&#x90FD;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#xFF0C;&#x4F60;&#x5C31;&#x4E0D;&#x5F97;&#x4E0D;&#x53BB;&#x4FEE;&#x6539;&#x8FD9;N&#x5904;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x6216;&#x8005;&#x66F4;&#x6781;&#x7AEF;&#x7684;&#xFF0C;&#x8003;&#x8651;&#x5176;&#x4E2D;&#x67D0;&#x5904;&#x8C03;&#x7528;&#x7684;&#x4EE3;&#x7801;&#x65E0;&#x6CD5;&#x4FEE;&#x6539;&#x8FD9;&#x4E2A;&#x60C5;&#x51B5;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x4F60;&#x4EA4;&#x7ED9;&#x522B;&#x4EBA;&#x4F7F;&#x7528;&#x7684;&#x3002;</p>
+<ol>
+<li>&#x6700;&#x5927;&#x9650;&#x5EA6;&#x5730;&#x5C11;&#x6539;&#x52A8;&#xFF01;<br>&#x65E2;&#x7136;&#x5982;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x6765;&#x60F3;&#x60F3;&#x529E;&#x6CD5;&#x4E0D;&#x4FEE;&#x6539;&#x8C03;&#x7528;&#x7684;&#x4EE3;&#x7801;&#xFF1B;&#x5982;&#x679C;&#x4E0D;&#x4FEE;&#x6539;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x5C31;&#x610F;&#x5473;&#x7740;&#x8C03;&#x7528;foo()&#x9700;&#x8981;&#x4EA7;&#x751F;&#x8C03;&#x7528;timeit(foo)&#x7684;&#x6548;&#x679C;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x60F3;&#x5230;&#x5C06;timeit&#x8D4B;&#x503C;&#x7ED9;foo&#xFF0C;&#x4F46;&#x662F;timeit&#x4F3C;&#x4E4E;&#x5E26;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x2026;&#x2026;&#x60F3;&#x529E;&#x6CD5;&#x628A;&#x53C2;&#x6570;&#x7EDF;&#x4E00;&#x5427;&#xFF01;&#x5982;&#x679C;timeit(foo)&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x4EA7;&#x751F;&#x8C03;&#x7528;&#x6548;&#x679C;&#xFF0C;&#x800C;&#x662F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x4E0E;foo&#x53C2;&#x6570;&#x5217;&#x8868;&#x4E00;&#x81F4;&#x7684;&#x51FD;&#x6570;&#x7684;&#x8BDD;&#x2026;&#x2026;&#x5C31;&#x5F88;&#x597D;&#x529E;&#x4E86;&#xFF0C;&#x5C06;timeit(foo)&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x8D4B;&#x503C;&#x7ED9;foo&#xFF0C;&#x7136;&#x540E;&#xFF0C;&#x8C03;&#x7528;foo()&#x7684;&#x4EE3;&#x7801;&#x5B8C;&#x5168;&#x4E0D;&#x7528;&#x4FEE;&#x6539;&#xFF01;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#-*- coding: UTF-8 -*-</span><br><span class="line">import time</span><br><span class="line">def foo():</span><br><span class="line">    print &apos;in foo()&apos;</span><br><span class="line"># &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#xFF0C;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x53E6;&#x4E00;&#x4E2A;&#x9644;&#x52A0;&#x4E86;&#x8BA1;&#x65F6;&#x529F;&#x80FD;&#x7684;&#x65B9;&#x6CD5;</span><br><span class="line">def timeit(func):</span><br><span class="line">    # &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5185;&#x5D4C;&#x7684;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x7ED9;&#x4F20;&#x5165;&#x7684;&#x51FD;&#x6570;&#x52A0;&#x4E0A;&#x8BA1;&#x65F6;&#x529F;&#x80FD;&#x7684;&#x5305;&#x88C5;</span><br><span class="line">    def wrapper():</span><br><span class="line">        start = time.clock()</span><br><span class="line">        func()</span><br><span class="line">        end =time.clock()</span><br><span class="line">        print &apos;used:&apos;, end - start</span><br><span class="line">    # &#x5C06;&#x5305;&#x88C5;&#x540E;&#x7684;&#x51FD;&#x6570;&#x8FD4;&#x56DE;</span><br><span class="line">    return wrapper</span><br><span class="line">foo = timeit(foo)</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x4E00;&#x4E2A;&#x7B80;&#x6613;&#x7684;&#x8BA1;&#x65F6;&#x5668;&#x5C31;&#x505A;&#x597D;&#x4E86;&#xFF01;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5728;&#x5B9A;&#x4E49;foo&#x4EE5;&#x540E;&#x8C03;&#x7528;foo&#x4E4B;&#x524D;&#xFF0C;&#x52A0;&#x4E0A;foo = timeit(foo)&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x8BA1;&#x65F6;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x88C5;&#x9970;&#x5668;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x770B;&#x8D77;&#x6765;&#x50CF;&#x662F;foo&#x88AB;timeit&#x88C5;&#x9970;&#x4E86;&#x3002;&#x5728;&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x51FD;&#x6570;&#x8FDB;&#x5165;&#x548C;&#x9000;&#x51FA;&#x65F6;&#x9700;&#x8981;&#x8BA1;&#x65F6;&#xFF0C;&#x8FD9;&#x88AB;&#x79F0;&#x4E3A;&#x4E00;&#x4E2A;&#x6A2A;&#x5207;&#x9762;(Aspect)&#xFF0C;&#x8FD9;&#x79CD;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#x88AB;&#x79F0;&#x4E3A;&#x9762;&#x5411;&#x5207;&#x9762;&#x7684;&#x7F16;&#x7A0B;(Aspect-Oriented Programming)&#x3002;&#x4E0E;&#x4F20;&#x7EDF;&#x7F16;&#x7A0B;&#x4E60;&#x60EF;&#x7684;&#x4ECE;&#x4E0A;&#x5F80;&#x4E0B;&#x6267;&#x884C;&#x65B9;&#x5F0F;&#x76F8;&#x6BD4;&#x8F83;&#x800C;&#x8A00;&#xFF0C;&#x50CF;&#x662F;&#x5728;&#x51FD;&#x6570;&#x6267;&#x884C;&#x7684;&#x6D41;&#x7A0B;&#x4E2D;&#x6A2A;&#x5411;&#x5730;&#x63D2;&#x5165;&#x4E86;&#x4E00;&#x6BB5;&#x903B;&#x8F91;&#x3002;&#x5728;&#x7279;&#x5B9A;&#x7684;&#x4E1A;&#x52A1;&#x9886;&#x57DF;&#x91CC;&#xFF0C;&#x80FD;&#x51CF;&#x5C11;&#x5927;&#x91CF;&#x91CD;&#x590D;&#x4EE3;&#x7801;&#x3002;&#x9762;&#x5411;&#x5207;&#x9762;&#x7F16;&#x7A0B;&#x8FD8;&#x6709;&#x76F8;&#x5F53;&#x591A;&#x7684;&#x672F;&#x8BED;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x591A;&#x505A;&#x4ECB;&#x7ECD;&#xFF0C;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x8BDD;&#x53EF;&#x4EE5;&#x53BB;&#x627E;&#x627E;&#x76F8;&#x5173;&#x7684;&#x8D44;&#x6599;.<br>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4EC5;&#x7528;&#x4E8E;&#x6F14;&#x793A;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x8003;&#x8651;foo&#x5E26;&#x6709;&#x53C2;&#x6570;&#x548C;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5B8C;&#x5584;&#x5B83;&#x7684;&#x91CD;&#x4EFB;&#x5C31;&#x4EA4;&#x7ED9;&#x4F60;&#x4E86; &#xFF1A;&#xFF09;</p>
+<h2 id="Python&#x7684;&#x989D;&#x5916;&#x652F;&#x6301;"><a href="#Python&#x7684;&#x989D;&#x5916;&#x652F;&#x6301;" class="headerlink" title="Python&#x7684;&#x989D;&#x5916;&#x652F;&#x6301;"></a>Python&#x7684;&#x989D;&#x5916;&#x652F;&#x6301;</h2><ol>
+<li>&#x8BED;&#x6CD5;&#x7CD6;<br>&#x4E0A;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x770B;&#x8D77;&#x6765;&#x4F3C;&#x4E4E;&#x5DF2;&#x7ECF;&#x4E0D;&#x80FD;&#x518D;&#x7CBE;&#x7B80;&#x4E86;&#xFF0C;Python&#x4E8E;&#x662F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x8BED;&#x6CD5;&#x7CD6;&#x6765;&#x964D;&#x4F4E;&#x5B57;&#x7B26;&#x8F93;&#x5165;&#x91CF;&#x3002;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">def timeit(func):</span><br><span class="line">    def wrapper():</span><br><span class="line">        start = time.clock()</span><br><span class="line">        func()</span><br><span class="line">        end =time.clock()</span><br><span class="line">        print &apos;used:&apos;, end - start</span><br><span class="line">    return wrapper</span><br><span class="line">@timeit</span><br><span class="line">def foo():</span><br><span class="line">    print &apos;in foo()&apos;</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#x91CD;&#x70B9;&#x5173;&#x6CE8;&#x7B2C;11&#x884C;&#x7684;@timeit&#xFF0C;&#x5728;&#x5B9A;&#x4E49;&#x4E0A;&#x52A0;&#x4E0A;&#x8FD9;&#x4E00;&#x884C;&#x4E0E;&#x53E6;&#x5916;&#x5199;foo = timeit(foo)&#x5B8C;&#x5168;&#x7B49;&#x4EF7;&#xFF0C;&#x5343;&#x4E07;&#x4E0D;&#x8981;&#x4EE5;&#x4E3A;@&#x6709;&#x53E6;&#x5916;&#x7684;&#x9B54;&#x529B;&#x3002;&#x9664;&#x4E86;&#x5B57;&#x7B26;&#x8F93;&#x5165;&#x5C11;&#x4E86;&#x4E00;&#x4E9B;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x989D;&#x5916;&#x7684;&#x597D;&#x5904;&#xFF1A;&#x8FD9;&#x6837;&#x770B;&#x4E0A;&#x53BB;&#x66F4;&#x6709;&#x88C5;&#x9970;&#x5668;&#x7684;&#x611F;&#x89C9;&#x3002;</p>
+<ol>
+<li>&#x5185;&#x7F6E;&#x7684;&#x88C5;&#x9970;&#x5668;<br>&#x5185;&#x7F6E;&#x7684;&#x88C5;&#x9970;&#x5668;&#x6709;&#x4E09;&#x4E2A;&#xFF0C;&#x5206;&#x522B;&#x662F;staticmethod&#x3001;classmethod&#x548C;property&#xFF0C;&#x4F5C;&#x7528;&#x5206;&#x522B;&#x662F;&#x628A;&#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x53D8;&#x6210;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x3001;&#x7C7B;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x5C5E;&#x6027;&#x3002;&#x7531;&#x4E8E;&#x6A21;&#x5757;&#x91CC;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x7528;&#x5904;&#x5E76;&#x4E0D;&#x662F;&#x592A;&#x591A;&#xFF0C;&#x9664;&#x975E;&#x4F60;&#x60F3;&#x8981;&#x5B8C;&#x5168;&#x7684;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x3002;&#x800C;&#x5C5E;&#x6027;&#x4E5F;&#x4E0D;&#x662F;&#x4E0D;&#x53EF;&#x6216;&#x7F3A;&#x7684;&#xFF0C;Java&#x6CA1;&#x6709;&#x5C5E;&#x6027;&#x4E5F;&#x4E00;&#x6837;&#x6D3B;&#x5F97;&#x5F88;&#x6ECB;&#x6DA6;&#x3002;&#x4ECE;&#x6211;&#x4E2A;&#x4EBA;&#x7684;Python&#x7ECF;&#x9A8C;&#x6765;&#x770B;&#xFF0C;&#x6211;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x8FC7;property&#xFF0C;&#x4F7F;&#x7528;staticmethod&#x548C;classmethod&#x7684;&#x9891;&#x7387;&#x4E5F;&#x975E;&#x5E38;&#x4F4E;&#x3002;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Rabbit(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self, name):</span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    def newRabbit(name):</span><br><span class="line">        return Rabbit(name)</span><br><span class="line"></span><br><span class="line">    @classmethod</span><br><span class="line">    def newRabbit2(cls):</span><br><span class="line">        return Rabbit(&apos;&apos;)</span><br><span class="line"></span><br><span class="line">    @property</span><br><span class="line">    def name(self):</span><br><span class="line">        return self._name</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x7684;&#x5C5E;&#x6027;&#x662F;&#x4E00;&#x4E2A;&#x53EA;&#x8BFB;&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x53EF;&#x5199;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x518D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;setter&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@name.setter</span><br><span class="line">def name(self, name):</span><br><span class="line">    self._name = name</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>functools&#x6A21;&#x5757;<br>functools&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x3002;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x662F;Python 2.5&#x540E;&#x65B0;&#x589E;&#x7684;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x5927;&#x5BB6;&#x7528;&#x7684;&#x5E94;&#x8BE5;&#x90FD;&#x9AD8;&#x4E8E;&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x3002;&#x4F46;&#x6211;&#x5E73;&#x65F6;&#x7684;&#x5DE5;&#x4F5C;&#x73AF;&#x5883;&#x662F;2.4 T-T<br>3.1. wraps(wrapped[, assigned][, updated]):<br>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x6709;&#x7528;&#x7684;&#x88C5;&#x9970;&#x5668;&#x3002;&#x770B;&#x8FC7;&#x524D;&#x4E00;&#x7BC7;&#x53CD;&#x5C04;&#x7684;&#x670B;&#x53CB;&#x5E94;&#x8BE5;&#x77E5;&#x9053;&#xFF0C;&#x51FD;&#x6570;&#x662F;&#x6709;&#x51E0;&#x4E2A;&#x7279;&#x6B8A;&#x5C5E;&#x6027;&#x6BD4;&#x5982;&#x51FD;&#x6570;&#x540D;&#xFF0C;&#x5728;&#x88AB;&#x88C5;&#x9970;&#x540E;&#xFF0C;&#x4E0A;&#x4F8B;&#x4E2D;&#x7684;&#x51FD;&#x6570;&#x540D;foo&#x4F1A;&#x53D8;&#x6210;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x7684;&#x540D;&#x5B57;wrapper&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x4F7F;&#x7528;&#x53CD;&#x5C04;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x610F;&#x5916;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x8FD9;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5B83;&#x80FD;&#x5C06;&#x88C5;&#x9970;&#x8FC7;&#x7684;&#x51FD;&#x6570;&#x7684;&#x7279;&#x6B8A;&#x5C5E;&#x6027;&#x4FDD;&#x7559;&#x3002;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">import functools</span><br><span class="line">def timeit(func):</span><br><span class="line">    @functools.wraps(func)</span><br><span class="line">    def wrapper():</span><br><span class="line">        start = time.clock()</span><br><span class="line">        func()</span><br><span class="line">        end =time.clock()</span><br><span class="line">        print &apos;used:&apos;, end - start</span><br><span class="line">    return wrapper</span><br><span class="line">@timeit</span><br><span class="line">def foo():</span><br><span class="line">    print &apos;in foo()&apos;</span><br><span class="line">foo()</span><br><span class="line">print foo.__name__</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#x9996;&#x5148;&#x6CE8;&#x610F;&#x7B2C;5&#x884C;&#xFF0C;&#x5982;&#x679C;&#x6CE8;&#x91CA;&#x8FD9;&#x4E00;&#x884C;&#xFF0C;foo.<strong>name</strong>&#x5C06;&#x662F;&#x2019;wrapper&#x2019;&#x3002;&#x53E6;&#x5916;&#x76F8;&#x4FE1;&#x4F60;&#x4E5F;&#x6CE8;&#x610F;&#x5230;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x7ADF;&#x7136;&#x5E26;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x4ED6;&#x8FD8;&#x6709;&#x53E6;&#x5916;&#x4E24;&#x4E2A;&#x53EF;&#x9009;&#x7684;&#x53C2;&#x6570;&#xFF0C;assigned&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x540D;&#x5C06;&#x4F7F;&#x7528;&#x8D4B;&#x503C;&#x7684;&#x65B9;&#x5F0F;&#x66FF;&#x6362;&#xFF0C;&#x800C;updated&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x540D;&#x5C06;&#x4F7F;&#x7528;update&#x7684;&#x65B9;&#x5F0F;&#x5408;&#x5E76;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x67E5;&#x770B;functools&#x7684;&#x6E90;&#x4EE3;&#x7801;&#x83B7;&#x5F97;&#x5B83;&#x4EEC;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x3002;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;wrapper = functools.wraps(func)(wrapper)&#x3002;</p>
+<p>3.2. total_ordering(cls):<br>&#x8FD9;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x5728;&#x7279;&#x5B9A;&#x7684;&#x573A;&#x5408;&#x6709;&#x4E00;&#x5B9A;&#x7528;&#x5904;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x662F;&#x5728;Python 2.7&#x540E;&#x65B0;&#x589E;&#x7684;&#x3002;&#x5B83;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x4E3A;&#x5B9E;&#x73B0;&#x4E86;&#x81F3;&#x5C11;<strong>lt</strong>&#x3001;<strong>le</strong>&#x3001;<strong>gt</strong>&#x3001;<strong>ge</strong>&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x7684;&#x7C7B;&#x52A0;&#x4E0A;&#x5176;&#x4ED6;&#x7684;&#x6BD4;&#x8F83;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x7C7B;&#x88C5;&#x9970;&#x5668;&#x3002;&#x5982;&#x679C;&#x89C9;&#x5F97;&#x4E0D;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x4E0D;&#x59A8;&#x4ED4;&#x7EC6;&#x770B;&#x770B;&#x8FD9;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">53  def total_ordering(cls):</span><br><span class="line">54      &quot;&quot;&quot;Class decorator that fills in missing ordering methods&quot;&quot;&quot;</span><br><span class="line">55      convert = {</span><br><span class="line">56          &apos;__lt__&apos;: [(&apos;__gt__&apos;, lambda self, other: other &lt; self),</span><br><span class="line">57                     (&apos;__le__&apos;, lambda self, other: not other &lt; self),</span><br><span class="line">58                     (&apos;__ge__&apos;, lambda self, other: not self &lt; other)],</span><br><span class="line">59          &apos;__le__&apos;: [(&apos;__ge__&apos;, lambda self, other: other &lt;= self),</span><br><span class="line">60                     (&apos;__lt__&apos;, lambda self, other: not other &lt;= self),</span><br><span class="line">61                     (&apos;__gt__&apos;, lambda self, other: not self &lt;= other)],</span><br><span class="line">62          &apos;__gt__&apos;: [(&apos;__lt__&apos;, lambda self, other: other &gt; self),</span><br><span class="line">63                     (&apos;__ge__&apos;, lambda self, other: not other &gt; self),</span><br><span class="line">64                     (&apos;__le__&apos;, lambda self, other: not self &gt; other)],</span><br><span class="line">65          &apos;__ge__&apos;: [(&apos;__le__&apos;, lambda self, other: other &gt;= self),</span><br><span class="line">66                     (&apos;__gt__&apos;, lambda self, other: not other &gt;= self),</span><br><span class="line">67                     (&apos;__lt__&apos;, lambda self, other: not self &gt;= other)]</span><br><span class="line">68      }</span><br><span class="line">69      roots = set(dir(cls)) &amp; set(convert)</span><br><span class="line">70      if not roots:</span><br><span class="line">71          raise ValueError(&apos;must define at least one ordering operation: &lt; &gt; &lt;= &gt;=&apos;)</span><br><span class="line">72      root = max(roots)       # prefer __lt__ to __le__ to __gt__ to __ge__</span><br><span class="line">73      for opname, opfunc in convert[root]:</span><br><span class="line">74          if opname not in roots:</span><br><span class="line">75              opfunc.__name__ = opname</span><br><span class="line">76              opfunc.__doc__ = getattr(int, opname).__doc__</span><br><span class="line">77              setattr(cls, opname, opfunc)</span><br><span class="line">78      return cls</span><br></pre></td></tr></table></figure></p>
+<h2 id="&#x5F15;&#x7528;"><a href="#&#x5F15;&#x7528;" class="headerlink" title="&#x5F15;&#x7528;"></a>&#x5F15;&#x7528;</h2><p><a href="http://www.cnblogs.com/huxi/archive/2011/03/01/1967600.html" target="_blank" rel="external">Python&#x88C5;&#x9970;&#x5668;&#x4E0E;&#x9762;&#x5411;&#x5207;&#x9762;&#x7A0B;</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python语法/" rel="tag">#python语法</a>
+          
+            <a href="/tags/装饰器/" rel="tag">#装饰器</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/02/linux/ubuntu/ubuntu安装samba/" rel="next" title="ubuntu上安装samba">
+                <i class="fa fa-chevron-left"></i> ubuntu上安装samba
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/02/python/python语法/理解Python的With语句/" rel="prev" title="理解Python的With语句">
+                理解Python的With语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/02/python/python语法/理解Python的装饰器/"
+     data-title="理解Python的装饰器"
+     data-content=""
+     data-url="http://yoursite.com/2016/04/02/python/python语法/理解Python的装饰器/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/02/python/python语法/理解Python的装饰器/"
+           data-title="理解Python的装饰器" data-url="http://yoursite.com/2016/04/02/python/python语法/理解Python的装饰器/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/thunder.jpg"
+               alt="忍者神龟" />
+          <p class="site-author-name" itemprop="name">忍者神龟</p>
+          <p class="site-description motion-element" itemprop="description">爱打篮球的程序狗</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maqiangThunder" target="_blank" title="github">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ma-qiang-97-67" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2357192812?is_all=1" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/54292285/" target="_blank" title="douban">
+                  
+                    <i class="fa fa-douban"></i>
+                  
+                  douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器入门"><span class="nav-number">1.</span> <span class="nav-text">装饰器入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python的额外支持"><span class="nav-number">2.</span> <span class="nav-text">Python的额外支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">忍者神龟</span>
+</div>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"thunder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Jami1E0cgfUeRuh2tT7nCTiD-gzGzoHsz", "rMyNJtkJdjRpqpwbYBWrbkbt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
