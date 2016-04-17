@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/04/02/python/python语法/理解Python的With语句/index.html">
 <meta property="og:site_name" content="忍者神龟">
 <meta property="og:description" content="With&amp;#x8BED;&amp;#x53E5;&amp;#x662F;&amp;#x4EC0;&amp;#x4E48;&amp;#xFF1F;Python&amp;#x2019;s with statement provides a very convenient way of dealing with the situation where you have to do a setup and teardown to make someth">
-<meta property="og:updated_time" content="2016-04-02T15:15:54.769Z">
+<meta property="og:updated_time" content="2016-04-17T08:24:41.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解Python的With语句">
 <meta name="twitter:description" content="With&amp;#x8BED;&amp;#x53E5;&amp;#x662F;&amp;#x4EC0;&amp;#x4E48;&amp;#xFF1F;Python&amp;#x2019;s with statement provides a very convenient way of dealing with the situation where you have to do a setup and teardown to make someth">
@@ -343,6 +343,7 @@
 
       
         <h2 id="With&#x8BED;&#x53E5;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;"><a href="#With&#x8BED;&#x53E5;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;" class="headerlink" title="With&#x8BED;&#x53E5;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;"></a>With&#x8BED;&#x53E5;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</h2><p>Python&#x2019;s with statement provides a very convenient way of dealing with the situation where you have to do a setup and teardown to make something happen. A very good example for this is the situation where you want to gain a handler to a file, read data from the file and the close the file handler.<br>&#x6709;&#x4E00;&#x4E9B;&#x4EFB;&#x52A1;&#xFF0C;&#x53EF;&#x80FD;&#x4E8B;&#x5148;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#xFF0C;&#x4E8B;&#x540E;&#x505A;&#x6E05;&#x7406;&#x5DE5;&#x4F5C;&#x3002;&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x573A;&#x666F;&#xFF0C;Python&#x7684;with&#x8BED;&#x53E5;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x3002;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x4F8B;&#x5B50;&#x662F;&#x6587;&#x4EF6;&#x5904;&#x7406;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53E5;&#x67C4;&#xFF0C;&#x4ECE;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x5173;&#x95ED;&#x6587;&#x4EF6;&#x53E5;&#x67C4;&#x3002;</p>
+<a id="more"></a>
 <p>Without the with statement, one would write something along the lines of:<br>&#x5982;&#x679C;&#x4E0D;&#x7528;with&#x8BED;&#x53E5;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file = open(&quot;/tmp/foo.txt&quot;)</span><br><span class="line">data = file.read()</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure></p>
 <p>There are two annoying things here. First, you end up forgetting to close the file handler. The second is how to handle exceptions that may occur once the file handler has been obtained. One could write something like this to get around this:<br>&#x8FD9;&#x91CC;&#x6709;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x4E00;&#x662F;&#x53EF;&#x80FD;&#x5FD8;&#x8BB0;&#x5173;&#x95ED;&#x6587;&#x4EF6;&#x53E5;&#x67C4;&#xFF1B;&#x4E8C;&#x662F;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x53D1;&#x751F;&#x5F02;&#x5E38;&#xFF0C;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x5904;&#x7406;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x5904;&#x7406;&#x5F02;&#x5E38;&#x7684;&#x52A0;&#x5F3A;&#x7248;&#x672C;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file = open(&quot;/tmp/foo.txt&quot;)</span><br><span class="line">try:</span><br><span class="line">    data = file.read()</span><br><span class="line">finally:</span><br><span class="line">    file.close()</span><br></pre></td></tr></table></figure></p>
 <p>While this works well, it is unnecessarily verbose. This is where with is useful. The good thing about with apart from the better syntax is that it is very good handling exceptions. The above code would look like this, when using with:<br>&#x867D;&#x7136;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x826F;&#x597D;&#xFF0C;&#x4F46;&#x662F;&#x592A;&#x5197;&#x957F;&#x4E86;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x662F;with&#x4E00;&#x5C55;&#x8EAB;&#x624B;&#x7684;&#x65F6;&#x5019;&#x4E86;&#x3002;&#x9664;&#x4E86;&#x6709;&#x66F4;&#x4F18;&#x96C5;&#x7684;&#x8BED;&#x6CD5;&#xFF0C;with&#x8FD8;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x7684;&#x5904;&#x7406;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x4EA7;&#x751F;&#x7684;&#x5F02;&#x5E38;&#x3002;&#x4E0B;&#x9762;&#x662F;with&#x7248;&#x672C;&#x7684;&#x4EE3;&#x7801;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;/tmp/foo.txt&quot;)</span><br><span class="line"> as file:</span><br><span class="line">    data = file.read()</span><br></pre></td></tr></table></figure></p>
@@ -496,7 +497,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -504,7 +505,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -513,7 +514,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="忍者神龟">
 <meta property="og:description" content="&amp;#x6162;&amp;#x67E5;&amp;#x8BE2;&amp;#x6709;&amp;#x4EC0;&amp;#x4E48;&amp;#x7528;?&amp;#x6211;&amp;#x4EEC;&amp;#x6267;&amp;#x884C;&amp;#x4E00;&amp;#x4E2A;SQL&amp;#x8BED;&amp;#x53E5;&amp;#x7684;&amp;#x65F6;&amp;#x5019;,&amp;#x5982;&amp;#x679C;&amp;#x5F00;&amp;#x542F;&amp;#x4E86;&amp;#x6162;&amp;#x">
 <meta property="og:image" content="http://yoursite.com/2016/04/02/数据库/mysql/mysql优化/MYSQL优化-慢查询/666e3062-200c-4a2f-af1c-e7775cf9a0ac.png">
-<meta property="og:updated_time" content="2016-04-02T15:31:15.783Z">
+<meta property="og:updated_time" content="2016-04-17T08:15:18.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MYSQL优化-慢查询">
 <meta name="twitter:description" content="&amp;#x6162;&amp;#x67E5;&amp;#x8BE2;&amp;#x6709;&amp;#x4EC0;&amp;#x4E48;&amp;#x7528;?&amp;#x6211;&amp;#x4EEC;&amp;#x6267;&amp;#x884C;&amp;#x4E00;&amp;#x4E2A;SQL&amp;#x8BED;&amp;#x53E5;&amp;#x7684;&amp;#x65F6;&amp;#x5019;,&amp;#x5982;&amp;#x679C;&amp;#x5F00;&amp;#x542F;&amp;#x4E86;&amp;#x6162;&amp;#x">
@@ -345,6 +345,7 @@
 
       
         <h2 id="&#x6162;&#x67E5;&#x8BE2;&#x6709;&#x4EC0;&#x4E48;&#x7528;"><a href="#&#x6162;&#x67E5;&#x8BE2;&#x6709;&#x4EC0;&#x4E48;&#x7528;" class="headerlink" title="&#x6162;&#x67E5;&#x8BE2;&#x6709;&#x4EC0;&#x4E48;&#x7528;?"></a>&#x6162;&#x67E5;&#x8BE2;&#x6709;&#x4EC0;&#x4E48;&#x7528;?</h2><p>&#x6211;&#x4EEC;&#x6267;&#x884C;&#x4E00;&#x4E2A;SQL&#x8BED;&#x53E5;&#x7684;&#x65F6;&#x5019;,&#x5982;&#x679C;&#x5F00;&#x542F;&#x4E86;&#x6162;&#x67E5;&#x8BE2;,&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x6574;&#x4E2A;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x5C31;&#x4F1A;&#x88AB;&#x8BB0;&#x5F55;&#x4E0B;&#x6765;, &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#x6765;&#x5206;&#x6790;&#x6211;&#x4EEC;&#x7684;&#x8868;&#x7ED3;&#x6784;&#x4EE5;&#x53CA;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;</p>
+<a id="more"></a>
 <h2 id="&#x5982;&#x4F55;&#x5F00;&#x542F;&#x6162;&#x67E5;&#x8BE2;"><a href="#&#x5982;&#x4F55;&#x5F00;&#x542F;&#x6162;&#x67E5;&#x8BE2;" class="headerlink" title="&#x5982;&#x4F55;&#x5F00;&#x542F;&#x6162;&#x67E5;&#x8BE2;?"></a>&#x5982;&#x4F55;&#x5F00;&#x542F;&#x6162;&#x67E5;&#x8BE2;?</h2><h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><p>&#x5728;mysql&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;my.cnf&#x4E2D;&#x589E;&#x52A0;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log-slow-queries=/var/lib/mysql/slowquery.log #&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;&#x5B58;&#x653E;&#x4F4D;&#x7F6E;</span><br><span class="line">long_query_time=2 #&#x67E5;&#x8BE2;&#x8D85;&#x8FC7;2&#x79D2;&#x624D;&#x8FDB;&#x884C;&#x8BB0;&#x5F55;</span><br><span class="line">log-queries-not-using-indexes #&#x8BB0;&#x5F55;&#x4E0B;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x7D22;&#x5F15;&#x7684;&#x67E5;&#x8BE2;</span><br></pre></td></tr></table></figure></p>
 <h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p>&#x5728;my.ini&#x7684;[mysqld]&#x4E0B;&#x6DFB;&#x52A0;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">log-slow-queries =E:\web\mysql\log\mysqlslowquery.log</span><br><span class="line">long_query_time = 2&#xFF08;&#x5176;&#x4ED6;&#x53C2;&#x6570;&#x5982;&#x4E0A;&#xFF09;</span><br></pre></td></tr></table></figure></p>
 <h2 id="&#x6D4B;&#x8BD5;&#x548C;&#x67E5;&#x770B;"><a href="#&#x6D4B;&#x8BD5;&#x548C;&#x67E5;&#x770B;" class="headerlink" title="&#x6D4B;&#x8BD5;&#x548C;&#x67E5;&#x770B;"></a>&#x6D4B;&#x8BD5;&#x548C;&#x67E5;&#x770B;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use moretv</span><br><span class="line">select * from mtv_artical</span><br></pre></td></tr></table></figure>
@@ -494,7 +495,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -502,7 +503,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -511,7 +512,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

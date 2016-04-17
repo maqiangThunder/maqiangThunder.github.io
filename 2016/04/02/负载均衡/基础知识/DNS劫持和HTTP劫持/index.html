@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="忍者神龟">
 <meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x6B63;&amp;#x5E38;&amp;#x6765;&amp;#x8BF4;, DNS&amp;#x52AB;&amp;#x6301;&amp;#x548C;HTTP&amp;#x52AB;&amp;#x6301;&amp;#x548C;&amp;#x8D1F;&amp;#x8F7D;&amp;#x5747;&amp;#x8861;&amp;#x6CA1;&amp;#x5565;&amp;#x5173;&amp;#x7CFB;, &amp;#x4F46;&amp;#x662F;&amp;#x8FD8;&amp;#x66">
 <meta property="og:image" content="http://yoursite.com/2016/04/02/负载均衡/基础知识/DNS劫持和HTTP劫持/0ae0de5d-eeba-4a6b-8c14-2584e9c8e690.png">
-<meta property="og:updated_time" content="2016-04-02T15:13:31.097Z">
+<meta property="og:updated_time" content="2016-04-17T08:18:54.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DNS劫持和HTTP劫持">
 <meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x6B63;&amp;#x5E38;&amp;#x6765;&amp;#x8BF4;, DNS&amp;#x52AB;&amp;#x6301;&amp;#x548C;HTTP&amp;#x52AB;&amp;#x6301;&amp;#x548C;&amp;#x8D1F;&amp;#x8F7D;&amp;#x5747;&amp;#x8861;&amp;#x6CA1;&amp;#x5565;&amp;#x5173;&amp;#x7CFB;, &amp;#x4F46;&amp;#x662F;&amp;#x8FD8;&amp;#x66">
@@ -345,6 +345,7 @@
 
       
         <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x6B63;&#x5E38;&#x6765;&#x8BF4;, DNS&#x52AB;&#x6301;&#x548C;HTTP&#x52AB;&#x6301;&#x548C;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6CA1;&#x5565;&#x5173;&#x7CFB;, &#x4F46;&#x662F;&#x8FD8;&#x662F;&#x653E;&#x5728;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;,&#x589E;&#x52A0;&#x77E5;&#x8BC6;&#x9762;</p>
+<a id="more"></a>
 <h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x52AB;&#x6301;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x52AB;&#x6301;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x52AB;&#x6301;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x52AB;&#x6301;</h2><p>&#x6211;&#x4EEC;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7F51;&#x9875;, &#x539F;&#x672C;&#x7F51;&#x9875;&#x662F;&#x6CA1;&#x6709;&#x5E7F;&#x544A;&#x7684;, &#x4F46;&#x662F;&#x83AB;&#x540D;&#x5176;&#x5999;&#x7684;&#x51FA;&#x73B0;&#x4E86;&#x5E7F;&#x544A;,&#x4E0D;&#x7BA1;&#x4F60;&#x70B9;&#x4E0D;&#x70B9;&#x51FB;&#x5E7F;&#x544A;, &#x8FD0;&#x8425;&#x5546;&#x7684;&#x76EE;&#x7684;&#x8FBE;&#x5230;&#x4E86;.<br>&#x6211;&#x4EEC;&#x5728;&#x5B89;&#x88C5;&#x5BBD;&#x5E26;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x5728;&#x8DEF;&#x7531;&#x5668;&#x4E0A;&#x914D;&#x7F6E;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x5546;&#x7ED9;&#x6211;&#x4EEC;&#x7684;DNS&#x670D;&#x52A1;&#x5668;,&#x8FD0;&#x8425;&#x5546;&#x5C31;&#x53EF;&#x4EE5;&#x5728;DNS&#x505A;&#x6587;&#x7AE0;&#x628A;&#x5E7F;&#x544A;&#x901A;&#x8FC7;DNS&#x5305;&#x88C5;&#x7ED9;&#x6211;&#x4EEC;, &#x8FBE;&#x5230;&#x76C8;&#x5229;&#x7684;&#x76EE;&#x7684;</p>
 <h2 id="DNS&#x52AB;&#x6301;"><a href="#DNS&#x52AB;&#x6301;" class="headerlink" title="DNS&#x52AB;&#x6301;"></a>DNS&#x52AB;&#x6301;</h2><p>&#x6211;&#x4EEC;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x7F51;&#x5740;A, &#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x5E7F;&#x544A;,DNS&#x5E94;&#x8BE5;&#x8FD4;&#x56DE;&#x7F51;&#x5740;A&#x5BF9;&#x5E94;&#x7684;&#x6B63;&#x786E;&#x7684;A-IP,&#x4F46;&#x662F;&#x8FD0;&#x8425;&#x5546;&#x52AB;&#x6301;&#x4E0B;DNS&#x7684;&#x8BF7;&#x6C42;,&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x670D;&#x52A1;&#x5668;&#x7684;IP-B,&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x8FD4;&#x56DE;&#x7ED9;&#x6211;&#x4EEC;302, &#x524D;&#x9762;&#x6211;&#x4EEC;&#x8BB2;&#x5230;,302&#x5C31;&#x662F;&#x91CD;&#x5B9A;&#x5411;&#x4E86;,&#x6211;&#x4EEC;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x5C31;&#x4F1A;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x597D;&#x7684;&#x5E26;&#x5E7F;&#x544A;&#x7684;&#x7F51;&#x9875;,&#x8FD9;&#x4E2A;&#x7F51;&#x9875;&#x4F7F;&#x7528;iframe&#x5C06;&#x7528;&#x6237;&#x539F;&#x6765;&#x7684;&#x7F51;&#x9875;&#x5305;&#x88C5;&#x8D77;&#x6765;,&#x8FD9;&#x6837;&#x65E2;&#x6709;&#x4E86;&#x539F;&#x6765;&#x7684;&#x7F51;&#x9875;,&#x800C;&#x4E14;&#x8FD8;&#x6253;&#x4E86;&#x5E7F;&#x544A;<br><img src="/2016/04/02/&#x8D1F;&#x8F7D;&#x5747;&#x8861;/&#x57FA;&#x7840;&#x77E5;&#x8BC6;/DNS&#x52AB;&#x6301;&#x548C;HTTP&#x52AB;&#x6301;/0ae0de5d-eeba-4a6b-8c14-2584e9c8e690.png" alt=""></p>
 <h2 id="HTTP&#x52AB;&#x6301;"><a href="#HTTP&#x52AB;&#x6301;" class="headerlink" title="HTTP&#x52AB;&#x6301;"></a>HTTP&#x52AB;&#x6301;</h2><p>&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x90FD;&#x8981;&#x7ECF;&#x8FC7;&#x8FD0;&#x8425;&#x5546;&#x7684;&#x8DEF;&#x7531;&#x5668;, &#x8FD0;&#x8425;&#x5546;&#x5728;&#x8DEF;&#x7531;&#x5668;&#x4E0A;&#x76D1;&#x63A7;&#x6240;&#x6709;&#x7684;&#x8BF7;&#x6C42;,&#x4E00;&#x65E6;&#x53D1;&#x73B0;&#x662F;HTTP&#x8BF7;&#x6C42;(&#x6216;&#x8005;&#x8FD8;&#x52A0;&#x4E0A;&#x5176;&#x5B83;&#x7684;&#x6761;&#x4EF6;)&#x5219;&#x8FDB;&#x884C;&#x62E6;&#x622A;.</p>
@@ -485,7 +486,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -493,7 +494,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -502,7 +503,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/04/04/python/flask/flask学习笔记-认知/index.html">
 <meta property="og:site_name" content="忍者神龟">
 <meta property="og:description" content="&amp;#x524D;&amp;#x8A00;flask&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;python&amp;#x7684;&amp;#x8F7B;&amp;#x91CF;&amp;#x7EA7;web&amp;#x6846;&amp;#x67B6;,&amp;#x5176; WSGI &amp;#x5DE5;&amp;#x5177;&amp;#x7BB1;&amp;#x91C7;&amp;#x7528; Werkzeug &amp;#xFF0C;&amp;#x6A21;&amp;#x677F;&amp;#x5F15;&amp;">
-<meta property="og:updated_time" content="2016-04-10T04:46:27.562Z">
+<meta property="og:updated_time" content="2016-04-17T08:25:05.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flask学习笔记-认知">
 <meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;flask&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;python&amp;#x7684;&amp;#x8F7B;&amp;#x91CF;&amp;#x7EA7;web&amp;#x6846;&amp;#x67B6;,&amp;#x5176; WSGI &amp;#x5DE5;&amp;#x5177;&amp;#x7BB1;&amp;#x91C7;&amp;#x7528; Werkzeug &amp;#xFF0C;&amp;#x6A21;&amp;#x677F;&amp;#x5F15;&amp;">
@@ -343,6 +343,7 @@
 
       
         <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>flask&#x662F;&#x4E00;&#x4E2A;python&#x7684;&#x8F7B;&#x91CF;&#x7EA7;web&#x6846;&#x67B6;,&#x5176; WSGI &#x5DE5;&#x5177;&#x7BB1;&#x91C7;&#x7528; Werkzeug &#xFF0C;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x5219;&#x4F7F;&#x7528; Jinja2<br>&#x91CD;&#x8981;&#x7684;&#x662F;flask&#x6709;&#x5F88;&#x591A;&#x63D2;&#x4EF6;&#x53EF;&#x4F9B;&#x4F7F;&#x7528;,&#x5927;&#x5927;&#x63D0;&#x9AD8;&#x5F00;&#x53D1;&#x6548;&#x7387;</p>
+<a id="more"></a>
 <h2 id="&#x5B89;&#x88C5;flask"><a href="#&#x5B89;&#x88C5;flask" class="headerlink" title="&#x5B89;&#x88C5;flask"></a>&#x5B89;&#x88C5;flask</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install flask</span><br></pre></td></tr></table></figure>
 <h2 id="&#x4ECE;demo&#x5F00;&#x59CB;"><a href="#&#x4ECE;demo&#x5F00;&#x59CB;" class="headerlink" title="&#x4ECE;demo&#x5F00;&#x59CB;"></a>&#x4ECE;demo&#x5F00;&#x59CB;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask import abort</span><br><span class="line">from flask import redirect</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return &apos;&lt;h1&gt;Hello World!&lt;/h1&gt;&apos;</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/user/&lt;name&gt;&apos;)</span><br><span class="line">def sayHello(name):</span><br><span class="line">    if name == &apos;baidu&apos;:</span><br><span class="line">        return redirect(&apos;http://www.baidu.com&apos;)</span><br><span class="line">    elif name == &apos;NO&apos;:</span><br><span class="line">        return abort(404)</span><br><span class="line">    return &apos;&lt;h1&gt; Hello,%s &lt;/h1&gt;&apos; % name</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    app.run(debug=True)</span><br></pre></td></tr></table></figure>
 <h2 id="&#x4E86;&#x89E3;&#x6982;&#x5FF5;"><a href="#&#x4E86;&#x89E3;&#x6982;&#x5FF5;" class="headerlink" title="&#x4E86;&#x89E3;&#x6982;&#x5FF5;"></a>&#x4E86;&#x89E3;&#x6982;&#x5FF5;</h2><ol>
@@ -397,8 +398,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/04/python/flask/flask学习笔记-模版/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/04/python/flask/flask学习笔记-数据库/" rel="prev" title="flask学习笔记-数据库">
+                flask学习笔记-数据库 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -490,7 +491,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -498,7 +499,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -507,7 +508,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

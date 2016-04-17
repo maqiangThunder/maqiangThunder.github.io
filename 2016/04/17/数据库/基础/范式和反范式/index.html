@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git, github, hexo, 博客, java, 爬虫, python, ubuntu, elk, mysql, mongodb, redis, ngnix, 服务发现和注册, flask" />
+  <meta name="keywords" content="数据库,范式,反范式," />
 
 
 
@@ -80,16 +80,16 @@
 
 
 
-<meta name="description" content="爱打篮球的程序狗">
+<meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x65E9;&amp;#x4F1A;&amp;#x4E0A;&amp;#x540C;&amp;#x4E8B;&amp;#x5206;&amp;#x4EAB;&amp;#x4E86;&amp;lt;&amp;lt;&amp;#x6570;&amp;#x636E;&amp;#x5E93;&amp;#x7684;&amp;#x8303;&amp;#x5F0F;&amp;#x548C;&amp;#x53CD;&amp;#x8303;&amp;#x5F0F;&amp;gt;&amp;gt;, &amp;#x6B63;&amp;#x597D;&amp;#x81E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="忍者神龟">
-<meta property="og:url" content="http://yoursite.com/2016/04/04/python/flask/flask学习笔记-模版/index.html">
+<meta property="og:title" content="范式和反范式">
+<meta property="og:url" content="http://yoursite.com/2016/04/17/数据库/基础/范式和反范式/index.html">
 <meta property="og:site_name" content="忍者神龟">
-<meta property="og:description" content="爱打篮球的程序狗">
-<meta property="og:updated_time" content="2016-04-04T13:30:32.637Z">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x65E9;&amp;#x4F1A;&amp;#x4E0A;&amp;#x540C;&amp;#x4E8B;&amp;#x5206;&amp;#x4EAB;&amp;#x4E86;&amp;lt;&amp;lt;&amp;#x6570;&amp;#x636E;&amp;#x5E93;&amp;#x7684;&amp;#x8303;&amp;#x5F0F;&amp;#x548C;&amp;#x53CD;&amp;#x8303;&amp;#x5F0F;&amp;gt;&amp;gt;, &amp;#x6B63;&amp;#x597D;&amp;#x81E">
+<meta property="og:updated_time" content="2016-04-17T08:37:11.538Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="忍者神龟">
-<meta name="twitter:description" content="爱打篮球的程序狗">
+<meta name="twitter:title" content="范式和反范式">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x65E9;&amp;#x4F1A;&amp;#x4E0A;&amp;#x540C;&amp;#x4E8B;&amp;#x5206;&amp;#x4EAB;&amp;#x4E86;&amp;lt;&amp;lt;&amp;#x6570;&amp;#x636E;&amp;#x5E93;&amp;#x7684;&amp;#x8303;&amp;#x5F0F;&amp;#x548C;&amp;#x53CD;&amp;#x8303;&amp;#x5F0F;&amp;gt;&amp;gt;, &amp;#x6B63;&amp;#x597D;&amp;#x81E">
 
 
 
@@ -107,7 +107,7 @@
   };
 </script>
 
-  <title>  | 忍者神龟 </title>
+  <title> 范式和反范式 | 忍者神龟 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +267,7 @@
             
             
               
-                
+                范式和反范式
               
             
           </h1>
@@ -279,19 +279,38 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-04T21:30:31+08:00" content="2016-04-04">
-              2016-04-04
+            <time itemprop="dateCreated" datetime="2016-04-17T16:34:00+08:00" content="2016-04-17">
+              2016-04-17
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据库基础/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库基础</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/04/python/flask/flask学习笔记-模版/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/04/python/flask/flask学习笔记-模版/" itemprop="commentsCount"></span>
+                <a href="/2016/04/17/数据库/基础/范式和反范式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/数据库/基础/范式和反范式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -301,7 +320,7 @@
 
           
           
-             <span id="/2016/04/04/python/flask/flask学习笔记-模版/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2016/04/17/数据库/基础/范式和反范式/" class="leancloud_visitors" data-flag-title="范式和反范式">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -323,7 +342,9 @@
       
 
       
-        
+        <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>&#x65E9;&#x4F1A;&#x4E0A;&#x540C;&#x4E8B;&#x5206;&#x4EAB;&#x4E86;&lt;&lt;&#x6570;&#x636E;&#x5E93;&#x7684;&#x8303;&#x5F0F;&#x548C;&#x53CD;&#x8303;&#x5F0F;&gt;&gt;, &#x6B63;&#x597D;&#x81EA;&#x5DF1;&#x4E5F;&#x6B63;&#x5728;&#x8BBE;&#x8BA1;&#x6570;&#x636E;&#x5E93;&#x7684;&#x51E0;&#x4E2A;&#x8868;, &#x5BF9;&#x81EA;&#x5DF1;&#x8BA4;&#x8BC6;&#x4E5F;&#x6DF1;&#x523B;&#x5F88;&#x591A;, &#x7279;&#x5206;&#x4EAB;&#x51FA;&#x6765;</p>
+<a id="more"></a>
+<h1 id="&#x573A;&#x666F;"><a href="#&#x573A;&#x666F;" class="headerlink" title="&#x573A;&#x666F;"></a>&#x573A;&#x666F;</h1>
       
     </div>
     
@@ -341,22 +362,28 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag">#数据库</a>
+          
+            <a href="/tags/范式/" rel="tag">#范式</a>
+          
+            <a href="/tags/反范式/" rel="tag">#反范式</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/04/python/flask/flask学习笔记-认知/" rel="next" title="flask学习笔记-认知">
-                <i class="fa fa-chevron-left"></i> flask学习笔记-认知
+              <a href="/2016/04/16/hexo/hexo本地自动同步到VPS/" rel="next" title="hexo本地自动同步到VPS">
+                <i class="fa fa-chevron-left"></i> hexo本地自动同步到VPS
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/04/python/flask/flask学习笔记-扩展/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -371,10 +398,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/04/python/flask/flask学习笔记-模版/"
-     data-title=""
+        <div class="ds-share flat" data-thread-key="2016/04/17/数据库/基础/范式和反范式/"
+     data-title="范式和反范式"
      data-content=""
-     data-url="http://yoursite.com/2016/04/04/python/flask/flask学习笔记-模版/">
+     data-url="http://yoursite.com/2016/04/17/数据库/基础/范式和反范式/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -401,8 +428,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/04/python/flask/flask学习笔记-模版/"
-           data-title="" data-url="http://yoursite.com/2016/04/04/python/flask/flask学习笔记-模版/">
+      <div class="ds-thread" data-thread-key="2016/04/17/数据库/基础/范式和反范式/"
+           data-title="范式和反范式" data-url="http://yoursite.com/2016/04/17/数据库/基础/范式和反范式/">
       </div>
     
   </div>
@@ -447,7 +474,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -455,7 +482,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -464,7 +491,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -531,7 +558,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#场景"><span class="nav-number">2.</span> <span class="nav-text">场景</span></a></li></ol></div>
             
           </div>
         </section>

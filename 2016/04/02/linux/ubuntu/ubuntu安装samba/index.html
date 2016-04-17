@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/04/02/linux/ubuntu/ubuntu安装samba/index.html">
 <meta property="og:site_name" content="忍者神龟">
 <meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x6709;&amp;#x65F6;&amp;#x5019;&amp;#x6211;&amp;#x4EEC;&amp;#x5728;window&amp;#x4E0A;&amp;#x5F00;&amp;#x53D1;&amp;#x4EE3;&amp;#x7801;,&amp;#x8981;&amp;#x540C;&amp;#x6B65;&amp;#x5230;linux&amp;#x4E0A;, &amp;#x6211;&amp;#x4EEC;&amp;#x53EF;&amp;#x4EE5;&amp;#x4F7F;&amp;#">
-<meta property="og:updated_time" content="2016-04-16T08:29:22.893Z">
+<meta property="og:updated_time" content="2016-04-17T08:20:47.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu上安装samba">
 <meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x6709;&amp;#x65F6;&amp;#x5019;&amp;#x6211;&amp;#x4EEC;&amp;#x5728;window&amp;#x4E0A;&amp;#x5F00;&amp;#x53D1;&amp;#x4EE3;&amp;#x7801;,&amp;#x8981;&amp;#x540C;&amp;#x6B65;&amp;#x5230;linux&amp;#x4E0A;, &amp;#x6211;&amp;#x4EEC;&amp;#x53EF;&amp;#x4EE5;&amp;#x4F7F;&amp;#">
@@ -343,8 +343,9 @@
 
       
         <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x6709;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5728;window&#x4E0A;&#x5F00;&#x53D1;&#x4EE3;&#x7801;,&#x8981;&#x540C;&#x6B65;&#x5230;linux&#x4E0A;, &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;ftp&#x8F6F;&#x4EF6;, &#x4F46;&#x662F;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;linux&#x4E0A;&#x5EFA;&#x7ACB;&#x5171;&#x4EAB;&#x6587;&#x4EF6;&#x5939;,&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4F8B;&#x5982;sublime&#x76F4;&#x63A5;&#x64CD;&#x4F5C;&#x5171;&#x4EAB;&#x6587;&#x4EF6;&#x5939;,&#x7701;&#x53BB;&#x4E2D;&#x95F4;&#x7684;&#x8FC7;&#x7A0B;</p>
-<h2 id="&#x5B89;&#x88C5;"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install samba</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<h2 id="&#x5B89;&#x88C5;"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install samba</span><br></pre></td></tr></table></figure>
+<!--more-->
 <h2 id="&#x914D;&#x7F6E;"><a href="#&#x914D;&#x7F6E;" class="headerlink" title="&#x914D;&#x7F6E;"></a>&#x914D;&#x7F6E;</h2><p>&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#&#x6587;&#x4EF6;&#x8DEF;&#x5F84;: /etc/samba/smb.conf</span><br><span class="line">[global]</span><br><span class="line">security=share</span><br><span class="line"></span><br><span class="line">[linux_share]</span><br><span class="line">path=/home/linux/share</span><br><span class="line">public=yes</span><br></pre></td></tr></table></figure></p>
 <p>security=share<br>&#x8868;&#x793A;&#x5B89;&#x5168;&#x7B49;&#x7EA7;&#x662F;share, &#x7528;&#x6237;&#x4E0D;&#x9700;&#x8981;&#x7ECF;&#x8FC7;&#x5BC6;&#x7801;&#x9A8C;&#x8BC1;</p>
 <p>linux_share<br>&#x522B;&#x540D;,&#x5C31;&#x662F;&#x8981;&#x7ED9;&#x5171;&#x4EAB;&#x6587;&#x4EF6;&#x5939;&#x8D77;&#x4EC0;&#x4E48;&#x540D;&#x5B57;, &#x8FD9;&#x4E2A;windows&#x8BBF;&#x95EE;&#x4F1A;&#x7528;&#x5230;<br>path<br>&#x8868;&#x793A;&#x5171;&#x4EAB;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x8DEF;&#x5F84;</p>
@@ -484,7 +485,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -492,7 +493,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -501,7 +502,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

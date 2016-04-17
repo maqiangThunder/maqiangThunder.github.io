@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/04/02/python/python语法/理解Python的局部变量和全局变量/index.html">
 <meta property="og:site_name" content="忍者神龟">
 <meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x5F53;&amp;#x4F60;&amp;#x5728;&amp;#x51FD;&amp;#x6570;&amp;#x5B9A;&amp;#x4E49;&amp;#x5185;&amp;#x58F0;&amp;#x660E;&amp;#x53D8;&amp;#x91CF;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#xFF0C;&amp;#x5B83;&amp;#x4EEC;&amp;#x4E0E;&amp;#x51FD;&amp;#x6570;&amp;#x5916;&amp;#x5177;">
-<meta property="og:updated_time" content="2016-04-02T15:15:40.173Z">
+<meta property="og:updated_time" content="2016-04-17T08:24:56.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解Python的局部变量和全局变量">
 <meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x5F53;&amp;#x4F60;&amp;#x5728;&amp;#x51FD;&amp;#x6570;&amp;#x5B9A;&amp;#x4E49;&amp;#x5185;&amp;#x58F0;&amp;#x660E;&amp;#x53D8;&amp;#x91CF;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#xFF0C;&amp;#x5B83;&amp;#x4EEC;&amp;#x4E0E;&amp;#x51FD;&amp;#x6570;&amp;#x5916;&amp;#x5177;">
@@ -343,6 +343,7 @@
 
       
         <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x5F53;&#x4F60;&#x5728;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x5185;&#x58F0;&#x660E;&#x53D8;&#x91CF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5B83;&#x4EEC;&#x4E0E;&#x51FD;&#x6570;&#x5916;&#x5177;&#x6709;&#x76F8;&#x540C;&#x540D;&#x79F0;&#x7684;&#x5176;&#x4ED6;&#x53D8;&#x91CF;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5173;&#x7CFB;&#xFF0C;&#x5373;&#x53D8;&#x91CF;&#x540D;&#x79F0;&#x5BF9;&#x4E8E;&#x51FD;&#x6570;&#x6765;&#x8BF4;&#x662F; &#x5C40;&#x90E8; &#x7684;&#x3002;&#x8FD9;&#x79F0;&#x4E3A;&#x53D8;&#x91CF;&#x7684; &#x4F5C;&#x7528;&#x57DF; &#x3002;&#x6240;&#x6709;&#x53D8;&#x91CF;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x5B83;&#x4EEC;&#x88AB;&#x5B9A;&#x4E49;&#x7684;&#x5757;&#xFF0C;&#x4ECE;&#x5B83;&#x4EEC;&#x7684;&#x540D;&#x79F0;&#x88AB;&#x5B9A;&#x4E49;&#x7684;&#x90A3;&#x70B9;&#x5F00;&#x59CB;&#x3002;</p>
+<a id="more"></a>
 <h2 id="&#x4F7F;&#x7528;&#x5C40;&#x90E8;&#x53D8;&#x91CF;"><a href="#&#x4F7F;&#x7528;&#x5C40;&#x90E8;&#x53D8;&#x91CF;" class="headerlink" title="&#x4F7F;&#x7528;&#x5C40;&#x90E8;&#x53D8;&#x91CF;"></a>&#x4F7F;&#x7528;&#x5C40;&#x90E8;&#x53D8;&#x91CF;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># Filename: func_local.py</span><br><span class="line"></span><br><span class="line">def func(x):</span><br><span class="line">    print &apos;x is&apos;, x</span><br><span class="line">    x = 2</span><br><span class="line">    print &apos;Changed local x to&apos;, x</span><br><span class="line"></span><br><span class="line">x = 50</span><br><span class="line">func(x)</span><br><span class="line">print &apos;x is still&apos;, x</span><br></pre></td></tr></table></figure>
 <h2 id="&#x8F93;&#x51FA;"><a href="#&#x8F93;&#x51FA;" class="headerlink" title="&#x8F93;&#x51FA;"></a>&#x8F93;&#x51FA;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ python func_local.py</span><br><span class="line">x is 50</span><br><span class="line">Changed local x to 2</span><br><span class="line">x is still 50</span><br></pre></td></tr></table></figure>
 <h2 id="&#x5B83;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;"><a href="#&#x5B83;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x5B83;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;"></a>&#x5B83;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;</h2><blockquote>
@@ -487,7 +488,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -495,7 +496,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -504,7 +505,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

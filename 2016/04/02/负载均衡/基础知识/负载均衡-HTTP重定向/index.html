@@ -88,7 +88,7 @@
 <meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x6211;&amp;#x4EEC;&amp;#x5728;&amp;#x5728;&amp;#x5B66;&amp;#x4E60;java&amp;#x7684;struts&amp;#x6846;&amp;#x67B6;&amp;#x7684;&amp;#x65F6;&amp;#x5019;, &amp;#x6216;&amp;#x8005;webpy&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#x90FD;&amp;#x4F1A;&amp;#x8BBE;&amp;#x8BA1">
 <meta property="og:image" content="http://yoursite.com/2016/04/02/负载均衡/基础知识/负载均衡-HTTP重定向/ea2858cc-bda5-4f3a-8762-287fef9d1250.png">
 <meta property="og:image" content="http://yoursite.com/2016/04/02/负载均衡/基础知识/负载均衡-HTTP重定向/db5da931-af57-46b0-80a8-55f5454dd420.jpg">
-<meta property="og:updated_time" content="2016-04-02T15:13:20.543Z">
+<meta property="og:updated_time" content="2016-04-17T08:18:42.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="负载均衡-HTTP重定向">
 <meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x6211;&amp;#x4EEC;&amp;#x5728;&amp;#x5728;&amp;#x5B66;&amp;#x4E60;java&amp;#x7684;struts&amp;#x6846;&amp;#x67B6;&amp;#x7684;&amp;#x65F6;&amp;#x5019;, &amp;#x6216;&amp;#x8005;webpy&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#x90FD;&amp;#x4F1A;&amp;#x8BBE;&amp;#x8BA1">
@@ -346,6 +346,7 @@
 
       
         <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x6211;&#x4EEC;&#x5728;&#x5728;&#x5B66;&#x4E60;java&#x7684;struts&#x6846;&#x67B6;&#x7684;&#x65F6;&#x5019;, &#x6216;&#x8005;webpy&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x8BBE;&#x8BA1;&#x5230;&#x91CD;&#x5B9A;&#x5411;&#x7684;,&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x5C31;&#x5C06;&#x4ECB;&#x7ECD;&#x91CD;&#x5B9A;&#x5411;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;</p>
+<a id="more"></a>
 <h2 id="&#x4EC0;&#x4E48;&#x662F;&#x91CD;&#x5B9A;&#x5411;"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x91CD;&#x5B9A;&#x5411;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x91CD;&#x5B9A;&#x5411;"></a>&#x4EC0;&#x4E48;&#x662F;&#x91CD;&#x5B9A;&#x5411;</h2><p>&#x91CD;&#x5B9A;&#x5411;&#x5C31;&#x662F;&#x5C06;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x91CD;&#x5B9A;&#x5B9A;&#x4E00;&#x4E2A;&#x65B9;&#x5411;&#x8F6C;&#x5230;&#x5176;&#x5B83;&#x7684;&#x4F4D;&#x7F6E;<br>&#x4F60;&#x5982;&#x679C;&#x8F93;&#x5165;baidu.com, &#x4F7F;&#x7528;firefox&#x6D4F;&#x89C8;&#x5668;(F12)&#x67E5;&#x770B;&#x8BF7;&#x6C42;&#x7684;&#x8FC7;&#x7A0B;,&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x5982;&#x4E0B;:<br><img src="/2016/04/02/&#x8D1F;&#x8F7D;&#x5747;&#x8861;/&#x57FA;&#x7840;&#x77E5;&#x8BC6;/&#x8D1F;&#x8F7D;&#x5747;&#x8861;-HTTP&#x91CD;&#x5B9A;&#x5411;/ea2858cc-bda5-4f3a-8762-287fef9d1250.png" alt=""><br>&#x5F88;&#x76F4;&#x89C2;&#x7684;&#x770B;&#x5230;,&#x8BBF;&#x95EE;baidu.com&#x4E4B;&#x540E;&#x7ED9;&#x6211;&#x4EEC;&#x8FD4;&#x56DE;&#x4E86;&#x4E00;&#x4E2A;302&#x72B6;&#x6001;<br>302: &#x6682;&#x65F6;&#x6027;&#x8F6C;&#x79FB;<br>301: &#x6C38;&#x4E45;&#x6027;&#x8F6C;&#x79FB;<br>&#x54CD;&#x5E94;&#x5934;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;Location&#x5B57;&#x6BB5;:&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x544A;&#x8BC9;&#x6D4F;&#x89C8;&#x5668;&#x539F;&#x5730;&#x5740;&#x4E0D;&#x5B58;&#x5728;,&#x7ED9;&#x4E86;&#x6211;&#x4E00;&#x4E2A;&#x6B63;&#x786E;&#x7684;&#x5730;&#x5740;,&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x8BF7;&#x6C42;&#x5230;&#x4E86;www.baidu.com&#x8FD9;&#x4E2A;&#x5730;&#x5740;<br>&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x662F;&#x8BF7;&#x6C42;&#x4E86;&#x4E24;&#x4E2A;&#x5730;&#x5740;, &#x6240;&#x4EE5;&#x6BD4;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x8017;&#x65F6;</p>
 <h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x662F;&#x7528;&#x91CD;&#x5B9A;&#x5411;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x662F;&#x7528;&#x91CD;&#x5B9A;&#x5411;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x662F;&#x7528;&#x91CD;&#x5B9A;&#x5411;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x662F;&#x7528;&#x91CD;&#x5B9A;&#x5411;</h2><p>&#x77E5;&#x9053;&#x4E86;&#x4EC0;&#x4E48;&#x662F;&#x91CD;&#x5B9A;&#x5411;, &#x6211;&#x4EEC;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x8FD9;&#x6837;&#x63D0;&#x9AD8;&#x4E86;&#x7528;&#x6237;&#x7684;&#x4F53;&#x9A8C;&#x5EA6;, &#x5982;&#x679C;&#x7528;&#x6237;&#x8F93;&#x5165;baidu.com&#x4E0D;&#x80FD;&#x5230;www.baidu.com,&#x90A3;&#x7528;&#x6237;&#x80AF;&#x5B9A;&#x611F;&#x89C9;&#x5F88;&#x5947;&#x602A;&#x4E86;<br>&#x5176;&#x5B9E;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x662F;&#x4E3A;&#x4E86;&#x7ED9;&#x96C6;&#x4E2D;&#x6743;&#x91CD;.&#x8BA9;&#x7F51;&#x7AD9;&#x7684;&#x6743;&#x91CD;&#x90FD;&#x96C6;&#x4E2D;&#x5230;&#x67D0;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#x4E0A;.&#x767E;&#x5EA6;&#x722C;&#x866B;&#x5728;&#x6293;&#x53D6;&#x4F60;&#x7684;&#x7F51;&#x7AD9;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x628A;&#x5E26;www&#x548C;&#x4E0D;&#x5E26;www&#x7684;&#x90FD;&#x5F53;&#x6210;www&#x7684;,&#x8FD9;&#x6837;&#x589E;&#x52A0;&#x4E86;&#x6743;&#x91CD;,&#x4FBF;&#x4E8E;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x6536;&#x5F55;</p>
 <h2 id="&#x91CD;&#x5B9A;&#x5411;&#x548C;&#x8F6C;&#x53D1;&#x7684;&#x533A;&#x522B;"><a href="#&#x91CD;&#x5B9A;&#x5411;&#x548C;&#x8F6C;&#x53D1;&#x7684;&#x533A;&#x522B;" class="headerlink" title="&#x91CD;&#x5B9A;&#x5411;&#x548C;&#x8F6C;&#x53D1;&#x7684;&#x533A;&#x522B;"></a>&#x91CD;&#x5B9A;&#x5411;&#x548C;&#x8F6C;&#x53D1;&#x7684;&#x533A;&#x522B;</h2><p>&#x76F8;&#x4FE1;&#x5F88;&#x591A;&#x505A;java&#x540E;&#x7AEF;&#x5F00;&#x53D1;&#x4F1A;&#x9047;&#x5230;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;<br>1.&#x91CD;&#x5B9A;&#x5411;&#x662F;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x884C;&#x4E3A;,&#x76F8;&#x5F53;&#x4E8E;&#x662F;&#x4E24;&#x6B21;&#x4E0D;&#x540C;&#x7684;&#x8BF7;&#x6C42;, &#x53EA;&#x662F;&#x7ED9;&#x6211;&#x4EEC;&#x7684;&#x611F;&#x89C9;&#x50CF;&#x662F;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;.&#x5730;&#x5740;&#x680F;&#x7684;URL&#x662F;&#x4F1A;&#x53D8;&#x5316;&#x7684;<br>2.&#x8BF7;&#x6C42;&#x8F6C;&#x53D1;&#x662F;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x884C;&#x4E3A;,&#x5730;&#x5740;&#x680F;&#x7684;URL&#x4E0D;&#x4F1A;&#x53D8;<br>&#x4E3E;&#x4F8B;&#x5B50;:<br>&#x8BF7;&#x6C42;&#x91CD;&#x5B9A;&#x5411;&#xFF1A;&#x5C31;&#x597D;&#x6BD4;&#x6211;&#x4EEC;&#x627E;&#x4E00;&#x4E2A;A&#x5E7F;&#x544A;&#x516C;&#x53F8;&#x7ED9;&#x8BBE;&#x8BA1;&#x540D;&#x7247;&#xFF0C;A&#x660E;&#x786E;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#x4ED6;&#x4EEC;&#x4E0D;&#x4F1A;&#x8BBE;&#x8BA1;&#xFF0C;&#x5C31;&#x8BA9;&#x6211;&#x4EEC;&#x627E;B&#x516C;&#x53F8;&#xFF0C;&#x7ED3;&#x679C;B&#x516C;&#x53F8;&#x7ED9;&#x6211;&#x8BBE;&#x8BA1;&#x597D;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4F1A;&#x5BF9;&#x5916;&#x5BA3;&#x79F0;&#x662F;B&#x516C;&#x53F8;&#x7ED9;&#x6211;&#x4EEC;&#x8BBE;&#x8BA1;&#x7684;&#x540D;&#x7247;&#xFF0C;&#xFF08;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x53D1;&#x9001;&#x4E86;&#x4E24;&#x6B21;&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;URL&#x5730;&#x5740;&#x680F;&#x91CC;&#x5C31;&#x4ECE;A&#x53D8;&#x6210;&#x4E86;B&#x516C;&#x53F8;&#xFF09;</p>
@@ -488,7 +489,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -496,7 +497,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -505,7 +506,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
