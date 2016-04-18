@@ -82,12 +82,12 @@
 
 <meta name="description" content="爱打篮球的程序狗">
 <meta property="og:type" content="website">
-<meta property="og:title" content="忍者神龟">
+<meta property="og:title" content="一个爬虫工程师的技术博客">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="忍者神龟">
+<meta property="og:site_name" content="一个爬虫工程师的技术博客">
 <meta property="og:description" content="爱打篮球的程序狗">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="忍者神龟">
+<meta name="twitter:title" content="一个爬虫工程师的技术博客">
 <meta name="twitter:description" content="爱打篮球的程序狗">
 
 
@@ -106,7 +106,7 @@
   };
 </script>
 
-  <title> 忍者神龟 </title>
+  <title> 一个爬虫工程师的技术博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -149,7 +149,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">忍者神龟</span>
+      <span class="site-title">一个爬虫工程师的技术博客</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -247,6 +247,137 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/04/python/flask/flask学习笔记-数据库/" itemprop="url">
+                  flask学习笔记-数据库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-04T21:39:00+08:00" content="2016-04-04">
+              2016-04-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/flask/" itemprop="url" rel="index">
+                    <span itemprop="name">flask</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/04/python/flask/flask学习笔记-数据库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/04/python/flask/flask学习笔记-数据库/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/04/python/flask/flask学习笔记-数据库/" class="leancloud_visitors" data-flag-title="flask学习笔记-数据库">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x6570;&#x636E;&#x5E93;&#x6309;&#x7167;&#x4E00;&#x5B9A;&#x89C4;&#x5219;&#x4FDD;&#x5B58;&#x7A0B;&#x5E8F;&#x6570;&#x636E;&#xFF0C;&#x7A0B;&#x5E8F;&#x518D;&#x53D1;&#x8D77;&#x67E5;&#x8BE2;&#x53D6;&#x56DE;&#x6240;&#x9700;&#x7684;&#x6570;&#x636E;&#x3002;Web&#x7A0B;&#x5E8F;&#x6700;&#x5E38;&#x7528;&#x57FA;&#x4E8E;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#x7684;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x8FD9;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x4E5F;&#x79F0;&#x4E3A;SQL&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4F7F;&#x7528;&#x7ED3;&#x6784;&#x5316;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x3002;&#x4E0D;&#x8FC7;&#x6700;&#x8FD1;&#x51E0;&#x5E74;&#x6587;&#x6863;&#x6570;&#x636E;&#x5E93;&#x548C;&#x952E;&#x503C;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x6210;&#x4E86;&#x6D41;&#x884C;&#x7684;&#x66FF;&#x4EE3;&#x9009;&#x62E9;&#xFF0C;&#x8FD9;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5408;&#x79F0;&#x4E3A;NoSQL&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/04/python/flask/flask学习笔记-数据库/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -772,142 +903,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/03/rabbitMQ/rabbitMQ学习1/" itemprop="url">
-                  rabbitMQ学习1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T21:26:00+08:00" content="2016-04-03">
-              2016-04-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/rabbitMQ/" itemprop="url" rel="index">
-                    <span itemprop="name">rabbitMQ</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/03/rabbitMQ/rabbitMQ学习1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/rabbitMQ/rabbitMQ学习1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/03/rabbitMQ/rabbitMQ学习1/" class="leancloud_visitors" data-flag-title="rabbitMQ学习1">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="&#x5B89;&#x88C5;"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</h2><p>&#x6211;&#x7684;&#x73AF;&#x5883;&#x662F;Ubuntu 14.04.1 LTS</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/03/rabbitMQ/rabbitMQ学习1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -948,7 +948,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1161,7 +1161,7 @@
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("Jami1E0cgfUeRuh2tT7nCTiD-gzGzoHsz", "rMyNJtkJdjRpqpwbYBWrbkbt");</script>
+  <script>AV.initialize("Jami1E0cgfUeRuh2tT7nCTiD-gzGzoHsz", "fIQ3Jv2Nad8zoCKQ8oMxphTh");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
