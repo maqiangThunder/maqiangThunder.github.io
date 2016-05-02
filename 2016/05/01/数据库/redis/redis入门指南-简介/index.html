@@ -1,0 +1,820 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="redis,redis入门指南," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x524D;&amp;#x8A00;redis&amp;#x4F5C;&amp;#x4E3A;nosql&amp;#x7684;&amp;#x4EE3;&amp;#x8868;&amp;#x578B;&amp;#x6570;&amp;#x636E;&amp;#x5E93;, &amp;#x5E94;&amp;#x7528;&amp;#x975E;&amp;#x5E38;&amp;#x5E7F;&amp;#x6CDB;, &amp;#x7279;&amp;#x70B9;&amp;#x5C31;&amp;#x662F;key-value&amp;#x7684;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis入门指南-简介">
+<meta property="og:url" content="http://yoursite.com/2016/05/01/数据库/redis/redis入门指南-简介/index.html">
+<meta property="og:site_name" content="一个爬虫工程师的技术博客">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;redis&amp;#x4F5C;&amp;#x4E3A;nosql&amp;#x7684;&amp;#x4EE3;&amp;#x8868;&amp;#x578B;&amp;#x6570;&amp;#x636E;&amp;#x5E93;, &amp;#x5E94;&amp;#x7528;&amp;#x975E;&amp;#x5E38;&amp;#x5E7F;&amp;#x6CDB;, &amp;#x7279;&amp;#x70B9;&amp;#x5C31;&amp;#x662F;key-value&amp;#x7684;&amp;">
+<meta property="og:image" content="http://yoursite.com/2016/05/01/数据库/redis/redis入门指南-简介/1462080402.png">
+<meta property="og:updated_time" content="2016-05-01T11:00:43.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis入门指南-简介">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;redis&amp;#x4F5C;&amp;#x4E3A;nosql&amp;#x7684;&amp;#x4EE3;&amp;#x8868;&amp;#x578B;&amp;#x6570;&amp;#x636E;&amp;#x5E93;, &amp;#x5E94;&amp;#x7528;&amp;#x975E;&amp;#x5E38;&amp;#x5E7F;&amp;#x6CDB;, &amp;#x7279;&amp;#x70B9;&amp;#x5C31;&amp;#x662F;key-value&amp;#x7684;&amp;">
+<meta name="twitter:image" content="http://yoursite.com/2016/05/01/数据库/redis/redis入门指南-简介/1462080402.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6261769725999580000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> redis入门指南-简介 | 一个爬虫工程师的技术博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7840c40eebaccc88eb16af700e755c7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一个爬虫工程师的技术博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">thunder</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                redis入门指南-简介
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-01T10:37:00+08:00" content="2016-05-01">
+              2016-05-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/01/数据库/redis/redis入门指南-简介/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/数据库/redis/redis入门指南-简介/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/01/数据库/redis/redis入门指南-简介/" class="leancloud_visitors" data-flag-title="redis入门指南-简介">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>redis&#x4F5C;&#x4E3A;nosql&#x7684;&#x4EE3;&#x8868;&#x578B;&#x6570;&#x636E;&#x5E93;, &#x5E94;&#x7528;&#x975E;&#x5E38;&#x5E7F;&#x6CDB;, &#x7279;&#x70B9;&#x5C31;&#x662F;key-value&#x7684;&#x5B58;&#x50A8;, &#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x5927;&#x578B;&#x7684;&#x7F13;&#x5B58;&#x961F;&#x5217;, redis&#x6E90;&#x4EE3;&#x7801;&#x6258;&#x7BA1;&#x5728;github&#x4E0A;<a href="https://github.com/antirez/redis" target="_blank" rel="external">redis</a>,&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x6211;&#x6839;&#x636E;<code>redis&#x5165;&#x95E8;&#x6307;&#x5357;</code>&#x8FD9;&#x672C;&#x4E66;&#x5F00;&#x59CB;&#x5B66;&#x4E60;redis<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x7B80;&#x4ECB;/1462080402.png" alt=""></p>
+<h1 id="&#x5B58;&#x50A8;&#x7ED3;&#x6784;"><a href="#&#x5B58;&#x50A8;&#x7ED3;&#x6784;" class="headerlink" title="&#x5B58;&#x50A8;&#x7ED3;&#x6784;"></a>&#x5B58;&#x50A8;&#x7ED3;&#x6784;</h1><h2 id="mongoDB"><a href="#mongoDB" class="headerlink" title="mongoDB"></a>mongoDB</h2><p>&#x6211;&#x4E4B;&#x524D;&#x63A5;&#x89E6;&#x6700;&#x591A;&#x7684;nosql&#x6570;&#x636E;&#x5E93;&#x5C31;&#x662F;<code>mongodb</code>, &#x5B83;&#x7684;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x662F;bson, BSON&#x662F;&#x4E00;&#x79CD;&#x7C7B;json&#x7684;&#x4E00;&#x79CD;&#x4E8C;&#x8FDB;&#x5236;&#x5F62;&#x5F0F;&#x7684;&#x5B58;&#x50A8;&#x683C;&#x5F0F;, &#x6240;&#x4EE5;&#x9002;&#x5408;&#x5B58;&#x50A8;json&#x5F62;&#x5F0F;&#x7684;&#x6570;&#x636E;, &#x662F;&#x4E00;&#x79CD;&#x6587;&#x6863;&#x578B;&#x7684;&#x6570;&#x636E;&#x5E93;, &#x662F;&#x6BD4;&#x8F83;&#x63A5;&#x8FD1;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;</p>
+<h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p>redis&#x662F;key-value&#x578B;&#x7684;&#x6570;&#x636E;&#x5E93;, &#x76EE;&#x6807;&#x662F;&#x4F5C;&#x4E3A;&#x9AD8;&#x6548;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x7F13;&#x5B58;.&#x6570;&#x636E;&#x4E00;&#x822C;&#x4E0D;&#x843D;&#x5730;,&#x4E5F;&#x4E0D;&#x9002;&#x5408;&#x4F5C;&#x4E3A;&#x5B58;&#x50A8;&#x548C;&#x5206;&#x6790;<br>&#x652F;&#x6301;&#x7684;&#x952E;&#x503C;&#x6570;&#x636E;&#x7C7B;&#x578B;:</p>
+<ol>
+<li>&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;</li>
+<li>&#x6563;&#x5217;&#x7C7B;&#x578B;</li>
+<li>&#x5217;&#x8868;&#x7C7B;&#x578B;</li>
+<li>&#x96C6;&#x5408;&#x7C7B;&#x578B;</li>
+<li>&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x7C7B;&#x578B;</li>
+</ol>
+<h1 id="&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x548C;&#x6301;&#x4E45;&#x5316;"><a href="#&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x548C;&#x6301;&#x4E45;&#x5316;" class="headerlink" title="&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x548C;&#x6301;&#x4E45;&#x5316;"></a>&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x548C;&#x6301;&#x4E45;&#x5316;</h1><p>redis&#x7684;&#x6570;&#x636E;&#x90FD;&#x662F;&#x5B58;&#x50A8;&#x5728;&#x5185;&#x5B58;&#x4E2D;, &#x5185;&#x5B58;&#x7684;&#x8BFB;&#x5199;&#x662F;&#x8FDC;&#x8FDC;&#x5FEB;&#x4E8E;&#x786C;&#x76D8;&#x7684;, &#x56E0;&#x6B64;redis&#x53EF;&#x4EE5;&#x9AD8;&#x6548;&#x7684;&#x8BFB;&#x5199;, &#x4F46;&#x662F;&#x653E;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x4E5F;&#x6709;&#x98CE;&#x9669;, &#x6240;&#x4EE5;redis&#x4E5F;&#x5BF9;&#x6301;&#x4E45;&#x5316;&#x63D0;&#x4F9B;&#x4E86;&#x652F;&#x6301;, &#x53EF;&#x4EE5;&#x5C06;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5F02;&#x6B65;&#x5199;&#x5165;&#x5230;&#x786C;&#x76D8;, &#x540C;&#x4E8B;&#x7EE7;&#x7EED;&#x63D0;&#x4F9B;&#x670D;&#x52A1;</p>
+<h1 id="&#x529F;&#x80FD;&#x4E30;&#x5BCC;"><a href="#&#x529F;&#x80FD;&#x4E30;&#x5BCC;" class="headerlink" title="&#x529F;&#x80FD;&#x4E30;&#x5BCC;"></a>&#x529F;&#x80FD;&#x4E30;&#x5BCC;</h1><h2 id="&#x7F13;&#x5B58;"><a href="#&#x7F13;&#x5B58;" class="headerlink" title="&#x7F13;&#x5B58;"></a>&#x7F13;&#x5B58;</h2><p>redis&#x4E3A;&#x6BCF;&#x4E2A;key&#x8BBE;&#x7F6E;&#x4E86;&#x751F;&#x5B58;&#x65F6;&#x95F4;, TTL, &#x751F;&#x5B58;&#x65F6;&#x95F4;&#x5230;&#x4E4B;&#x540E;&#x952E;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x5220;&#x9664;, &#x8FD9;&#x4E00;&#x529F;&#x80FD;&#x53EF;&#x4EE5;&#x8BA9;redis&#x4F5C;&#x4E3A;&#x7F13;&#x5B58;&#x7CFB;&#x7EDF;&#x6765;&#x4F7F;&#x7528;</p>
+<h3 id="redis&#x548C;memcached"><a href="#redis&#x548C;memcached" class="headerlink" title="redis&#x548C;memcached"></a>redis&#x548C;memcached</h3><p>redis&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x6A21;&#x578B;, memcached&#x652F;&#x6301;&#x591A;&#x7EBF;&#x7A0B;.&#x6240;&#x4EE5;&#x5728;&#x591A;&#x6838;&#x670D;&#x52A1;&#x5668;&#x4E0A;memcached&#x6027;&#x80FD;&#x66F4;&#x597D;.&#x4F46;&#x662F;&#x5982;&#x679C;&#x8981;&#x4F7F;&#x7528;&#x5230;&#x9AD8;&#x7EA7;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6216;&#x8005;&#x6301;&#x4E45;&#x5316;&#x529F;&#x80FD;, redis&#x66F4;&#x52A0;&#x51FA;</p>
+<h2 id="&#x961F;&#x5217;"><a href="#&#x961F;&#x5217;" class="headerlink" title="&#x961F;&#x5217;"></a>&#x961F;&#x5217;</h2><p>redis&#x867D;&#x7136;&#x662F;&#x4E00;&#x4E2A;nosql&#x7684;&#x6570;&#x636E;&#x5E93;, &#x4F46;&#x662F;&#x5728;&#x5E94;&#x7528;&#x4E0A;, &#x5F88;&#x591A;&#x7684;&#x516C;&#x53F8;&#x90FD;&#x5C06;redis&#x4F5C;&#x4E3A;&#x7F13;&#x5B58;, &#x961F;&#x5217;&#x6765;&#x4F7F;&#x7528;.&#x6BD4;&#x5982;&#x4E00;&#x4E2A;&#x722C;&#x866B;&#x7CFB;&#x7EDF;&#x4E2D;, redis&#x4F5C;&#x4E3A;&#x5B58;&#x50A8;url&#x7684;&#x961F;&#x5217;, &#x722C;&#x866B;&#x670D;&#x52A1;&#x4ECE;redis&#x961F;&#x5217;&#x4E2D;&#x83B7;&#x53D6;url, &#x7136;&#x540E;&#x6293;&#x53D6;, &#x6293;&#x53D6;&#x7684;&#x7ED3;&#x679C;&#x8FD8;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x653E;&#x5230;redis&#x53E6;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x4E2D;, redis&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x591A;&#x4E2A;&#x961F;&#x5217;</p>
+<h1 id="&#x7B80;&#x5355;&#x7A33;&#x5B9A;"><a href="#&#x7B80;&#x5355;&#x7A33;&#x5B9A;" class="headerlink" title="&#x7B80;&#x5355;&#x7A33;&#x5B9A;"></a>&#x7B80;&#x5355;&#x7A33;&#x5B9A;</h1><p>&#x5BF9;&#x4E8E;&#x4F20;&#x7EDF;&#x7684;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;, &#x67E5;&#x8BE2;&#x4E00;&#x4E2A;posts&#x8868;&#x4E2D;&#x4E00;&#x884C;&#x8BB0;&#x5F55;&#x8981;&#x8FD9;&#x6837;<br><code>select title from posts where id = 1</code><br>&#x800C;redis&#x662F;&#x8FD9;&#x6837;<br><code>HGET post:1 title</code></p>
+<h2 id="&#x7B80;&#x5355;"><a href="#&#x7B80;&#x5355;" class="headerlink" title="&#x7B80;&#x5355;"></a>&#x7B80;&#x5355;</h2><p>redis&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x591A;&#x7684;&#x7C7B;&#x4F3C;<code>HGET</code>&#x7684;&#x547D;&#x4EE4;, &#x4F46;&#x662F;&#x5E38;&#x89C1;&#x7684;&#x5C31;&#x5341;&#x51E0;&#x4E2A;, &#x7528;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x7684;&#x7B80;&#x5355;</p>
+<h2 id="&#x4EE3;&#x7801;&#x91CF;&#x5C0F;"><a href="#&#x4EE3;&#x7801;&#x91CF;&#x5C0F;" class="headerlink" title="&#x4EE3;&#x7801;&#x91CF;&#x5C0F;"></a>&#x4EE3;&#x7801;&#x91CF;&#x5C0F;</h2><p>redis&#x7528;c&#x5F00;&#x53D1;, &#x4EE3;&#x7801;&#x91CF;&#x53EA;&#x6709;3w&#x591A;&#x884C;, &#x800C;&#x4E14;&#x5F00;&#x6E90;, &#x6240;&#x4EE5;&#x5BF9;&#x4E8E;&#x60F3;&#x4E86;&#x89E3;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x6765;&#x8BF4;,&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x4FEE;&#x6539;&#x6E90;&#x4EE3;&#x7801;&#x6765;&#x6EE1;&#x8DB3;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x6C42;</p>
+<h2 id="&#x652F;&#x6301;&#x5BA2;&#x6237;&#x7AEF;"><a href="#&#x652F;&#x6301;&#x5BA2;&#x6237;&#x7AEF;" class="headerlink" title="&#x652F;&#x6301;&#x5BA2;&#x6237;&#x7AEF;"></a>&#x652F;&#x6301;&#x5BA2;&#x6237;&#x7AEF;</h2><p>redis&#x63D0;&#x4F9B;&#x4E86;&#x51E0;&#x5341;&#x79CD;&#x8BED;&#x8A00;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5E93;, &#x6240;&#x4EE5;&#x4E0D;&#x7BA1;&#x4F60;&#x7528;&#x4EC0;&#x4E48;&#x8BED;&#x8A00;&#x5F00;&#x53D1;, redis&#x90FD;&#x53EF;&#x4EE5;&#x652F;&#x6301;</p>
+<h2 id="&#x53EF;&#x9760;"><a href="#&#x53EF;&#x9760;" class="headerlink" title="&#x53EF;&#x9760;"></a>&#x53EF;&#x9760;</h2><p>redis&#x7684;&#x5F00;&#x6E90;, &#x793E;&#x533A;&#x6D3B;&#x8DC3;, &#x4F7F;&#x7528;&#x7684;&#x4E2A;&#x4EBA;&#x548C;&#x516C;&#x53F8;&#x8D8A;&#x6765;&#x8D8A;&#x591A;, redis&#x4E5F;&#x5F00;&#x59CB;&#x53D8;&#x5F97;&#x8D8A;&#x6765;&#x8D8A;&#x6210;&#x719F;&#x7A33;&#x5B9A;</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/redis/" rel="tag">#redis</a>
+          
+            <a href="/tags/redis入门指南/" rel="tag">#redis入门指南</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/23/linux/linux基础/supervisor/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/01/数据库/redis/redis入门指南-准备/" rel="prev" title="redis入门指南-准备">
+                redis入门指南-准备 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/05/01/数据库/redis/redis入门指南-简介/"
+     data-title="redis入门指南-简介"
+     data-content=""
+     data-url="http://yoursite.com/2016/05/01/数据库/redis/redis入门指南-简介/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/01/数据库/redis/redis入门指南-简介/"
+           data-title="redis入门指南-简介" data-url="http://yoursite.com/2016/05/01/数据库/redis/redis入门指南-简介/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/thunder.jpg"
+               alt="忍者神龟" />
+          <p class="site-author-name" itemprop="name">忍者神龟</p>
+          <p class="site-description motion-element" itemprop="description">爱打篮球的程序狗</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maqiangThunder" target="_blank" title="github">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ma-qiang-97-67" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2357192812?is_all=1" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/54292285/" target="_blank" title="douban">
+                  
+                    <i class="fa fa-douban"></i>
+                  
+                  douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储结构"><span class="nav-number">2.</span> <span class="nav-text">存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mongoDB"><span class="nav-number">2.1.</span> <span class="nav-text">mongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis"><span class="nav-number">2.2.</span> <span class="nav-text">redis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存存储和持久化"><span class="nav-number">3.</span> <span class="nav-text">内存存储和持久化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#功能丰富"><span class="nav-number">4.</span> <span class="nav-text">功能丰富</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">4.1.</span> <span class="nav-text">缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redis和memcached"><span class="nav-number">4.1.1.</span> <span class="nav-text">redis和memcached</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列"><span class="nav-number">4.2.</span> <span class="nav-text">队列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单稳定"><span class="nav-number">5.</span> <span class="nav-text">简单稳定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单"><span class="nav-number">5.1.</span> <span class="nav-text">简单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码量小"><span class="nav-number">5.2.</span> <span class="nav-text">代码量小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持客户端"><span class="nav-number">5.3.</span> <span class="nav-text">支持客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可靠"><span class="nav-number">5.4.</span> <span class="nav-text">可靠</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">忍者神龟</span>
+</div>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"thunder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Jami1E0cgfUeRuh2tT7nCTiD-gzGzoHsz", "fIQ3Jv2Nad8zoCKQ8oMxphTh");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

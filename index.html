@@ -269,8 +269,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/21/hexo/开发一个在sublime下的markdown图片插件/" itemprop="url">
-                  开发一个在sublime下的markdown图片插件
+                <a class="post-title-link" href="/2016/05/02/数据库/redis/redis入门指南-脚本/" itemprop="url">
+                  redis入门指南-脚本
                 </a>
               
             
@@ -283,8 +283,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T23:57:00+08:00" content="2016-04-21">
-              2016-04-21
+            <time itemprop="dateCreated" datetime="2016-05-02T16:19:00+08:00" content="2016-05-02">
+              2016-05-02
             </time>
           </span>
 
@@ -297,8 +297,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
                   </a>
                 </span>
 
@@ -313,8 +313,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/21/hexo/开发一个在sublime下的markdown图片插件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/hexo/开发一个在sublime下的markdown图片插件/" itemprop="commentsCount"></span>
+                <a href="/2016/05/02/数据库/redis/redis入门指南-脚本/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/02/数据库/redis/redis入门指南-脚本/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -324,7 +324,7 @@
 
           
           
-             <span id="/2016/04/21/hexo/开发一个在sublime下的markdown图片插件/" class="leancloud_visitors" data-flag-title="开发一个在sublime下的markdown图片插件">
+             <span id="/2016/05/02/数据库/redis/redis入门指南-脚本/" class="leancloud_visitors" data-flag-title="redis入门指南-脚本">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -347,153 +347,63 @@
 
       
         
-          <h1 id="&#x5B89;&#x88C5;"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</h1><p>&#x9996;&#x5148;&#x5B89;&#x88C5;&#x4E00;&#x4E9B;&#x9700;&#x8981;&#x7528;&#x7684;&#x4E1C;&#x897F;</p>
+          
+            <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>redis&#x5728;2.6&#x4E4B;&#x540E;&#x63A8;&#x51FA;&#x4E86;&#x811A;&#x672C;&#x529F;&#x80FD;. &#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x8005;&#x4F7F;&#x7528;lua&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;&#x811A;&#x672C;&#x4E0A;&#x4F20;&#x5230;redis&#x4E2D;&#x8FD0;&#x884C;.&#x5728;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x5927;&#x90E8;&#x5206;&#x7684;redis&#x547D;&#x4EE4;. </p>
+<h1 id="&#x597D;&#x5904;"><a href="#&#x597D;&#x5904;" class="headerlink" title="&#x597D;&#x5904;"></a>&#x597D;&#x5904;</h1><p>&#x4F7F;&#x7528;&#x811A;&#x672C;&#x7684;&#x597D;&#x5904;:</p>
 <ol>
-<li>pywin32</li>
-<li>PIL</li>
-<li>spy++</li>
-<li>WinHotKey</li>
+<li>&#x51CF;&#x5C11;&#x7F51;&#x7EDC;&#x5F00;&#x9500;:<br>&#x5982;&#x679C;&#x6309;&#x7167;&#x6211;&#x4EEC;&#x6B63;&#x5E38;&#x7F16;&#x5199;&#x5BA2;&#x6237;&#x7AEF;&#x4EE3;&#x7801;, &#x6BD4;&#x5982;py, &#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x662F;&#x5411;redis&#x670D;&#x52A1;&#x53D1;&#x9001;&#x4E86;&#x591A;&#x6B21;&#x8BF7;&#x6C42;&#x547D;&#x4EE4;, &#x4F46;&#x662F;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x811A;&#x672C;, &#x5C31;&#x53EA;&#x9700;&#x8981;&#x53D1;&#x9001;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x5C31;&#x597D;&#x4E86;, &#x51CF;&#x5C11;&#x7F51;&#x7EDC;&#x5EF6;&#x8FDF;</li>
+<li>&#x539F;&#x5B50;&#x64CD;&#x4F5C;:<br>redis&#x4F1A;&#x5C06;&#x6574;&#x4E2A;&#x811A;&#x672C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x6574;&#x4F53;&#x6267;&#x884C;. &#x4E2D;&#x95F4;&#x4E0D;&#x4F1A;&#x88AB;&#x522B;&#x7684;&#x547D;&#x4EE4;&#x63D2;&#x5165;, &#x6240;&#x4EE5;&#x65E0;&#x9700;&#x4F7F;&#x7528;&#x4E8B;&#x52A1;.</li>
+<li>&#x590D;&#x7528;:<br>&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x7684;&#x811A;&#x672C;&#x4F1A;&#x6C38;&#x4E45;&#x7684;&#x5B58;&#x5728;redis&#x4E2D;, &#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x88AB;&#x590D;&#x7528;(&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x4E5F;&#x53EF;&#x4EE5;)</li>
 </ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/21/hexo/开发一个在sublime下的markdown图片插件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/21/测试/移动平台性能测试/" itemprop="url">
-                  移动平台性能测试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T10:16:02+08:00" content="2016-04-21">
-              2016-04-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/21/测试/移动平台性能测试/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/测试/移动平台性能测试/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/21/测试/移动平台性能测试/" class="leancloud_visitors" data-flag-title="移动平台性能测试">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="&#x76EE;&#x5F55;"><a href="#&#x76EE;&#x5F55;" class="headerlink" title="&#x76EE;&#x5F55;"></a>&#x76EE;&#x5F55;</h1><ol>
-<li>&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x7684;&#x7B80;&#x4ECB;</li>
-<li>&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;:Emmagee</li>
-<li>&#x6D4B;&#x8BD5;&#x9879;&#x4ECB;&#x7ECD;</li>
+<h1 id="lua&#x811A;&#x672C;"><a href="#lua&#x811A;&#x672C;" class="headerlink" title="lua&#x811A;&#x672C;"></a>lua&#x811A;&#x672C;</h1><p>lua&#x662F;&#x4E00;&#x4E2A;&#x9AD8;&#x6548;&#x7684;&#x8F7B;&#x91CF;&#x7EA7;&#x811A;&#x672C;&#x8BED;&#x8A00;. &#x80FD;&#x65B9;&#x4FBF;&#x7684;&#x5D4C;&#x5165;&#x5230;&#x5176;&#x4ED6;&#x7684;&#x8BED;&#x8A00;&#x8FD9;&#x79CD;</p>
+<h1 id="lua&#x7684;&#x7279;&#x6027;"><a href="#lua&#x7684;&#x7279;&#x6027;" class="headerlink" title="lua&#x7684;&#x7279;&#x6027;"></a>lua&#x7684;&#x7279;&#x6027;</h1><ol>
+<li>&#x8F7B;&#x91CF;&#x7EA7;:<br>&#x6807;&#x51C6;c&#x7F16;&#x5199;, &#x5E76;&#x4EE5;&#x6E90;&#x4EE3;&#x7801;&#x5F62;&#x5F0F;&#x5F00;&#x653E;. &#x7F16;&#x8F91;&#x540E;&#x4EC5;&#x4EC5;&#x4E00;&#x767E;&#x4F59;K, &#x65B9;&#x4FBF;&#x5D4C;&#x5165;&#x5230;&#x5176;&#x4ED6;&#x7684;&#x7A0B;&#x5E8F;&#x4E2D;</li>
+<li>&#x53EF;&#x6269;&#x5C55;:<br>Lua&#x63D0;&#x4F9B;&#x4E86;&#x975E;&#x5E38;&#x6613;&#x4E8E;&#x4F7F;&#x7528;&#x7684;&#x6269;&#x5C55;&#x63A5;&#x53E3;&#x548C;&#x673A;&#x5236;&#xFF1A;&#x7531;&#x5BBF;&#x4E3B;&#x8BED;&#x8A00;(&#x901A;&#x5E38;&#x662F;C&#x6216;C++)&#x63D0;&#x4F9B;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#xFF0C;Lua&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#xFF0C;&#x5C31;&#x50CF;&#x662F;&#x672C;&#x6765;&#x5C31;&#x5185;&#x7F6E;&#x7684;&#x529F;&#x80FD;&#x4E00;&#x6837;&#x3002;</li>
+<li>&#x5176;&#x4ED6;:</li>
 </ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/21/测试/移动平台性能测试/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<ul>
+<li>&#x652F;&#x6301;&#x9762;&#x5411;&#x8FC7;&#x7A0B;(procedure-oriented)&#x7F16;&#x7A0B;&#x548C;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;(functional programming)&#xFF1B;</li>
+<li>&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#xFF1B;&#x53EA;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x901A;&#x7528;&#x7C7B;&#x578B;&#x7684;&#x8868;&#xFF08;table&#xFF09;&#xFF0C;&#x7528;&#x5B83;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6570;&#x7EC4;&#xFF0C;&#x54C8;&#x5E0C;&#x8868;&#xFF0C;&#x96C6;&#x5408;&#xFF0C;&#x5BF9;&#x8C61;&#xFF1B;</li>
+<li>&#x8BED;&#x8A00;&#x5185;&#x7F6E;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#xFF1B;&#x95ED;&#x5305;(closure)&#xFF1B;&#x51FD;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x4E00;&#x4E2A;&#x503C;&#xFF1B;&#x63D0;&#x4F9B;&#x591A;&#x7EBF;&#x7A0B;&#xFF08;&#x534F;&#x540C;&#x8FDB;&#x7A0B;&#xFF0C;&#x5E76;&#x975E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6240;&#x652F;&#x6301;&#x7684;&#x7EBF;&#x7A0B;&#xFF09;&#x652F;&#x6301;&#xFF1B;</li>
+<li>&#x901A;&#x8FC7;&#x95ED;&#x5305;&#x548C;table&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x5730;&#x652F;&#x6301;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x6240;&#x9700;&#x8981;&#x7684;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x673A;&#x5236;&#xFF0C;&#x6BD4;&#x5982;&#x6570;&#x636E;&#x62BD;&#x8C61;&#xFF0C;&#x865A;&#x51FD;&#x6570;&#xFF0C;&#x7EE7;&#x627F;&#x548C;&#x91CD;&#x8F7D;&#x7B49;&#x3002;</li>
+</ul>
+<h1 id="lua&#x5E94;&#x7528;&#x573A;&#x666F;"><a href="#lua&#x5E94;&#x7528;&#x573A;&#x666F;" class="headerlink" title="lua&#x5E94;&#x7528;&#x573A;&#x666F;"></a>lua&#x5E94;&#x7528;&#x573A;&#x666F;</h1><ol>
+<li>&#x6E38;&#x620F;&#x5F00;&#x53D1;</li>
+<li>&#x72EC;&#x7ACB;&#x5E94;&#x7528;&#x811A;&#x672C;</li>
+<li>web&#x5E94;&#x7528;&#x811A;&#x672C;</li>
+<li>&#x6269;&#x5C55;&#x548C;&#x6570;&#x636E;&#x5E93;&#x63D2;&#x4EF6;</li>
+<li>&#x5B89;&#x5168;&#x7CFB;&#x7EDF;</li>
+</ol>
+<h1 id="&#x8BED;&#x6CD5;"><a href="#&#x8BED;&#x6CD5;" class="headerlink" title="&#x8BED;&#x6CD5;"></a>&#x8BED;&#x6CD5;</h1><h2 id="&#x6570;&#x636E;&#x7C7B;&#x578B;"><a href="#&#x6570;&#x636E;&#x7C7B;&#x578B;" class="headerlink" title="&#x6570;&#x636E;&#x7C7B;&#x578B;"></a>&#x6570;&#x636E;&#x7C7B;&#x578B;</h2><p>lua&#x662F;&#x52A8;&#x6001;&#x7C7B;&#x578B;&#x8BED;&#x8A00;, &#x548C;Python&#x4E00;&#x6837;<br><img src="/2016/05/02/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x811A;&#x672C;/1462178139.png" alt=""></p>
+<h2 id="&#x53D8;&#x91CF;"><a href="#&#x53D8;&#x91CF;" class="headerlink" title="&#x53D8;&#x91CF;"></a>&#x53D8;&#x91CF;</h2><p>lua&#x53D8;&#x91CF;&#x5206;&#x4E3A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x548C;&#x5C40;&#x90E8;&#x53D8;&#x91CF;. &#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0D;&#x9700;&#x8981;&#x58F0;&#x660E;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;, &#x9ED8;&#x8BA4;&#x503C;&#x662F;nil<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = 1 # &#x5168;&#x5C40;&#x53D8;&#x91CF;a&#x8D4B;&#x503C;</span><br><span class="line">print (b) # &#x65E0;&#x9700;&#x58F0;&#x660E;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;, &#x6253;&#x5370;nil</span><br><span class="line">a = nil # &#x5220;&#x9664;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5C31;&#x662F;&#x5C06;&#x5176;&#x8D4B;&#x503C;&#x4E3A;nil</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;redis&#x4E2D;&#x4E0D;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x53D8;&#x91CF;, &#x53EA;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x9632;&#x6B62;&#x811A;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x4E92;&#x76F8;&#x5F71;&#x54CD;<br>&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x4F7F;&#x7528;local&#x58F0;&#x660E;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local c</span><br><span class="line">local d = 1</span><br><span class="line">local e, f</span><br></pre></td></tr></table></figure></p>
+<p>&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x5C40;&#x90E8;&#x51FD;&#x6570;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local say_ho = function()</span><br><span class="line">    print &apos;hi&apos;</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<p>&#x5C40;&#x90E8;&#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4ECE;&#x58F0;&#x660E;&#x7684;&#x65F6;&#x5019;&#x5F00;&#x59CB;&#x5230;&#x6240;&#x5728;&#x5C42;&#x7684;&#x8BED;&#x53E5;&#x5757;&#x672B;&#x5C3E;, &#x6BD4;&#x5982;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">local x = 10</span><br><span class="line">if true then:</span><br><span class="line">    local x = x + 1</span><br><span class="line">    print(x)</span><br><span class="line">    do</span><br><span class="line">        local x = x +1</span><br><span class="line">        print(x)</span><br><span class="line">    end</span><br><span class="line">    print(x)</span><br><span class="line">end</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure></p>
+<p>&#x7ED3;&#x679C;&#x662F;&#x8FD9;&#x6837;&#x7684;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">11</span><br><span class="line">12</span><br><span class="line">11</span><br><span class="line">10</span><br></pre></td></tr></table></figure></p>
+<h2 id="&#x6CE8;&#x91CA;"><a href="#&#x6CE8;&#x91CA;" class="headerlink" title="&#x6CE8;&#x91CA;"></a>&#x6CE8;&#x91CA;</h2><p>&#x5355;&#x884C;: &#x2013;<br>&#x591A;&#x884C;: &#x2013;[[&#x5F00;&#x59CB;, &#x5230;]]&#x7ED3;&#x675F;</p>
+<h2 id="&#x8D4B;&#x503C;"><a href="#&#x8D4B;&#x503C;" class="headerlink" title="&#x8D4B;&#x503C;"></a>&#x8D4B;&#x503C;</h2><p>&#x53EF;&#x4EE5;&#x591A;&#x91CD;&#x8D4B;&#x503C;<br><img src="/2016/05/02/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x811A;&#x672C;/1462178857.png" alt=""></p>
+<h2 id="&#x64CD;&#x4F5C;&#x7B26;"><a href="#&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x64CD;&#x4F5C;&#x7B26;"></a>&#x64CD;&#x4F5C;&#x7B26;</h2><p><img src="/2016/05/02/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x811A;&#x672C;/1462178911.png" alt=""></p>
+<h2 id="if&#x8BED;&#x53E5;"><a href="#if&#x8BED;&#x53E5;" class="headerlink" title="if&#x8BED;&#x53E5;"></a>if&#x8BED;&#x53E5;</h2><p><img src="/2016/05/02/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x811A;&#x672C;/1462179026.png" alt=""><br>&#x6CE8;&#x610F;: &#x53EA;&#x6709;&#x9047;&#x5230;nil&#x548C;false&#x624D;&#x662F;&#x5047;</p>
+<h2 id="&#x5FAA;&#x73AF;"><a href="#&#x5FAA;&#x73AF;" class="headerlink" title="&#x5FAA;&#x73AF;"></a>&#x5FAA;&#x73AF;</h2><p>&#x652F;&#x6301; while, repeat, for</p>
+<ol>
+<li><p>while</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while (&#x6761;&#x4EF6;) do</span><br><span class="line">    &#x8BED;&#x53E5;&#x5757;</span><br><span class="line">do</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>repeat</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">repeat</span><br><span class="line">    &#x8BED;&#x53E5;&#x5757;</span><br><span class="line">until &#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;</span><br><span class="line">3. for</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>for &#x53D8;&#x91CF;=&#x521D;&#x503C;, &#x7EC8;&#x503C;, &#x6B65;&#x957F; do<br>    &#x8BED;&#x53E5;&#x5757;<br>end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x6B65;&#x957F;&#x53EF;&#x4EE5;&#x7701;&#x7565;</span><br><span class="line"></span><br><span class="line">## &#x8868;&#x7C7B;&#x578B;</span><br><span class="line">&#x8868;&#x662F;lua&#x4E2D;&#x552F;&#x4E00;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;</span><br><span class="line">&#x5176;&#x5B9E;&#x5C31;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;python&#x4E2D;&#x7684;dict&#x6216;&#x8005;java&#x4E2D;&#x7684;map</span><br><span class="line">![](redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x811A;&#x672C;/1462179486.png)</span><br><span class="line"></span><br><span class="line">## &#x51FD;&#x6570;</span><br></pre></td></tr></table></figure></p>
+<p>&#x2013;[[ &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E24;&#x4E2A;&#x503C;&#x7684;&#x6700;&#x5927;&#x503C; &#x2013;]]<br>function max(num1, num2)</p>
+<p>   if (num1 &gt; num2) then<br>      result = num1;<br>   else<br>      result = num2;<br>   end</p>
+<p>   return result;<br>end<br>&#x2013; &#x8C03;&#x7528;&#x51FD;&#x6570;<br>print(&#x201C;&#x4E24;&#x503C;&#x6BD4;&#x8F83;&#x6700;&#x5927;&#x503C;&#x4E3A; &#x201C;,max(10,4))<br>print(&#x201C;&#x4E24;&#x503C;&#x6BD4;&#x8F83;&#x6700;&#x5927;&#x503C;&#x4E3A; &#x201C;,max(5,6))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## &#x6807;&#x51C6;&#x5E93;</span><br><span class="line">lua&#x6807;&#x51C6;&#x5E93;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x5B9E;&#x7528;&#x7684;&#x51FD;&#x6570;</span><br><span class="line">![](redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x811A;&#x672C;/1462179624.png)</span><br><span class="line"></span><br><span class="line">## redis&#x548C;lua</span><br><span class="line">&#x7F16;&#x5199;redis&#x811A;&#x672C;&#x7684;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x8BFB;&#x5199;&#x6570;&#x636E;&#x5E93;</span><br><span class="line"></span><br><span class="line">### &#x5728;&#x811A;&#x672C;&#x4E2D;&#x8C03;&#x7528;redis&#x547D;&#x4EE4;</span><br></pre></td></tr></table></figure></p>
+<p>redis.call(&#x2018;set&#x2019;, &#x2018;foo&#x2019;, &#x2018;bar&#x2019;)<br>local value = redis.call(&#x2018;get&#x2019;, &#x2018;foo&#x2019;)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### &#x4ECE;&#x811A;&#x672C;&#x4E2D;&#x8FD4;&#x56DE;</span><br><span class="line">&#x591A;&#x6570;&#x60C5;&#x51B5;&#x9700;&#x8981;lua&#x6709;&#x8FD4;&#x56DE;&#x503C;, &#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;, &#x5219;&#x662F;nil</span><br><span class="line">![](redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x811A;&#x672C;/1462179878.png)</span><br><span class="line"></span><br><span class="line">### &#x811A;&#x672C;&#x76F8;&#x5173;&#x547D;&#x4EE4;</span><br><span class="line">1. eval</span><br><span class="line">&#x7F16;&#x5199;&#x5B8C;&#x811A;&#x672C;&#x4E4B;&#x540E;&#x6700;&#x91CD;&#x8981;&#x7684;&#x5C31;&#x662F;&#x6267;&#x884C;&#x811A;&#x672C;, redis&#x63D0;&#x4F9B;&#x4E86;eval&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x4F7F;&#x5F00;&#x53D1;&#x8005;&#x50CF;&#x8C03;&#x7528;&#x5176;&#x4ED6;redis&#x5185;&#x7F6E;&#x547D;&#x4EE4;&#x4E00;&#x6837;&#x8C03;&#x7528;&#x811A;&#x672C;.</span><br><span class="line">&#x683C;&#x5F0F;&#x662F;: </span><br><span class="line">eval &#x811A;&#x672C;&#x5185;&#x5BB9; key&#x53C2;&#x6570;&#x7684;&#x6570;&#x91CF; [key ...] [arg ...]</span><br><span class="line">&#x53EF;&#x4EE5;&#x901A;&#x8FC7;key&#x548C;arg&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x5411;&#x811A;&#x672C;&#x4F20;&#x9012;&#x6570;&#x636E;, &#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;SET&#x547D;&#x4EE4;</span><br></pre></td></tr></table></figure></p>
+<p>return redis.call(&#x2018;SET&#x2019;, KEYS[1], ARGV[1])<br>```<br>&#x73B0;&#x5728;redis-cli&#x4E2D;&#x8C03;&#x7528;<br>eval &#x201C;return redis.call(&#x2018;SET&#x2019;, KEYS[1], ARGV[1])&#x201D; 1 foo bar</p>
+<ol>
+<li>evalsha<br>&#x8003;&#x8651;&#x5728;&#x811A;&#x672C;&#x5982;&#x679C;&#x6BD4;&#x8F83;&#x957F;&#x7684;&#x60C5;&#x51B5;&#x4E0B;, &#x5982;&#x679C;&#x6BCF;&#x6B21;&#x628A;&#x811A;&#x672C;&#x4F20;&#x7ED9;redis, &#x6BD4;&#x8F83;&#x5360;&#x7528;&#x5E26;&#x5BBD;. redis&#x63D0;&#x4F9B;&#x4E86;evalsha&#x547D;&#x4EE4;&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x8005;&#x901A;&#x8FC7;&#x811A;&#x672C;&#x5185;&#x5BB9;&#x7684;SHA1&#x6458;&#x8981;&#x6765;&#x6267;&#x884C;&#x811A;&#x672C;<br><img src="/2016/05/02/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x811A;&#x672C;/1462189711.png" alt=""></li>
+</ol>
+
+          
         
       
     </div>
@@ -541,8 +451,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/18/python/flask/flask系统日志写到文件/" itemprop="url">
-                  flask系统日志写到文件
+                <a class="post-title-link" href="/2016/05/02/数据库/redis/redis入门指南-python/" itemprop="url">
+                  redis入门指南-python
                 </a>
               
             
@@ -555,8 +465,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-18T21:39:00+08:00" content="2016-04-18">
-              2016-04-18
+            <time itemprop="dateCreated" datetime="2016-05-02T15:03:00+08:00" content="2016-05-02">
+              2016-05-02
             </time>
           </span>
 
@@ -569,8 +479,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/flask/" itemprop="url" rel="index">
-                    <span itemprop="name">flask</span>
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
                   </a>
                 </span>
 
@@ -585,8 +495,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/18/python/flask/flask系统日志写到文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/python/flask/flask系统日志写到文件/" itemprop="commentsCount"></span>
+                <a href="/2016/05/02/数据库/redis/redis入门指南-python/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/02/数据库/redis/redis入门指南-python/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -596,7 +506,7 @@
 
           
           
-             <span id="/2016/04/18/python/flask/flask系统日志写到文件/" class="leancloud_visitors" data-flag-title="flask系统日志写到文件">
+             <span id="/2016/05/02/数据库/redis/redis入门指南-python/" class="leancloud_visitors" data-flag-title="redis入门指南-python">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -619,12 +529,19 @@
 
       
         
-          <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>&#x5728;&#x7528;flask&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x65F6;&#x5019;, &#x7531;&#x4E8E;&#x8981;&#x505A;&#x65E5;&#x5FD7;&#x5206;&#x6790;, &#x6240;&#x4EE5;&#x60F3;&#x628A;flask&#x65E5;&#x5FD7;&#x5199;&#x5230;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x4E2D;, &#x7136;&#x540E;ELK&#x81EA;&#x52A8;&#x6536;&#x96C6;&#x672C;&#x5730;&#x65E5;&#x5FD7;, &#x5F00;&#x53D1;&#x4E2D;&#x9047;&#x5230;&#x7CFB;&#x7EDF;&#x7684;&#x65E5;&#x5FD7;&#x5199;&#x4E0D;&#x5230;&#x672C;&#x5730;&#x6587;&#x4EF6;, &#x53EA;&#x6709;&#x6211;&#x81EA;&#x5DF1;&#x7684;&#x65E5;&#x5FD7;&#x80FD;&#x5199;&#x8FDB;&#x53BB;</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/18/python/flask/flask系统日志写到文件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>&#x672C;&#x6765;&#x4E66;&#x672C;&#x8FD9;&#x4E00;&#x7AE0;&#x662F;&#x8BB2;&#x89E3;&#x7684;redis&#x8FDB;&#x9636;&#x7684;&#x77E5;&#x8BC6;, &#x4F46;&#x662F;&#x6211;&#x60F3;&#x5148;&#x5B66;&#x4E60;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x4F7F;&#x7528;python&#x6765;&#x64CD;&#x4F5C;redis</p>
+<h1 id="&#x9009;&#x62E9;&#x5BA2;&#x6237;&#x7AEF;"><a href="#&#x9009;&#x62E9;&#x5BA2;&#x6237;&#x7AEF;" class="headerlink" title="&#x9009;&#x62E9;&#x5BA2;&#x6237;&#x7AEF;"></a>&#x9009;&#x62E9;&#x5BA2;&#x6237;&#x7AEF;</h1><p>&#x5176;&#x5B9E;&#x6BCF;&#x79CD;&#x8BED;&#x8A00;&#x5B9E;&#x73B0;redis&#x5BA2;&#x6237;&#x7AEF;&#x90FD;&#x6709;&#x5F88;&#x591A;&#x79CD;, &#x6BCF;&#x4E2A;&#x4EBA;&#x6765;&#x5199;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x98CE;&#x683C;, &#x4F7F;&#x7528;&#x54EA;&#x4E00;&#x79CD;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x559C;&#x597D;&#x6765;&#x51B3;&#x5B9A;<br>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x9009;&#x62E9;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x591A;&#x7684;redis-py, github&#x7F51;&#x7AD9;<a href="https://github.com/andymccurdy/redis-py/" target="_blank" rel="external">redis-py</a><br><img src="/2016/05/02/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-python/1462172985.png" alt=""></p>
+<h1 id="&#x5B89;&#x88C5;"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</h1><p><code>pip install redis</code></p>
+<h1 id="&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;"><a href="#&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;" class="headerlink" title="&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;"></a>&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import redis</span><br><span class="line"></span><br><span class="line">r = redis.StrictRedis(host=&apos;192.168.73.3&apos;, port=6379, db=0)</span><br><span class="line">r.set(&apos;foo&apos;, &apos;bar&apos;)</span><br><span class="line">print r.get(&apos;foo&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/05/02/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-python/1462176469.png" alt=""></p>
+<h1 id="&#x7B80;&#x5355;&#x4F7F;&#x7528;"><a href="#&#x7B80;&#x5355;&#x4F7F;&#x7528;" class="headerlink" title="&#x7B80;&#x5355;&#x4F7F;&#x7528;"></a>&#x7B80;&#x5355;&#x4F7F;&#x7528;</h1><h2 id="hmset&#x548C;hgetall"><a href="#hmset&#x548C;hgetall" class="headerlink" title="hmset&#x548C;hgetall"></a>hmset&#x548C;hgetall</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; r.hmset(&apos;dict&apos;, {&apos;name&apos;: &apos;Bob&apos;})</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; people = r.hgetall(&apos;dict&apos;)</span><br><span class="line">&gt;&gt;&gt; print people</span><br><span class="line">{&apos;name&apos;: &apos;Bob&apos;}</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="&#x4E8B;&#x52A1;&#x548C;&#x7BA1;&#x9053;"><a href="#&#x4E8B;&#x52A1;&#x548C;&#x7BA1;&#x9053;" class="headerlink" title="&#x4E8B;&#x52A1;&#x548C;&#x7BA1;&#x9053;"></a>&#x4E8B;&#x52A1;&#x548C;&#x7BA1;&#x9053;</h2><h3 id="&#x4E8B;&#x52A1;"><a href="#&#x4E8B;&#x52A1;" class="headerlink" title="&#x4E8B;&#x52A1;"></a>&#x4E8B;&#x52A1;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pipe = r.pipeline()</span><br><span class="line">pipe.set(&apos;name&apos;, &apos;maqiang&apos;)</span><br><span class="line">pipe.get(&apos;name&apos;)</span><br><span class="line">result = pipe.execute()</span><br><span class="line">print result</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/05/02/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-python/1462176898.png" alt=""></p>
+<h3 id="&#x7BA1;&#x9053;"><a href="#&#x7BA1;&#x9053;" class="headerlink" title="&#x7BA1;&#x9053;"></a>&#x7BA1;&#x9053;</h3><p>&#x548C;&#x4E8B;&#x52A1;&#x76F8;&#x540C;, &#x53EA;&#x662F;&#x5728;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x52A0;&#x4E0A;&#x53C2;&#x6570;transaction=False<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipe = r.pipeline(transaction=False)</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E8B;&#x52A1;&#x548C;&#x7BA1;&#x9053;&#x8FD8;&#x652F;&#x6301;&#x94FE;&#x5F0F;&#x64CD;&#x4F5C;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = r.pipeline().set(&apos;foo&apos;, &apos;bar&apos;).get(&apos;foo&apos;).result()</span><br></pre></td></tr></table></figure></p>
+
+          
         
       
     </div>
@@ -672,8 +589,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/17/数据库/基础/范式和反范式/" itemprop="url">
-                  范式和反范式
+                <a class="post-title-link" href="/2016/05/01/数据库/redis/redis入门指南-入门/" itemprop="url">
+                  redis入门指南-入门
                 </a>
               
             
@@ -686,8 +603,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T16:34:00+08:00" content="2016-04-17">
-              2016-04-17
+            <time itemprop="dateCreated" datetime="2016-05-01T22:03:00+08:00" content="2016-05-01">
+              2016-05-01
             </time>
           </span>
 
@@ -700,8 +617,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据库基础/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库基础</span>
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
                   </a>
                 </span>
 
@@ -716,8 +633,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/17/数据库/基础/范式和反范式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/数据库/基础/范式和反范式/" itemprop="commentsCount"></span>
+                <a href="/2016/05/01/数据库/redis/redis入门指南-入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/数据库/redis/redis入门指南-入门/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -727,7 +644,7 @@
 
           
           
-             <span id="/2016/04/17/数据库/基础/范式和反范式/" class="leancloud_visitors" data-flag-title="范式和反范式">
+             <span id="/2016/05/01/数据库/redis/redis入门指南-入门/" class="leancloud_visitors" data-flag-title="redis入门指南-入门">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -750,12 +667,78 @@
 
       
         
-          <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>&#x65E9;&#x4F1A;&#x4E0A;&#x540C;&#x4E8B;&#x5206;&#x4EAB;&#x4E86;&lt;&lt;&#x6570;&#x636E;&#x5E93;&#x7684;&#x8303;&#x5F0F;&#x548C;&#x53CD;&#x8303;&#x5F0F;&gt;&gt;, &#x6B63;&#x597D;&#x81EA;&#x5DF1;&#x4E5F;&#x6B63;&#x5728;&#x8BBE;&#x8BA1;&#x6570;&#x636E;&#x5E93;&#x7684;&#x51E0;&#x4E2A;&#x8868;, &#x4E5F;&#x52A0;&#x6DF1;&#x4E86;&#x81EA;&#x5DF1;&#x5BF9;&#x8303;&#x5F0F;&#x7684;&#x8BA4;&#x8BC6;, &#x7279;&#x8BB0;&#x5F55;&#x5206;&#x4EAB;&#x51FA;&#x6765;</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/17/数据库/基础/范式和反范式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>&#x4E66;&#x672C;&#x4E2D;&#x8FD9;&#x4E00;&#x7AE0;&#x8282;&#x8BB2;&#x5F97;&#x662F;&#x4F7F;&#x7528;redis-cli&#x6765;&#x64CD;&#x4F5C;redis&#x7684;&#x5404;&#x79CD;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x53CA;&#x64CD;&#x4F5C;&#x547D;&#x4EE4;, &#x5176;&#x4E2D;&#x8FD8;&#x7A7F;&#x63D2;&#x4E86;&#x535A;&#x5BA2;&#x7684;&#x5C0F;&#x4F8B;&#x5B50;</p>
+<h1 id="redis&#x7684;&#x952E;"><a href="#redis&#x7684;&#x952E;" class="headerlink" title="redis&#x7684;&#x952E;"></a>redis&#x7684;&#x952E;</h1><p>Redis&#x7684;keys&#x547D;&#x4EE4;&#x7528;&#x4E8E;&#x7BA1;&#x7406;&#x952E;&#x3002;&#x4F7F;&#x7528;Redis&#x7684;keys&#x547D;&#x4EE4;&#x8BED;&#x6CD5;&#x5982;&#x4E0B;&#x6240;&#x793A;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; COMMAND KEY_NAME</span><br></pre></td></tr></table></figure></p>
+<p>&#x6BD4;&#x5982;:<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462111692.png" alt=""></p>
+<h1 id="&#x70ED;&#x8EAB;"><a href="#&#x70ED;&#x8EAB;" class="headerlink" title="&#x70ED;&#x8EAB;"></a>&#x70ED;&#x8EAB;</h1><ol>
+<li>&#x83B7;&#x53D6;&#x7B26;&#x5408;&#x89C4;&#x5219;&#x7684;&#x952E;&#x540D;&#x5217;&#x8868;<br><code>keys pattern</code><br>pattern: &#x6B63;&#x5219;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462114260.png" alt=""></li>
+<li>&#x8BBE;&#x7F6E;&#x952E;&#x503C;<br><code>set bar 1</code></li>
+<li>&#x5224;&#x65AD;&#x952E;&#x77E5;&#x5426;&#x5B58;&#x5728;<br>&#x5982;&#x679C;&#x5B58;&#x5728;&#x8FD4;&#x56DE;1, &#x5426;&#x5219;&#x8FD4;&#x56DE;0<br><code>exists key</code></li>
+<li>&#x5220;&#x9664;&#x952E;<br><code>del key [key ...]</code><br>&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;&#x952E;, &#x8FD4;&#x56DE;&#x503C;&#x662F;&#x5220;&#x9664;&#x7684;&#x952E;&#x7684;&#x4E2A;&#x6570;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462114461.png" alt=""></li>
+<li>&#x83B7;&#x53D6;&#x952E;&#x503C;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;<br><code>type key</code></li>
+</ol>
+<h1 id="&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;"></a>&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;</h1><ol>
+<li><p>&#x8D4B;&#x503C;&#x548C;&#x53D6;&#x503C;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set key value</span><br><span class="line">get key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x9012;&#x589E;&#x6570;&#x5B57;<br>&#x5982;&#x679C;&#x662F;&#x5B58;&#x50A8;&#x7684;&#x6574;&#x6570;&#x5F62;&#x5F0F;, &#x53EF;&#x4EE5;&#x4F7F;&#x7528;incr&#x8BA9;&#x5F53;&#x524D;&#x952E;&#x503C;&#x9012;&#x589E;,&#x5E76;&#x8FD4;&#x56DE;&#x9012;&#x589E;&#x540E;&#x7684;&#x503C;<br>&#x5F53;&#x8981;&#x64CD;&#x4F5C;&#x7684;&#x952E;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x65F6;&#x5019;, &#x9ED8;&#x8BA4;&#x503C;&#x5C31;&#x662F;0 ,&#x6240;&#x4EE5;&#x52A0;1&#x5C31;&#x662F;1&#x4E86;<br>&#x5982;&#x679C;&#x64CD;&#x4F5C;&#x7684;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;, &#x5C31;&#x4F1A;&#x62A5;&#x9519;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462114641.png" alt=""></p>
+</li>
+<li>&#x589E;&#x52A0;&#x6307;&#x5B9A;&#x7684;&#x6574;&#x6570;<br>&#x524D;&#x9762;incr&#x662F;&#x589E;&#x52A0;1, &#x5982;&#x679C;&#x60F3;&#x4E00;&#x6B21;&#x589E;&#x52A0;&#x66F4;&#x591A;&#x7684;&#x503C;<br><code>incrby key increment</code><br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462114858.png" alt=""></li>
+<li>&#x51CF;&#x5C11;&#x6307;&#x5B9A;&#x7684;&#x503C;<br><code>decr</code> &#x548C; <code>decrby</code> &#x548C;&#x4E0A;&#x9762;&#x7684;&#x589E;&#x52A0;&#x7684;&#x7C7B;&#x4F3C;</li>
+<li>&#x5411;&#x5C3E;&#x90E8;&#x589E;&#x52A0;&#x503C;<br><code>append key value</code><br>&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;key, &#x5219;&#x7C7B;&#x4F3C;<code>set key value</code>&#x7684;&#x529F;&#x80FD;, &#x8FD4;&#x56DE;&#x7684;&#x662F;&#x8FFD;&#x52A0;&#x540E;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x603B;&#x957F;&#x5EA6;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462115030.png" alt=""><br>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5BF9;&#x4E8E;&#x6574;&#x6570;&#x7C7B;&#x578B;, &#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x64CD;&#x4F5C;&#x7684;</li>
+<li>&#x83B7;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;<br><code>strlen key</code> &#x4E0D;&#x5B58;&#x5728;&#x5219;&#x8FD4;&#x56DE;0<br>&#x6CE8;&#x610F;&#x7684;&#x662F;: &#x4E2D;&#x6587;&#x4F7F;&#x7528;&#x7684;utf-8&#x7F16;&#x7801;, &#x6240;&#x4EE5;&#x4E00;&#x4E2A;&#x4E2D;&#x6587;&#x957F;&#x5EA6;&#x662F;3</li>
+<li>&#x540C;&#x65F6;&#x83B7;&#x53D6;&#x548C;&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x952E;&#x503C;<br>mget key [key &#x2026;]<br>mset key value [key value &#x2026;]<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462115241.png" alt=""></li>
+<li>&#x4F4D;&#x8FD0;&#x7B97;<br>&#x81EA;&#x884C;&#x7814;&#x7A76;</li>
+</ol>
+<h1 id="&#x6563;&#x5217;&#x7C7B;&#x578B;"><a href="#&#x6563;&#x5217;&#x7C7B;&#x578B;" class="headerlink" title="&#x6563;&#x5217;&#x7C7B;&#x578B;"></a>&#x6563;&#x5217;&#x7C7B;&#x578B;</h1><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x7406;&#x89E3;, &#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;, &#x6BD4;&#x5982;: student, &#x4ED6;&#x6709;name, age, address&#x4E09;&#x4E2A;&#x5C5E;&#x6027;, &#x5982;&#x679C;&#x6309;&#x7167;&#x952E;&#x503C;&#x5BF9;&#x5B58;&#x50A8;student&#x4FE1;&#x606F;&#x5C31;&#x662F;&#x8FD9;&#x6837;:<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462115929.png" alt=""><br>&#x5982;&#x679C;&#x6309;&#x7167;&#x6563;&#x5217;&#x65B9;&#x5F0F;, &#x5C31;&#x662F;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x5F0F;&#x5B58;&#x50A8;&#x4E86;</p>
+<ol>
+<li>&#x8D4B;&#x503C;&#x548C;&#x53D6;&#x503C;<br><code>hset key field value</code><br><code>hget key field</code><br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462157246.png" alt=""></li>
+<li>&#x5224;&#x65AD;&#x5B57;&#x6BB5;&#x662F;&#x5426;&#x5B58;&#x5728;<br><code>hexists key field</code></li>
+<li>&#x5F53;&#x5B57;&#x6BB5;&#x4E0D;&#x5B58;&#x5728;&#x65F6;&#x8D4B;&#x503C;<br><code>hsetx key field value</code><br>&#x4E0E;<code>hset</code>&#x7C7B;&#x4F3C;, &#x533A;&#x522B;&#x5728;&#x4E8E;&#x5982;&#x679C;&#x5B57;&#x6BB5;&#x5B58;&#x5728;&#x5C06;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;</li>
+<li>&#x589E;&#x52A0;&#x6570;&#x5B57;<br><code>hincrby key field increment</code></li>
+<li>&#x5220;&#x9664;&#x5B57;&#x6BB5;<br>&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;, &#x8FD4;&#x56DE;&#x5220;&#x9664;&#x7684;&#x4E2A;&#x6570;<br><code>hdel key field [field ...]</code></li>
+<li>&#x53EA;&#x83B7;&#x53D6;&#x5B57;&#x6BB5;&#x540D;&#x6216;&#x8005;&#x5B57;&#x6BB5;&#x7684;&#x503C;<br><code>hkeys key</code><br><code>hvals key</code><br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462157594.png" alt=""></li>
+<li>&#x83B7;&#x53D6;&#x5B57;&#x6BB5;&#x6570;&#x91CF;<br><code>hlen key</code></li>
+</ol>
+<h1 id="&#x5217;&#x8868;&#x7C7B;&#x578B;"><a href="#&#x5217;&#x8868;&#x7C7B;&#x578B;" class="headerlink" title="&#x5217;&#x8868;&#x7C7B;&#x578B;"></a>&#x5217;&#x8868;&#x7C7B;&#x578B;</h1><p>&#x5217;&#x8868;: list, &#x5F88;&#x7B80;&#x5355;&#x7406;&#x89E3;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;, redis&#x4F7F;&#x7528;&#x7684;&#x662F;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x6765;&#x5B9E;&#x73B0;&#x961F;&#x5217;, &#x6240;&#x4EE5;&#x80FD;&#x7406;&#x89E3;&#x7684;&#x662F;: &#x5728;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;&#x6570;&#x636E;&#x662F;&#x5F88;&#x5FEB;&#x7684;, &#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F;O(1), &#x4F46;&#x662F;&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#x8BBF;&#x95EE;&#x5143;&#x7D20;&#x5374;&#x5F88;&#x6162;<br>redis&#x7684;&#x5217;&#x8868;&#x5728;&#x5F88;&#x591A;&#x573A;&#x666F;&#x4E0B;&#x5F88;&#x6709;&#x7528;, &#x6BD4;&#x5982;:&#x6211;&#x4EEC;&#x53EA;&#x5173;&#x5FC3;&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x7684;&#x6700;&#x65B0;&#x7684;&#x6570;&#x636E;, &#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x7528;redis&#x6765;&#x5B58;&#x50A8;&#x8FD9;&#x4E9B;&#x6570;&#x636E;, &#x83B7;&#x53D6;&#x6700;&#x65B0;&#x7684;100&#x6761;&#x6570;&#x636E;&#x5C31;&#x53D8;&#x5F97;&#x76F8;&#x5F53;&#x7B80;&#x5355;&#x5FEB;&#x901F;, &#x800C;&#x4E14;&#x5728;&#x4E24;&#x7AEF;&#x63D2;&#x5165;&#x8BB0;&#x5F55;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x5FEB;.<br>redis&#x7528;&#x4F5C;&#x961F;&#x5217;&#x6765;&#x4F7F;&#x7528;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x5E38;&#x89C1;<br>&#x4E0B;&#x9762;&#x7684;&#x64CD;&#x4F5C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#x7684;&#x5E38;&#x7528;&#x64CD;&#x4F5C;</p>
+<ol>
+<li>&#x5411;&#x5217;&#x8868;&#x4E24;&#x7AEF;&#x589E;&#x52A0;&#x5143;&#x7D20;<br><code>lpush key value [value ...]</code> &#x5411;&#x5217;&#x8868;&#x5DE6;&#x8FB9;&#x589E;&#x52A0;&#x5143;&#x7D20;, &#x8FD4;&#x56DE;&#x589E;&#x52A0;&#x5143;&#x7D20;&#x540E;&#x5217;&#x8868;&#x7684;&#x957F;&#x5EA6;<br><code>rpush key value [value ...]</code> &#x5411;&#x5217;&#x8868;&#x53F3;&#x8FB9;&#x589E;&#x52A0;&#x5143;&#x7D20;</li>
+<li>&#x4ECE;&#x5217;&#x8868;&#x4E24;&#x7AEF;&#x5F39;&#x51FA;&#x5143;&#x7D20;<br><code>lpop key</code><br><code>rpop key</code><br>&#x8FD9;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x5E94;&#x7528;&#x5728;&#x961F;&#x5217;&#x4E2D;</li>
+<li>&#x83B7;&#x53D6;&#x5217;&#x8868;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;<br><code>llen key</code> &#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F;O(1), &#x800C;&#x4E0D;&#x662F;&#x50CF;&#x6709;&#x4E9B;&#x6570;&#x636E;&#x5E93;&#x904D;&#x5386;&#x6240;&#x6709;&#x6574;&#x4E2A;&#x8868;</li>
+<li>&#x83B7;&#x53D6;&#x5217;&#x8868;&#x7247;&#x6BB5;<br><code>lrange key start stop</code><br>start&#x548C;stop&#x662F;&#x5305;&#x542B;&#x5173;&#x7CFB;, &#x7D22;&#x5F15;&#x4E5F;&#x662F;&#x4ECE;0&#x5F00;&#x59CB;&#x7684;, &#x540C;&#x65F6;&#x8FD8;&#x652F;&#x6301;&#x8D1F;&#x7684;&#x7D22;&#x5F15;</li>
+<li>&#x5220;&#x9664;&#x5217;&#x8868;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x503C;<br><code>lrem key count value</code><br>&#x5220;&#x9664;&#x524D;count&#x4E2A;&#x503C;&#x4E3A;value&#x7684;&#x5143;&#x7D20;, &#x8FD4;&#x56DE;&#x5220;&#x9664;&#x4E2A;&#x6570;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462168722.png" alt=""></li>
+<li>&#x83B7;&#x5F97;/&#x8BBE;&#x7F6E;&#x6307;&#x5B9A;&#x7D22;&#x5F15;&#x7684;&#x5143;&#x7D20;&#x503C;<br>&#x7C7B;&#x4F3C;&#x5BF9;&#x6570;&#x7EC4;&#x7684;&#x64CD;&#x4F5C;<br><code>lindex key index</code> &#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x7D22;&#x5F15;&#x5143;&#x7D20;, &#x4ECE;index&#x5F00;&#x59CB;<br><code>lset key index value</code> </li>
+<li>&#x53EA;&#x4FDD;&#x7559;&#x5217;&#x8868;&#x7684;&#x6307;&#x5B9A;&#x7247;&#x6BB5;<br><code>ltrim key start stop</code></li>
+<li>&#x5411;&#x5217;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x5143;&#x7D20;<br><code>linsert key before|after privot value</code></li>
+<li>&#x5C06;&#x5143;&#x7D20;&#x4ECE;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x8F6C;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x5217;&#x8868;<br><code>rpoplpush source destination</code></li>
+</ol>
+<h1 id="&#x96C6;&#x5408;&#x7C7B;&#x578B;"><a href="#&#x96C6;&#x5408;&#x7C7B;&#x578B;" class="headerlink" title="&#x96C6;&#x5408;&#x7C7B;&#x578B;"></a>&#x96C6;&#x5408;&#x7C7B;&#x578B;</h1><p>&#x5217;&#x8868;&#x662F;list, &#x96C6;&#x5408;&#x5C31;&#x662F;set<br>list&#x662F;&#x6709;&#x5E8F;&#x7684;, &#x6309;&#x7167;&#x63D2;&#x5165;&#x7684;&#x987A;&#x5E8F;&#x6392;&#x5217;, &#x4E14;&#x53EF;&#x4EE5;&#x91CD;&#x590D;<br>set&#x662F;&#x65E0;&#x5E8F;&#x7684;, &#x4E0D;&#x53EF;&#x4EE5;&#x91CD;&#x590D;<br>redis&#x4F7F;&#x7528;&#x7684;&#x662F;&#x503C;&#x4E3A;&#x7A7A;&#x7684;&#x6563;&#x5217;&#x8868;(hash table)&#x5B9E;&#x73B0;, &#x6240;&#x4EE5;&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E5F;&#x662F;O(1), &#x6700;&#x65B9;&#x4FBF;&#x7684;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x5728;&#x591A;&#x4E2A;&#x96C6;&#x5408;&#x7C7B;&#x578B;&#x952E;&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x4EA4;&#x96C6;, &#x5E76;&#x96C6;, &#x548C;&#x5DEE;&#x96C6;&#x8FD0;&#x7B97;</p>
+<ol>
+<li>&#x589E;&#x52A0;&#x548C;&#x5220;&#x9664;&#x5143;&#x7D20;<br><code>sadd key member [member ...]</code><br><code>srem key member [member ...]</code></li>
+<li>&#x83B7;&#x5F97;&#x5143;&#x7D20;&#x4E2D;&#x6240;&#x6709;&#x5143;&#x7D20;<br><code>smembers key</code></li>
+<li>&#x5143;&#x7D20;&#x662F;&#x5426;&#x5B58;&#x5728;<br><code>sismember key member</code> &#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;O(1)</li>
+<li>&#x96C6;&#x5408;&#x95F4;&#x8FD0;&#x7B97;<br><code>sdiff key [key ...]</code><br><code>sinsert key [key ...]</code><br><code>sunion key [key ...]</code></li>
+<li>&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x4E2D;&#x96C6;&#x5408;&#x4E2A;&#x6570;<br><code>scard key</code></li>
+<li>&#x968F;&#x673A;&#x83B7;&#x5F97;&#x96C6;&#x5408;&#x4E2D;&#x5143;&#x7D20;<br><code>srandmember key [count]</code></li>
+<li>&#x4ECE;&#x96C6;&#x5408;&#x4E2D;&#x5F39;&#x51FA;&#x4E00;&#x4E2A;&#x5143;&#x7D20;<br><code>spop key</code></li>
+</ol>
+<h1 id="&#x6709;&#x5E8F;&#x96C6;&#x5408;"><a href="#&#x6709;&#x5E8F;&#x96C6;&#x5408;" class="headerlink" title="&#x6709;&#x5E8F;&#x96C6;&#x5408;"></a>&#x6709;&#x5E8F;&#x96C6;&#x5408;</h1><p>&#x7C7B;&#x4F3C;&#x7684;sortedSet<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x5165;&#x95E8;/1462169754.png" alt=""></p>
+<ol>
+<li>&#x589E;&#x52A0;&#x5143;&#x7D20;<br><code>zadd key score member [score member ...]</code><br>zadd&#x5411;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x4E2D;&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x548C;&#x8BE5;&#x5143;&#x7D20;&#x7684;&#x5206;&#x6570;. &#x5982;&#x679C;&#x8BE5;&#x5143;&#x7D20;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;, &#x5219;&#x4F1A;&#x7528;&#x5FC3;&#x7684;&#x5206;&#x6570;&#x66FF;&#x6362;&#x539F;&#x6765;&#x7684;&#x5206;&#x6570;, &#x5206;&#x6570;&#x4E0D;&#x4EC5;&#x652F;&#x6301;&#x6574;&#x6570;&#x8FD8;&#x652F;&#x6301;&#x6D6E;&#x70B9;&#x6570;</li>
+<li>&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x7684;&#x5206;&#x6570;<br><code>zscore key member</code></li>
+<li>&#x83B7;&#x5F97;&#x6392;&#x540D;&#x5728;&#x67D0;&#x4E2A;&#x8303;&#x56F4;&#x7684;&#x5143;&#x7D20;&#x5217;&#x8868;<br><code>zrange key start stop [withscores]</code><br><code>zrevrange key start stop [withscores]</code></li>
+<li>&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x5206;&#x6570;&#x8303;&#x56F4;<br><code>zrangebyscore key min max [withscores] [limit offset count]</code></li>
+<li>&#x589E;&#x52A0;&#x67D0;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5206;&#x6570;<br><code>zincrby key increment member</code></li>
+<li>&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x4E2D;&#x96C6;&#x5408;&#x7684;&#x6570;&#x91CF;<br><code>zcard key</code></li>
+<li>&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x5206;&#x6570;&#x8303;&#x56F4;&#x5185;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;<br><code>zcount key min max</code></li>
+<li>&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5143;&#x7D20;<br><code>zrem key member [member ...]</code></li>
+<li>&#x6309;&#x7167;&#x6392;&#x540D;&#x8303;&#x56F4;&#x5220;&#x9664;&#x5143;&#x7D20;<br><code>zremrangebyrank key start stop</code></li>
+<li>&#x6309;&#x7167;&#x5206;&#x6570;&#x8303;&#x56F4;&#x5220;&#x9664;&#x5143;&#x7D20;<br><code>zremrangebyscore key min max</code></li>
+<li>&#x83B7;&#x5F97;&#x5143;&#x7D20;&#x7684;&#x6392;&#x540D;<br><code>zrank key member</code><br><code>zrevrank  key member</code></li>
+</ol>
+
+          
         
       
     </div>
@@ -803,8 +786,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/16/hexo/hexo本地自动同步到VPS/" itemprop="url">
-                  hexo本地自动同步到VPS
+                <a class="post-title-link" href="/2016/05/01/数据库/redis/redis入门指南-准备/" itemprop="url">
+                  redis入门指南-准备
                 </a>
               
             
@@ -817,8 +800,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-16T18:09:00+08:00" content="2016-04-16">
-              2016-04-16
+            <time itemprop="dateCreated" datetime="2016-05-01T19:00:00+08:00" content="2016-05-01">
+              2016-05-01
             </time>
           </span>
 
@@ -831,8 +814,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
                   </a>
                 </span>
 
@@ -847,8 +830,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/16/hexo/hexo本地自动同步到VPS/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/16/hexo/hexo本地自动同步到VPS/" itemprop="commentsCount"></span>
+                <a href="/2016/05/01/数据库/redis/redis入门指南-准备/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/数据库/redis/redis入门指南-准备/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -858,7 +841,7 @@
 
           
           
-             <span id="/2016/04/16/hexo/hexo本地自动同步到VPS/" class="leancloud_visitors" data-flag-title="hexo本地自动同步到VPS">
+             <span id="/2016/05/01/数据库/redis/redis入门指南-准备/" class="leancloud_visitors" data-flag-title="redis入门指南-准备">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -881,12 +864,209 @@
 
       
         
-          <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>&#x5E38;&#x7528;&#x7684;hexo&#x90FD;&#x662F;&#x4F7F;&#x7528;github&#x6216;&#x8005;&#x5176;&#x4ED6;&#x7684;&#x4EE3;&#x7801;&#x6258;&#x7BA1;&#x5E73;&#x53F0;, &#x5982;&#x679C;&#x4F60;&#x6709;&#x4E00;&#x53F0;&#x81EA;&#x5DF1;&#x7684;VPS,&#x4F60;&#x60F3;&#x628A;hexo&#x653E;&#x5230;VPS&#x4E0A;&#x9762;, &#x53EF;&#x4EE5;&#x4F7F;&#x7528;hexo&#x63D0;&#x4F9B;&#x7684;&#x5176;&#x4ED6;&#x7684;&#x65B9;&#x6CD5;&#x6BD4;&#x5982;:Rsync,FTPSync&#x7B49;&#x5DE5;&#x5177;,&#x751A;&#x81F3;&#x624B;&#x52A8;&#x590D;&#x5236;&#x6587;&#x4EF6;,&#x6211;&#x5728;&#x5C1D;&#x8BD5;&#x4E86;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4E4B;&#x540E;, &#x53D1;&#x73B0;&#x5E76;&#x4E0D;&#x597D;&#x7528;,&#x6211;&#x5DF2;&#x7ECF;&#x4E60;&#x60EF;&#x4E86;&#x653E;&#x5230;github&#x4E0A;&#x9762;,&#x6211;&#x7684;&#x65B9;&#x6848;&#x662F;&#x8BA9;VPS&#x81EA;&#x5DF1;&#x53BB;github&#x4E0A;&#x9762;&#x62C9;&#x535A;&#x5BA2;&#x5230;&#x81EA;&#x5DF1;&#x7684;&#x672C;&#x5730;, &#x5199;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x811A;&#x672C;, &#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x8FD9;&#x4E48;&#x5E72;</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/16/hexo/hexo本地自动同步到VPS/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x8981;&#x5F00;&#x59CB;&#x5B89;&#x88C5;&#x5E76;&#x521D;&#x6B65;&#x4F7F;&#x7528;redis</p>
+<h1 id="&#x5B89;&#x88C5;redis"><a href="#&#x5B89;&#x88C5;redis" class="headerlink" title="&#x5B89;&#x88C5;redis"></a>&#x5B89;&#x88C5;redis</h1><p>&#x8FD9;&#x91CC;&#x6211;&#x8FD8;&#x662F;&#x5EFA;&#x8BAE;&#x4E0D;&#x8981;&#x5728;windows&#x4E0A;&#x5C1D;&#x8BD5;&#x5B89;&#x88C5;redis, &#x81EA;&#x5DF1;&#x4F7F;&#x7528;&#x865A;&#x62DF;&#x673A;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;linux&#x7CFB;&#x7EDF;(centos&#x6216;&#x8005;Ubuntu&#x90FD;&#x662F;&#x4E0D;&#x9519;&#x7684;&#x9009;&#x62E9;), &#x6211;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x7684;&#x662F;VM&#x5B89;&#x88C5;&#x7684;centos&#x7CFB;&#x7EDF;, centos&#x7684;&#x7248;&#x672C;&#x662F;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462103387.png" alt=""></p>
+<h2 id="&#x7248;&#x672C;&#x8BF4;&#x660E;"><a href="#&#x7248;&#x672C;&#x8BF4;&#x660E;" class="headerlink" title="&#x7248;&#x672C;&#x8BF4;&#x660E;"></a>&#x7248;&#x672C;&#x8BF4;&#x660E;</h2><p>redis&#x7684;&#x7248;&#x672C;&#x89C4;&#x5219;&#x662F;: &#x6B21;&#x7248;&#x672C;(&#x5C0F;&#x6570;&#x70B9;&#x540E;&#x7684;&#x4E00;&#x4F4D;)&#x4E3A;&#x5076;&#x6570;&#x7684;&#x7248;&#x672C;&#x662F;&#x7A33;&#x5B9A;&#x7248;(&#x5982;:2.4, 2.6), &#x5947;&#x6570;&#x7684;&#x8FD9;&#x662F;&#x975E;&#x7A33;&#x5B9A;&#x7684;&#x7248;&#x672C;(&#x5982;:2.5, 2.7)</p>
+<h2 id="&#x5728;linux&#x4E0A;&#x5B89;&#x88C5;"><a href="#&#x5728;linux&#x4E0A;&#x5B89;&#x88C5;" class="headerlink" title="&#x5728;linux&#x4E0A;&#x5B89;&#x88C5;"></a>&#x5728;linux&#x4E0A;&#x5B89;&#x88C5;</h2><p>&#x63A8;&#x8350;&#x4E0B;&#x8F7D;&#x7A33;&#x5B9A;&#x7684;&#x7248;&#x672C;, &#x5EFA;&#x8BAE;&#x81EA;&#x5DF1;&#x53BB;&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;&#x5305;, &#x81EA;&#x884C;&#x9009;&#x62E9;&#x7A33;&#x5B9A;&#x7684;&#x7248;&#x672C;, &#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;apt&#x6216;&#x8005;yum&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x5B89;&#x88C5;redis, &#x6211;&#x8FD9;&#x91CC;&#x5B89;&#x88C5;&#x6700;&#x65B0;&#x7684;&#x7A33;&#x5B9A;&#x7248;&#x672C;3.0.7, &#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x652F;&#x6301;&#x96C6;&#x7FA4;, &#x4E5F;&#x5C31;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x7279;&#x6027;&#x7684;redis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-3.0.7.tar.gz</span><br><span class="line">cd redis-3.0.7</span><br><span class="line">make </span><br><span class="line">make install</span><br><span class="line">make test</span><br></pre></td></tr></table></figure></p>
+<h2 id="&#x542F;&#x52A8;&#x548C;&#x505C;&#x6B62;redis"><a href="#&#x542F;&#x52A8;&#x548C;&#x505C;&#x6B62;redis" class="headerlink" title="&#x542F;&#x52A8;&#x548C;&#x505C;&#x6B62;redis"></a>&#x542F;&#x52A8;&#x548C;&#x505C;&#x6B62;redis</h2><p>redis&#x6709;&#x4E00;&#x4E9B;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;, &#x5982;&#x4E0B;&#x8868;:<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462104904.png" alt=""><br>&#x4F46;&#x662F;&#x6700;&#x5E38;&#x7528;&#x7684;&#x5C31;&#x662F;<code>redis-server</code> &#x548C; <code>redis-cli</code><br>redis-server: &#x7BA1;&#x7406;redis&#x670D;&#x52A1;(&#x542F;&#x505C;redis&#x670D;&#x52A1;)<br>redis-cli: redis&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5BA2;&#x6237;&#x7AEF;<br>&#x5728;&#x6211;&#x4EEC;&#x4F7F;&#x7528;<code>make install</code>&#x547D;&#x4EE4;&#x4E4B;&#x540E;, redis&#x4E2D;&#x7684;&#x8FD9;&#x4E9B;&#x7A0B;&#x5E8F;&#x4F1A;&#x81EA;&#x52A8;&#x590D;&#x5236;&#x5230;<code>/usr/local/bin/</code>&#x76EE;&#x5F55;&#x4E0B;&#x9762;, &#x6240;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x7A0B;&#x5E8F;, &#x4E0D;&#x9700;&#x8981;&#x989D;&#x5916;&#x7684;&#x914D;&#x7F6E;</p>
+<h3 id="&#x542F;&#x52A8;redis"><a href="#&#x542F;&#x52A8;redis" class="headerlink" title="&#x542F;&#x52A8;redis"></a>&#x542F;&#x52A8;redis</h3><h4 id="&#x76F4;&#x63A5;&#x542F;&#x52A8;"><a href="#&#x76F4;&#x63A5;&#x542F;&#x52A8;" class="headerlink" title="&#x76F4;&#x63A5;&#x542F;&#x52A8;"></a>&#x76F4;&#x63A5;&#x542F;&#x52A8;</h4><p>&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x9002;&#x7528;&#x4E8E;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4E2D;, &#x4F7F;&#x7528;<code>redis-server</code><br><code>redis-server --port 6379</code><br>&#x8FD9;&#x91CC;&#x6307;&#x5B9A;&#x4E86;&#x7AEF;&#x53E3;&#x53F7;, 6379&#x5C31;&#x662F;redis&#x9ED8;&#x8BA4;&#x7684;&#x7AEF;&#x53E3;&#x53F7;</p>
+<h4 id="&#x4F7F;&#x7528;&#x521D;&#x59CB;&#x5316;&#x811A;&#x672C;&#x542F;&#x52A8;"><a href="#&#x4F7F;&#x7528;&#x521D;&#x59CB;&#x5316;&#x811A;&#x672C;&#x542F;&#x52A8;" class="headerlink" title="&#x4F7F;&#x7528;&#x521D;&#x59CB;&#x5316;&#x811A;&#x672C;&#x542F;&#x52A8;"></a>&#x4F7F;&#x7528;&#x521D;&#x59CB;&#x5316;&#x811A;&#x672C;&#x542F;&#x52A8;</h4><p>&#x5728;redis&#x6E90;&#x4EE3;&#x7801;&#x4E2D;&#x5DF2;&#x7ECF;&#x7ED9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x521D;&#x59CB;&#x5316;&#x811A;&#x672C;&#x6A21;&#x7248;: <code>/redis-3.0.7/utils/redis_init_script</code>, &#x5185;&#x5BB9;&#x5176;&#x5B9E;&#x5F88;&#x7B80;&#x5355;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462105627.png" alt=""></p>
+<ol>
+<li><p>&#x590D;&#x5236;&#x521D;&#x59CB;&#x5316;&#x811A;&#x672C;&#x6A21;&#x7248;&#x5230;<code>/etc/init.d/</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp redis_init_script /etc/init.d/redis_6379</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x590D;&#x5236;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5230;<code>/etc/redis/</code><br>redis&#x6E90;&#x4EE3;&#x7801;&#x4E2D;&#x6709;redis&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;<code>/redis-3.0.7/redis.conf</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/redis</span><br><span class="line">cp /redis-3.0.7/redis.conf /etc/redis/6379.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x4FEE;&#x6539;redis&#x914D;&#x7F6E;&#x6587;&#x4EF6;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462106172.png" alt=""><br>&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x6C42;&#x8FDB;&#x884C;&#x66F4;&#x6539;&#x76F8;&#x5173;&#x914D;&#x7F6E;<br>&#x6211;&#x4EEC;&#x4E3A;&#x4E86;&#x8BA9;redis&#x5728;&#x540E;&#x53F0;&#x8FD0;&#x884C;, &#x9700;&#x8981;&#x4FEE;&#x6539;<code>daemonize=yes</code>&#x9ED8;&#x8BA4;&#x662F;no&#x7684;</p>
+</li>
+<li><p>&#x542F;&#x52A8;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/redis_6379 start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x968F;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x542F;&#x52A8;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig redis_6379 on</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#x6267;&#x884C;&#x4E4B;&#x540E;&#x4F1A;&#x51FA;&#x73B0;<code>service redis_6379 does not support chkconfig</code><br>&#x5728;<code>redis_6379</code>&#x7684;&#x6700;&#x524D;&#x9762;&#x52A0;&#x5165;&#x4E0B;&#x9762;&#x4E24;&#x884C;, &#x518D;&#x6267;&#x884C;&#x4E00;&#x904D;&#x5C31;ok&#x4E86;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># chkconfig:   2345 90 10</span><br><span class="line"># description:  Redis is a persistent key-value database</span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x505C;&#x6B62;"><a href="#&#x505C;&#x6B62;" class="headerlink" title="&#x505C;&#x6B62;"></a>&#x505C;&#x6B62;</h3><p>&#x7531;&#x4E8E;&#x5F3A;&#x884C;&#x505C;&#x6B62;redis&#x4F1A;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x4E0D;&#x80FD;&#x540C;&#x6B65;&#x5230;&#x786C;&#x76D8;, &#x6240;&#x4EE5;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x6B63;&#x786E;&#x7684;&#x65B9;&#x5F0F;&#x505C;&#x6B62;redis:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli SHUTDOWN</span><br></pre></td></tr></table></figure></p>
+<h2 id="redis&#x547D;&#x4EE4;&#x884C;&#x5BA2;&#x6237;&#x7AEF;"><a href="#redis&#x547D;&#x4EE4;&#x884C;&#x5BA2;&#x6237;&#x7AEF;" class="headerlink" title="redis&#x547D;&#x4EE4;&#x884C;&#x5BA2;&#x6237;&#x7AEF;"></a>redis&#x547D;&#x4EE4;&#x884C;&#x5BA2;&#x6237;&#x7AEF;</h2><p>&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x4F7F;&#x7528;<code>redis-cli</code>&#x6765;&#x5B66;&#x4E60;&#x4F7F;&#x7528;redis</p>
+<h3 id="&#x53D1;&#x9001;&#x547D;&#x4EE4;"><a href="#&#x53D1;&#x9001;&#x547D;&#x4EE4;" class="headerlink" title="&#x53D1;&#x9001;&#x547D;&#x4EE4;"></a>&#x53D1;&#x9001;&#x547D;&#x4EE4;</h3><p>&#x73B0;&#x5728;&#x6709;&#x4E24;&#x79CD;&#x6A21;&#x5F0F;, &#x4E00;&#x79CD;&#x662F;&#x5C06;&#x547D;&#x4EE4;&#x4F5C;&#x4E3A;redis-cli&#x7684;&#x53C2;&#x6570;&#x6267;&#x884C;, &#x4E00;&#x79CD;&#x662F;&#x4EA4;&#x4E92;&#x6A21;&#x5F0F;</p>
+<ol>
+<li><p>&#x547D;&#x4EE4;&#x53C2;&#x6570;&#x6A21;&#x5F0F;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># &#x8FDE;&#x63A5;redis, &#x662F;&#x4E0D;&#x662F;&#x548C;mysql&#x5F88;&#x50CF;</span><br><span class="line">redis-cli -h 127.0.0.1 -p 6379</span><br><span class="line"># &#x6D4B;&#x8BD5;&#x5BA2;&#x6237;&#x7AEF;&#x548C;redis&#x670D;&#x52A1;&#x7684;&#x8FDE;&#x63A5;, &#x5982;&#x679C;&#x8FD4;&#x56DE;PONG, &#x5219;&#x8868;&#x793A;&#x6B63;&#x5E38;</span><br><span class="line">redis-cli ping</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x4EA4;&#x4E92;&#x6A21;&#x5F0F;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462107972.png" alt=""></p>
+</li>
+</ol>
+<h3 id="&#x547D;&#x4EE4;&#x8FD4;&#x56DE;&#x503C;"><a href="#&#x547D;&#x4EE4;&#x8FD4;&#x56DE;&#x503C;" class="headerlink" title="&#x547D;&#x4EE4;&#x8FD4;&#x56DE;&#x503C;"></a>&#x547D;&#x4EE4;&#x8FD4;&#x56DE;&#x503C;</h3><p>&#x6267;&#x884C;&#x4E00;&#x6761;&#x547D;&#x4EE4;, &#x8FD4;&#x56DE;&#x503C;&#x6211;&#x4EEC;&#x5F88;&#x5173;&#x7CFB;, &#x547D;&#x4EE4;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x6709;5&#x79CD;&#x7C7B;&#x578B;</p>
+<ol>
+<li>&#x72B6;&#x6001;&#x56DE;&#x590D;<br>&#x6700;&#x7B80;&#x5355;, &#x5982;&#x4E0A;&#x9762;&#x7684;ping&#x6267;&#x884C;&#x8FD4;&#x56DE;PONG</li>
+<li>&#x9519;&#x8BEF;&#x56DE;&#x590D;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462108111.png" alt=""></li>
+<li>&#x6574;&#x6570;&#x56DE;&#x590D;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462108184.png" alt=""></li>
+<li>&#x5B57;&#x7B26;&#x4E32;&#x56DE;&#x590D;<br>&#x6700;&#x5E38;&#x89C1;&#x7C7B;&#x578B;, &#x5982;&#x679C;&#x7ED3;&#x679C;&#x662F;&#x7A7A;,&#x5219;&#x8FD4;&#x56DE;(nil)<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462108243.png" alt=""></li>
+<li>&#x591A;&#x884C;&#x5B57;&#x7B26;&#x4E32;&#x56DE;&#x590D;<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462108319.png" alt=""></li>
+</ol>
+<h2 id="&#x914D;&#x7F6E;"><a href="#&#x914D;&#x7F6E;" class="headerlink" title="&#x914D;&#x7F6E;"></a>&#x914D;&#x7F6E;</h2><p>redis&#x542F;&#x52A8;&#x670D;&#x52A1;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x989D;&#x5916;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;, &#x4F1A;&#x8986;&#x76D6;&#x539F;&#x6765;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;, &#x53E6;&#x5916;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x884C;&#x65B9;&#x5F0F;&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;(&#x90E8;&#x5206;)</p>
+<h2 id="&#x591A;&#x6570;&#x636E;&#x5E93;"><a href="#&#x591A;&#x6570;&#x636E;&#x5E93;" class="headerlink" title="&#x591A;&#x6570;&#x636E;&#x5E93;"></a>&#x591A;&#x6570;&#x636E;&#x5E93;</h2><p>&#x6211;&#x4EEC;&#x8BD5;&#x7740;&#x7528;&#x56FE;&#x5F62;&#x5316;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x7684;redis</p>
+<h3 id="&#x5F00;&#x542F;&#x8FDC;&#x7A0B;&#x8BBF;&#x95EE;"><a href="#&#x5F00;&#x542F;&#x8FDC;&#x7A0B;&#x8BBF;&#x95EE;" class="headerlink" title="&#x5F00;&#x542F;&#x8FDC;&#x7A0B;&#x8BBF;&#x95EE;"></a>&#x5F00;&#x542F;&#x8FDC;&#x7A0B;&#x8BBF;&#x95EE;</h3><p>&#x8981;&#x8FDC;&#x7A0B;&#x8FDE;&#x63A5;redis, &#x9700;&#x8981;&#x914D;&#x7F6E;&#x4E24;&#x4E2A;&#x5730;&#x65B9;</p>
+<ol>
+<li>&#x4FEE;&#x6539;config<br>&#x4FEE;&#x6539;<code>bind 0.0.0.0</code></li>
+<li>&#x6DFB;&#x52A0;6379&#x7AEF;&#x53E3;&#x5230;&#x9632;&#x706B;&#x5899;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/iptables</span><br><span class="line"># &#x6DFB;&#x52A0;</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 6379 -j ACCEPT</span><br><span class="line"># &#x91CD;&#x542F;&#x9632;&#x706B;&#x5899;</span><br><span class="line">service iptables restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="redis-desktop-manager"><a href="#redis-desktop-manager" class="headerlink" title="redis desktop manager"></a>redis desktop manager</h3><p><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462109533.png" alt=""></p>
+<h3 id="&#x591A;&#x6570;&#x636E;&#x5E93;-1"><a href="#&#x591A;&#x6570;&#x636E;&#x5E93;-1" class="headerlink" title="&#x591A;&#x6570;&#x636E;&#x5E93;"></a>&#x591A;&#x6570;&#x636E;&#x5E93;</h3><p><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x51C6;&#x5907;/1462109565.png" alt=""><br>&#x6211;&#x4EEC;&#x5F88;&#x76F4;&#x89C2;&#x7684;&#x770B;&#x5230;, redis&#x4E2D;&#x6709;16&#x4E2A;&#x6570;&#x636E;&#x5E93;, &#x540D;&#x5B57;&#x4ECE;0&#x5230;15, &#x5BA2;&#x6237;&#x7AEF;&#x4E0E;redis&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x540E;&#x4F1A;&#x81EA;&#x52A8;&#x9009;&#x62E9;0&#x53F7;&#x6570;&#x636E;&#x5E93;</p>
+<h1 id="&#x53C2;&#x8003;"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</h1><p><a href="">redis&#x5165;&#x95E8;&#x6307;&#x5357;</a></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/01/数据库/redis/redis入门指南-简介/" itemprop="url">
+                  redis入门指南-简介
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-01T10:37:00+08:00" content="2016-05-01">
+              2016-05-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/01/数据库/redis/redis入门指南-简介/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/数据库/redis/redis入门指南-简介/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/01/数据库/redis/redis入门指南-简介/" class="leancloud_visitors" data-flag-title="redis入门指南-简介">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>redis&#x4F5C;&#x4E3A;nosql&#x7684;&#x4EE3;&#x8868;&#x578B;&#x6570;&#x636E;&#x5E93;, &#x5E94;&#x7528;&#x975E;&#x5E38;&#x5E7F;&#x6CDB;, &#x7279;&#x70B9;&#x5C31;&#x662F;key-value&#x7684;&#x5B58;&#x50A8;, &#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x5927;&#x578B;&#x7684;&#x7F13;&#x5B58;&#x961F;&#x5217;, redis&#x6E90;&#x4EE3;&#x7801;&#x6258;&#x7BA1;&#x5728;github&#x4E0A;<a href="https://github.com/antirez/redis" target="_blank" rel="external">redis</a>,&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x6211;&#x6839;&#x636E;<code>redis&#x5165;&#x95E8;&#x6307;&#x5357;</code>&#x8FD9;&#x672C;&#x4E66;&#x5F00;&#x59CB;&#x5B66;&#x4E60;redis<br><img src="/2016/05/01/&#x6570;&#x636E;&#x5E93;/redis/redis&#x5165;&#x95E8;&#x6307;&#x5357;-&#x7B80;&#x4ECB;/1462080402.png" alt=""></p>
+<h1 id="&#x5B58;&#x50A8;&#x7ED3;&#x6784;"><a href="#&#x5B58;&#x50A8;&#x7ED3;&#x6784;" class="headerlink" title="&#x5B58;&#x50A8;&#x7ED3;&#x6784;"></a>&#x5B58;&#x50A8;&#x7ED3;&#x6784;</h1><h2 id="mongoDB"><a href="#mongoDB" class="headerlink" title="mongoDB"></a>mongoDB</h2><p>&#x6211;&#x4E4B;&#x524D;&#x63A5;&#x89E6;&#x6700;&#x591A;&#x7684;nosql&#x6570;&#x636E;&#x5E93;&#x5C31;&#x662F;<code>mongodb</code>, &#x5B83;&#x7684;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x662F;bson, BSON&#x662F;&#x4E00;&#x79CD;&#x7C7B;json&#x7684;&#x4E00;&#x79CD;&#x4E8C;&#x8FDB;&#x5236;&#x5F62;&#x5F0F;&#x7684;&#x5B58;&#x50A8;&#x683C;&#x5F0F;, &#x6240;&#x4EE5;&#x9002;&#x5408;&#x5B58;&#x50A8;json&#x5F62;&#x5F0F;&#x7684;&#x6570;&#x636E;, &#x662F;&#x4E00;&#x79CD;&#x6587;&#x6863;&#x578B;&#x7684;&#x6570;&#x636E;&#x5E93;, &#x662F;&#x6BD4;&#x8F83;&#x63A5;&#x8FD1;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;</p>
+<h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p>redis&#x662F;key-value&#x578B;&#x7684;&#x6570;&#x636E;&#x5E93;, &#x76EE;&#x6807;&#x662F;&#x4F5C;&#x4E3A;&#x9AD8;&#x6548;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x7F13;&#x5B58;.&#x6570;&#x636E;&#x4E00;&#x822C;&#x4E0D;&#x843D;&#x5730;,&#x4E5F;&#x4E0D;&#x9002;&#x5408;&#x4F5C;&#x4E3A;&#x5B58;&#x50A8;&#x548C;&#x5206;&#x6790;<br>&#x652F;&#x6301;&#x7684;&#x952E;&#x503C;&#x6570;&#x636E;&#x7C7B;&#x578B;:</p>
+<ol>
+<li>&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;</li>
+<li>&#x6563;&#x5217;&#x7C7B;&#x578B;</li>
+<li>&#x5217;&#x8868;&#x7C7B;&#x578B;</li>
+<li>&#x96C6;&#x5408;&#x7C7B;&#x578B;</li>
+<li>&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x7C7B;&#x578B;</li>
+</ol>
+<h1 id="&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x548C;&#x6301;&#x4E45;&#x5316;"><a href="#&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x548C;&#x6301;&#x4E45;&#x5316;" class="headerlink" title="&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x548C;&#x6301;&#x4E45;&#x5316;"></a>&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x548C;&#x6301;&#x4E45;&#x5316;</h1><p>redis&#x7684;&#x6570;&#x636E;&#x90FD;&#x662F;&#x5B58;&#x50A8;&#x5728;&#x5185;&#x5B58;&#x4E2D;, &#x5185;&#x5B58;&#x7684;&#x8BFB;&#x5199;&#x662F;&#x8FDC;&#x8FDC;&#x5FEB;&#x4E8E;&#x786C;&#x76D8;&#x7684;, &#x56E0;&#x6B64;redis&#x53EF;&#x4EE5;&#x9AD8;&#x6548;&#x7684;&#x8BFB;&#x5199;, &#x4F46;&#x662F;&#x653E;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x4E5F;&#x6709;&#x98CE;&#x9669;, &#x6240;&#x4EE5;redis&#x4E5F;&#x5BF9;&#x6301;&#x4E45;&#x5316;&#x63D0;&#x4F9B;&#x4E86;&#x652F;&#x6301;, &#x53EF;&#x4EE5;&#x5C06;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5F02;&#x6B65;&#x5199;&#x5165;&#x5230;&#x786C;&#x76D8;, &#x540C;&#x4E8B;&#x7EE7;&#x7EED;&#x63D0;&#x4F9B;&#x670D;&#x52A1;</p>
+<h1 id="&#x529F;&#x80FD;&#x4E30;&#x5BCC;"><a href="#&#x529F;&#x80FD;&#x4E30;&#x5BCC;" class="headerlink" title="&#x529F;&#x80FD;&#x4E30;&#x5BCC;"></a>&#x529F;&#x80FD;&#x4E30;&#x5BCC;</h1><h2 id="&#x7F13;&#x5B58;"><a href="#&#x7F13;&#x5B58;" class="headerlink" title="&#x7F13;&#x5B58;"></a>&#x7F13;&#x5B58;</h2><p>redis&#x4E3A;&#x6BCF;&#x4E2A;key&#x8BBE;&#x7F6E;&#x4E86;&#x751F;&#x5B58;&#x65F6;&#x95F4;, TTL, &#x751F;&#x5B58;&#x65F6;&#x95F4;&#x5230;&#x4E4B;&#x540E;&#x952E;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x5220;&#x9664;, &#x8FD9;&#x4E00;&#x529F;&#x80FD;&#x53EF;&#x4EE5;&#x8BA9;redis&#x4F5C;&#x4E3A;&#x7F13;&#x5B58;&#x7CFB;&#x7EDF;&#x6765;&#x4F7F;&#x7528;</p>
+<h3 id="redis&#x548C;memcached"><a href="#redis&#x548C;memcached" class="headerlink" title="redis&#x548C;memcached"></a>redis&#x548C;memcached</h3><p>redis&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x6A21;&#x578B;, memcached&#x652F;&#x6301;&#x591A;&#x7EBF;&#x7A0B;.&#x6240;&#x4EE5;&#x5728;&#x591A;&#x6838;&#x670D;&#x52A1;&#x5668;&#x4E0A;memcached&#x6027;&#x80FD;&#x66F4;&#x597D;.&#x4F46;&#x662F;&#x5982;&#x679C;&#x8981;&#x4F7F;&#x7528;&#x5230;&#x9AD8;&#x7EA7;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6216;&#x8005;&#x6301;&#x4E45;&#x5316;&#x529F;&#x80FD;, redis&#x66F4;&#x52A0;&#x51FA;</p>
+<h2 id="&#x961F;&#x5217;"><a href="#&#x961F;&#x5217;" class="headerlink" title="&#x961F;&#x5217;"></a>&#x961F;&#x5217;</h2><p>redis&#x867D;&#x7136;&#x662F;&#x4E00;&#x4E2A;nosql&#x7684;&#x6570;&#x636E;&#x5E93;, &#x4F46;&#x662F;&#x5728;&#x5E94;&#x7528;&#x4E0A;, &#x5F88;&#x591A;&#x7684;&#x516C;&#x53F8;&#x90FD;&#x5C06;redis&#x4F5C;&#x4E3A;&#x7F13;&#x5B58;, &#x961F;&#x5217;&#x6765;&#x4F7F;&#x7528;.&#x6BD4;&#x5982;&#x4E00;&#x4E2A;&#x722C;&#x866B;&#x7CFB;&#x7EDF;&#x4E2D;, redis&#x4F5C;&#x4E3A;&#x5B58;&#x50A8;url&#x7684;&#x961F;&#x5217;, &#x722C;&#x866B;&#x670D;&#x52A1;&#x4ECE;redis&#x961F;&#x5217;&#x4E2D;&#x83B7;&#x53D6;url, &#x7136;&#x540E;&#x6293;&#x53D6;, &#x6293;&#x53D6;&#x7684;&#x7ED3;&#x679C;&#x8FD8;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x653E;&#x5230;redis&#x53E6;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x4E2D;, redis&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x591A;&#x4E2A;&#x961F;&#x5217;</p>
+<h1 id="&#x7B80;&#x5355;&#x7A33;&#x5B9A;"><a href="#&#x7B80;&#x5355;&#x7A33;&#x5B9A;" class="headerlink" title="&#x7B80;&#x5355;&#x7A33;&#x5B9A;"></a>&#x7B80;&#x5355;&#x7A33;&#x5B9A;</h1><p>&#x5BF9;&#x4E8E;&#x4F20;&#x7EDF;&#x7684;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;, &#x67E5;&#x8BE2;&#x4E00;&#x4E2A;posts&#x8868;&#x4E2D;&#x4E00;&#x884C;&#x8BB0;&#x5F55;&#x8981;&#x8FD9;&#x6837;<br><code>select title from posts where id = 1</code><br>&#x800C;redis&#x662F;&#x8FD9;&#x6837;<br><code>HGET post:1 title</code></p>
+<h2 id="&#x7B80;&#x5355;"><a href="#&#x7B80;&#x5355;" class="headerlink" title="&#x7B80;&#x5355;"></a>&#x7B80;&#x5355;</h2><p>redis&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x591A;&#x7684;&#x7C7B;&#x4F3C;<code>HGET</code>&#x7684;&#x547D;&#x4EE4;, &#x4F46;&#x662F;&#x5E38;&#x89C1;&#x7684;&#x5C31;&#x5341;&#x51E0;&#x4E2A;, &#x7528;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x7684;&#x7B80;&#x5355;</p>
+<h2 id="&#x4EE3;&#x7801;&#x91CF;&#x5C0F;"><a href="#&#x4EE3;&#x7801;&#x91CF;&#x5C0F;" class="headerlink" title="&#x4EE3;&#x7801;&#x91CF;&#x5C0F;"></a>&#x4EE3;&#x7801;&#x91CF;&#x5C0F;</h2><p>redis&#x7528;c&#x5F00;&#x53D1;, &#x4EE3;&#x7801;&#x91CF;&#x53EA;&#x6709;3w&#x591A;&#x884C;, &#x800C;&#x4E14;&#x5F00;&#x6E90;, &#x6240;&#x4EE5;&#x5BF9;&#x4E8E;&#x60F3;&#x4E86;&#x89E3;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x6765;&#x8BF4;,&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x4FEE;&#x6539;&#x6E90;&#x4EE3;&#x7801;&#x6765;&#x6EE1;&#x8DB3;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x6C42;</p>
+<h2 id="&#x652F;&#x6301;&#x5BA2;&#x6237;&#x7AEF;"><a href="#&#x652F;&#x6301;&#x5BA2;&#x6237;&#x7AEF;" class="headerlink" title="&#x652F;&#x6301;&#x5BA2;&#x6237;&#x7AEF;"></a>&#x652F;&#x6301;&#x5BA2;&#x6237;&#x7AEF;</h2><p>redis&#x63D0;&#x4F9B;&#x4E86;&#x51E0;&#x5341;&#x79CD;&#x8BED;&#x8A00;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5E93;, &#x6240;&#x4EE5;&#x4E0D;&#x7BA1;&#x4F60;&#x7528;&#x4EC0;&#x4E48;&#x8BED;&#x8A00;&#x5F00;&#x53D1;, redis&#x90FD;&#x53EF;&#x4EE5;&#x652F;&#x6301;</p>
+<h2 id="&#x53EF;&#x9760;"><a href="#&#x53EF;&#x9760;" class="headerlink" title="&#x53EF;&#x9760;"></a>&#x53EF;&#x9760;</h2><p>redis&#x7684;&#x5F00;&#x6E90;, &#x793E;&#x533A;&#x6D3B;&#x8DC3;, &#x4F7F;&#x7528;&#x7684;&#x4E2A;&#x4EBA;&#x548C;&#x516C;&#x53F8;&#x8D8A;&#x6765;&#x8D8A;&#x591A;, redis&#x4E5F;&#x5F00;&#x59CB;&#x53D8;&#x5F97;&#x8D8A;&#x6765;&#x8D8A;&#x6210;&#x719F;&#x7A33;&#x5B9A;</p>
+
+          
         
       
     </div>
@@ -917,7 +1097,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -958,7 +1138,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -975,7 +1155,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
