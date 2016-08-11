@@ -1,0 +1,852 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="etcd,gRPC,RPC,HTTP/2,google,protocol buffers,远程过程调用协议," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x76EE;&amp;#x5F55;[TOC]
+&amp;#x524D;&amp;#x8A00;gRPC&amp;#x662F;&amp;#x7531;Google&amp;#x4E3B;&amp;#x5BFC;&amp;#x5F00;&amp;#x53D1;&amp;#x7684;RPC&amp;#x6846;&amp;#x67B6;, &amp;#x4F7F;&amp;#x7528;HTTP/2&amp;#x534F;&amp;#x8BAE;&amp;#x5E76;&amp;#x7528;ProtoBuf&amp;#x4F5C;&amp;#x4E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gRPC">
+<meta property="og:url" content="http://yoursite.com/2016/07/04/杂/gRPC/index.html">
+<meta property="og:site_name" content="一个爬虫工程师的技术博客">
+<meta property="og:description" content="&amp;#x76EE;&amp;#x5F55;[TOC]
+&amp;#x524D;&amp;#x8A00;gRPC&amp;#x662F;&amp;#x7531;Google&amp;#x4E3B;&amp;#x5BFC;&amp;#x5F00;&amp;#x53D1;&amp;#x7684;RPC&amp;#x6846;&amp;#x67B6;, &amp;#x4F7F;&amp;#x7528;HTTP/2&amp;#x534F;&amp;#x8BAE;&amp;#x5E76;&amp;#x7528;ProtoBuf&amp;#x4F5C;&amp;#x4E">
+<meta property="og:image" content="http://yoursite.com/2016/07/04/杂/gRPC/1467636396.png">
+<meta property="og:image" content="http://yoursite.com/2016/07/04/杂/gRPC/rpc-1.jpg">
+<meta property="og:image" content="http://yoursite.com/2016/07/04/杂/gRPC/1467630603.png">
+<meta property="og:image" content="http://yoursite.com/2016/07/04/杂/gRPC/1467720154.png">
+<meta property="og:image" content="http://yoursite.com/2016/07/04/杂/gRPC/1467720178.png">
+<meta property="og:image" content="http://yoursite.com/2016/07/04/杂/gRPC/1467723507.png">
+<meta property="og:updated_time" content="2016-07-13T03:20:04.293Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gRPC">
+<meta name="twitter:description" content="&amp;#x76EE;&amp;#x5F55;[TOC]
+&amp;#x524D;&amp;#x8A00;gRPC&amp;#x662F;&amp;#x7531;Google&amp;#x4E3B;&amp;#x5BFC;&amp;#x5F00;&amp;#x53D1;&amp;#x7684;RPC&amp;#x6846;&amp;#x67B6;, &amp;#x4F7F;&amp;#x7528;HTTP/2&amp;#x534F;&amp;#x8BAE;&amp;#x5E76;&amp;#x7528;ProtoBuf&amp;#x4F5C;&amp;#x4E">
+<meta name="twitter:image" content="http://yoursite.com/2016/07/04/杂/gRPC/1467636396.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6261769725999580000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> gRPC | 一个爬虫工程师的技术博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7840c40eebaccc88eb16af700e755c7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一个爬虫工程师的技术博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">thunder</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                gRPC
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-04T14:42:00+08:00" content="2016-07-04">
+              2016-07-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/gRPC/" itemprop="url" rel="index">
+                    <span itemprop="name">gRPC</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/04/杂/gRPC/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/04/杂/gRPC/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/04/杂/gRPC/" class="leancloud_visitors" data-flag-title="gRPC">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="&#x76EE;&#x5F55;"><a href="#&#x76EE;&#x5F55;" class="headerlink" title="&#x76EE;&#x5F55;"></a>&#x76EE;&#x5F55;</h1><p>[TOC]</p>
+<h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p><code>gRPC</code>&#x662F;&#x7531;<code>Google</code>&#x4E3B;&#x5BFC;&#x5F00;&#x53D1;&#x7684;<code>RPC</code>&#x6846;&#x67B6;, &#x4F7F;&#x7528;<code>HTTP/2</code>&#x534F;&#x8BAE;&#x5E76;&#x7528;<code>ProtoBuf</code>&#x4F5C;&#x4E3A;&#x5E8F;&#x5217;&#x5316;&#x5DE5;&#x5177;.<br>&#x5728;<code>gRPC</code>&#x91CC;&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x7528;&#x53EF;&#x4EE5;&#x50CF;&#x8C03;&#x7528;&#x672C;&#x5730;&#x5BF9;&#x8C61;&#x4E00;&#x6837;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x53E6;&#x4E00;&#x53F0;&#x4E0D;&#x540C;&#x7684;&#x673A;&#x5668;&#x4E0A;&#x670D;&#x52A1;&#x7AEF;&#x5E94;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x5F97;&#x7528;&#x6237;&#x80FD;&#x591F;&#x66F4;&#x5BB9;&#x6613;&#x5730;&#x521B;&#x5EFA;&#x5206;&#x5E03;&#x5F0F;&#x5E94;&#x7528;&#x548C;&#x670D;&#x52A1;. <a href="http://www.grpc.io/" target="_blank" rel="external">grpc&#x5B98;&#x7F51;</a><br><img src="/2016/07/04/&#x6742;/gRPC/1467636396.png" alt=""><br><a id="more"></a></p>
+<h1 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h1><h2 id="&#x4EC0;&#x4E48;&#x662F;RPC"><a href="#&#x4EC0;&#x4E48;&#x662F;RPC" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;RPC?"></a>&#x4EC0;&#x4E48;&#x662F;RPC?</h2><p>RPC: Remote Procedure Call&#x8FDC;&#x7A0B;&#x8FC7;&#x7A0B;&#x8C03;&#x7528;.&#x5B83;&#x662F;&#x4E00;&#x79CD;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x4ECE;&#x8FDC;&#x7A0B;&#x8BA1;&#x7B97;&#x673A;&#x7A0B;&#x5E8F;&#x4E0A;&#x8BF7;&#x6C42;&#x670D;&#x52A1;, &#x800C;&#x4E0D;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x5E95;&#x5C42;&#x7F51;&#x7EDC;&#x6280;&#x672F;&#x7684;&#x534F;&#x8BAE;.&#x7B80;&#x5355;&#x7684;&#x7406;&#x89E3;&#x5C31;&#x662F;:&#x4ECE;&#x4E00;&#x53F0;&#x673A;&#x5668;&#xFF08;&#x5BA2;&#x6237;&#x7AEF;&#xFF09;&#x4E0A;&#x901A;&#x8FC7;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7684;&#x65B9;&#x5F0F;&#x8C03;&#x7528;&#x53E6;&#x4E00;&#x53F0;&#x673A;&#x5668;&#xFF08;&#x670D;&#x52A1;&#x5668;&#xFF09;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6216;&#x65B9;&#x6CD5;&#xFF08;&#x53EF;&#x4EE5;&#x7EDF;&#x79F0;&#x4E3A;&#x670D;&#x52A1;&#xFF09;&#x5E76;&#x5F97;&#x5230;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;<br>&#x6709;&#x5982;&#x4E0B;&#x7279;&#x70B9;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. RPC &#x4F1A;&#x9690;&#x85CF;&#x5E95;&#x5C42;&#x7684;&#x901A;&#x8BAF;&#x7EC6;&#x8282;&#xFF08;&#x4E0D;&#x9700;&#x8981;&#x76F4;&#x63A5;&#x5904;&#x7406;Socket&#x901A;&#x8BAF;&#x6216;Http&#x901A;&#x8BAF;&#xFF09;</span><br><span class="line">2. RPC &#x662F;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x54CD;&#x5E94;&#x6A21;&#x578B;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x54CD;&#x5E94;&#xFF08;&#x7C7B;&#x4F3C;&#x4E8E;Http&#x7684;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#xFF09;</span><br><span class="line">3. RPC &#x5728;&#x4F7F;&#x7528;&#x5F62;&#x5F0F;&#x4E0A;&#x50CF;&#x8C03;&#x7528;&#x672C;&#x5730;&#x51FD;&#x6570;&#xFF08;&#x6216;&#x65B9;&#x6CD5;&#xFF09;&#x4E00;&#x6837;&#x53BB;&#x8C03;&#x7528;&#x8FDC;&#x7A0B;&#x7684;&#x51FD;&#x6570;&#xFF08;&#x6216;&#x65B9;&#x6CD5;&#xFF09;&#x3002;</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E0B;&#x9762;&#x8FD9;&#x5F20;&#x56FE;&#x5C55;&#x793A;&#x4E86;RPC&#x7684;&#x539F;&#x7406;:<br><img src="/2016/07/04/&#x6742;/gRPC/rpc-1.jpg" alt=""></p>
+<h2 id="RPC&#x7684;&#x53D1;&#x5C55;&#x8DEF;&#x7A0B;"><a href="#RPC&#x7684;&#x53D1;&#x5C55;&#x8DEF;&#x7A0B;" class="headerlink" title="RPC&#x7684;&#x53D1;&#x5C55;&#x8DEF;&#x7A0B;"></a>RPC&#x7684;&#x53D1;&#x5C55;&#x8DEF;&#x7A0B;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. ONC RPC &#xFF08;&#x5F00;&#x653E;&#x7F51;&#x7EDC;&#x8BA1;&#x7B97;&#x7684;&#x8FDC;&#x7A0B;&#x8FC7;&#x7A0B;&#x8C03;&#x7528;&#xFF09;&#xFF0C;OSF RPC&#xFF08;&#x5F00;&#x653E;&#x8F6F;&#x4EF6;&#x57FA;&#x91D1;&#x4F1A;&#x7684;&#x8FDC;&#x7A0B;&#x8FC7;&#x7A0B;&#x8C03;&#x7528;&#xFF09;</span><br><span class="line">2. CORBA&#xFF08;Common Object Request Broker Architecture&#x516C;&#x5171;&#x5BF9;&#x8C61;&#x8BF7;&#x6C42;&#x4EE3;&#x7406;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#xFF09;</span><br><span class="line">3. DCOM&#xFF08;&#x5206;&#x5E03;&#x5F0F;&#x7EC4;&#x4EF6;&#x5BF9;&#x8C61;&#x6A21;&#x578B;&#xFF09;&#xFF0C;COM+</span><br><span class="line">4. Java RMI (remote method invocation&#x8FDC;&#x7A0B;&#x65B9;&#x6CD5;&#x8C03;&#x7528;)</span><br><span class="line">5. .NET Remoting</span><br><span class="line">6. XML-RPC&#xFF0C;SOAP&#xFF0C;Web Service </span><br><span class="line">7. PHPRPC&#xFF0C;Hessian&#xFF0C;JSON-RPC</span><br><span class="line">8. Microsoft WCF&#xFF0C;WebAPI</span><br><span class="line">9. ZeroC Ice&#xFF0C;Thrift&#xFF0C;GRPC</span><br><span class="line">10. Hprose</span><br></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x7528;&#x7684;&#x975E;&#x5E38;&#x5E7F;&#x6CDB;&#x7684;<code>restful web service</code>&#x4E5F;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;<code>RPC</code>&#x7684;&#x5B9E;&#x73B0;</p>
+<h1 id="thrift"><a href="#thrift" class="headerlink" title="thrift"></a>thrift</h1><p><code>thrift</code>&#x662F;&#x4E00;&#x4E2A;<code>RPC</code>&#x7684;&#x5B9E;&#x73B0;, <code>thrift</code>&#x6700;&#x521D;&#x7531;<code>facebook</code>&#x7814;&#x53D1;, &#x73B0;&#x5DF2;&#x6210;&#x4E3A;<code>apache</code>&#x4E0B;&#x9762;&#x7684;&#x5F00;&#x6E90;&#x9879;&#x76EE;.</p>
+<h2 id="IDL"><a href="#IDL" class="headerlink" title="IDL"></a>IDL</h2><p><code>thrift</code>&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x4E00;&#x5957;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x8BED;&#x8A00;: IDL(Thrift interface description language), &#x8FD9;&#x91CC;&#x5C31;&#x5FFD;&#x7565;<code>IDL</code>&#x7684;&#x8BED;&#x6CD5;</p>
+<h2 id="helloword"><a href="#helloword" class="headerlink" title="helloword"></a>helloword</h2><p>&#x6211;&#x4EEC;&#x62FF;<code>java</code>&#x548C;<code>python</code>&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;, &#x73B0;&#x5728;&#x6709;&#x4E24;&#x4E2A;&#x7A0B;&#x5E8F;&#x5206;&#x522B;&#x7531;<code>java</code>&#x548C;<code>python</code>&#x7F16;&#x5199;, &#x73B0;&#x6A21;&#x62DF;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">namespace java com.test</span><br><span class="line"> </span><br><span class="line">service  HelloWorldService {</span><br><span class="line">  string sayHello(1:string username)</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p><a href="">&#x8BF7;&#x89C2;&#x770B;&#x8BE6;&#x7EC6;&#x6F14;&#x793A;</a></p>
+<h2 id="thrift&#x7684;&#x4F18;&#x70B9;"><a href="#thrift&#x7684;&#x4F18;&#x70B9;" class="headerlink" title="thrift&#x7684;&#x4F18;&#x70B9;"></a>thrift&#x7684;&#x4F18;&#x70B9;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. &#x652F;&#x6301;&#x7684;&#x8BED;&#x8A00;&#x5E7F;&#x6CDB;</span><br><span class="line">2. &#x652F;&#x6301;&#x534F;&#x8BAE;&#x66F4;&#x591A;</span><br><span class="line">3. &#x7279;&#x6027;&#x4E30;&#x5BCC;, &#x652F;&#x6301;&#x7684;&#x7C7B;&#x578B;&#x66F4;&#x591A;</span><br><span class="line">4. &#x5F88;&#x591A;&#x5F00;&#x6E90;&#x9879;&#x76EE;&#x90FD;&#x652F;&#x6301;thrift</span><br></pre></td></tr></table></figure>
+<h2 id="thrift&#x7684;&#x7F3A;&#x70B9;"><a href="#thrift&#x7684;&#x7F3A;&#x70B9;" class="headerlink" title="thrift&#x7684;&#x7F3A;&#x70B9;"></a>thrift&#x7684;&#x7F3A;&#x70B9;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. &#x57FA;&#x672C;&#x6CA1;&#x6709;&#x5B98;&#x65B9;&#x6587;&#x6863;</span><br><span class="line">2. bug fix &#x4E0D;&#x79EF;&#x6781;</span><br><span class="line">3. &#x73B0;&#x5728;&#x6700;&#x65B0;&#x7684;thrift&#x7248;&#x672C;&#x8FD8;&#x505C;&#x7559;&#x5728;v0.9.3, </span><br><span class="line">4. &#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0D;&#x80FD;&#x5FC5;&#x987B;&#x4E8B;&#x5148;&#x5B9A;&#x4E49;,&#x4E2D;&#x9014;&#x4E0D;&#x80FD;&#x6539;&#x53D8;,&#x82E5;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x5FC5;&#x987B;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#xFF0C;&#x7F16;&#x8BD1;</span><br></pre></td></tr></table></figure>
+<h1 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h1><p><code>gRPC</code>&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x7AEF;&#x53EF;&#x4EE5;&#x5728;&#x591A;&#x79CD;&#x73AF;&#x5883;&#x4E2D;&#x8FD0;&#x884C;&#x548C;&#x4EA4;&#x4E92; - &#x4ECE;<code>google</code>&#x5185;&#x90E8;&#x7684;&#x670D;&#x52A1;&#x5668;&#x5230;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x7B14;&#x8BB0;&#x672C;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x7528;&#x4EFB;&#x4F55; <code>RPC</code>&#x6301;&#x7684;&#x8BED;&#x8A00;&#x6765;&#x7F16;&#x5199;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5730;&#x7528;<code>Java</code>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;<code>gRPC</code> &#x670D;&#x52A1;&#x7AEF;&#xFF0C;&#x7528;<code>Go&#x3001;Python&#x3001;Ruby</code>&#x6765;&#x521B;&#x5EFA;&#x5BA2;&#x6237;&#x7AEF;. &#x53EF;&#x4EE5;&#x5728;<code>github</code>&#x4E0A;&#x627E;&#x5230;&#x5404;&#x79CD;&#x8BED;&#x8A00;&#x7684;&#x5B9E;&#x73B0;<a href="https://github.com/grpc" target="_blank" rel="external">grpc</a><br><img src="/2016/07/04/&#x6742;/gRPC/1467630603.png" alt=""></p>
+<h2 id="protocal-buffers"><a href="#protocal-buffers" class="headerlink" title="protocal buffers"></a>protocal buffers</h2><p><code>gRPC</code>&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;<code>protocal buffers</code>, &#x8FD9;&#x662F;<code>google</code>&#x5F00;&#x6E90;&#x7684;&#x4E00;&#x5957;&#x6210;&#x719F;&#x7684;&#x7ED3;&#x6784;&#x6570;&#x636E;&#x5E8F;&#x5217;&#x5316;&#x673A;&#x5236;.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. &#x5B9A;&#x4E49;&#x4E00;&#x79CD;message&#x7684;&#x683C;&#x5F0F;(.proto&#x6587;&#x4EF6;)</span><br><span class="line">2. &#x4F7F;&#x7528;&#x7F16;&#x8BD1;&#x5668;&#x5BF9;message&#x8FDB;&#x884C;&#x7F16;&#x8BD1;, &#x8F6C;&#x5316;&#x4E3A;&#x5BF9;&#x5E94;&#x8BED;&#x8A00;&#x7684;&#x4EE3;&#x7801;(&#x8F6C;&#x5316;&#x4E3A;&#x4E00;&#x4E2A;&#x7C7B;)</span><br><span class="line">3. &#x63D0;&#x4F9B;&#x5BF9;&#x5E94;&#x8BED;&#x8A00;&#x7684;API&#x6765;&#x64CD;&#x4F5C;&#x8FD9;&#x4E9B;message</span><br><span class="line">4. &#x5BF9;&#x65E7;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x8FDB;&#x884C;&#x517C;&#x5BB9;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Powerful-IDL"><a href="#Powerful-IDL" class="headerlink" title="Powerful IDL"></a>Powerful IDL</h3><p>Define your service using Protocol Buffers, a powerful binary serialization toolset and language.<br>&#x793A;&#x4F8B;: <code>PersonMsg.proto</code>&#x6587;&#x4EF6;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">message Person {</span><br><span class="line">  // ID&#xFF08;&#x5FC5;&#x9700;&#xFF09;</span><br><span class="line">  required int32 id = 1;</span><br><span class="line">  </span><br><span class="line">  // &#x59D3;&#x540D;&#xFF08;&#x5FC5;&#x9700;&#xFF09;</span><br><span class="line">  required string name = 2;</span><br><span class="line">  </span><br><span class="line">  // email&#xFF08;&#x53EF;&#x9009;&#xFF09;</span><br><span class="line">  optional string email = 3;</span><br><span class="line"></span><br><span class="line">  // &#x670B;&#x53CB;&#xFF08;&#x96C6;&#x5408;&#xFF09;</span><br><span class="line">  repeated string friends = 4;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E0A;&#x9762;&#x7684;1&#x3001;2&#x3001;3&#x3001;4&#x662F;<code>unique numbered tag</code>&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x552F;&#x4E00;&#x6807;&#x8BC6;</p>
+<h3 id="&#x7F16;&#x8BD1;&#x6210;java&#x6587;&#x4EF6;"><a href="#&#x7F16;&#x8BD1;&#x6210;java&#x6587;&#x4EF6;" class="headerlink" title="&#x7F16;&#x8BD1;&#x6210;java&#x6587;&#x4EF6;"></a>&#x7F16;&#x8BD1;&#x6210;java&#x6587;&#x4EF6;</h3><p>&#x6709;&#x4E86;<code>.proto</code>&#x6587;&#x4EF6;, &#x63A5;&#x4E0B;&#x6765;&#x751F;&#x6210;&#x7C7B;(<code>java</code>&#x4EE3;&#x7801;)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c:\protoc.exe --java_out=E:\god\ProtocTest PersonMsg.proto</span><br></pre></td></tr></table></figure></p>
+<p>&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A;<code>PersonMsg.java</code></p>
+<h3 id="&#x4F7F;&#x7528;API"><a href="#&#x4F7F;&#x7528;API" class="headerlink" title="&#x4F7F;&#x7528;API"></a>&#x4F7F;&#x7528;API</h3><p>&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x5BF9;<code>message</code>&#x8FDB;&#x884C;&#x5E8F;&#x5217;&#x5316;&#x548C;&#x53CD;&#x5E8F;&#x5217;&#x5316;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import java.io.ByteArrayInputStream;</span><br><span class="line">import java.io.ByteArrayOutputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Test {</span><br><span class="line">    public static void main(String[] args) throws IOException {</span><br><span class="line"></span><br><span class="line">        // &#x6309;&#x7167;&#x5B9A;&#x4E49;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Person</span><br><span class="line">        PersonMsg.Person.Builder personBuilder = PersonMsg.Person.newBuilder();</span><br><span class="line">        personBuilder.setId(1);</span><br><span class="line">        personBuilder.setName(&quot;&#x9A6C;&#x5F3A;&quot;);</span><br><span class="line">        personBuilder.setEmail(&quot;xxg@wahley.com&quot;);</span><br><span class="line">        personBuilder.addFriends(&quot;Friend A&quot;);</span><br><span class="line">        personBuilder.addFriends(&quot;Friend B&quot;);</span><br><span class="line">        PersonMsg.Person xxg = personBuilder.build();</span><br><span class="line"></span><br><span class="line">        // &#x5C06;&#x6570;&#x636E;&#x5199;&#x5230;&#x8F93;&#x51FA;&#x6D41;&#xFF0C;&#x5982;&#x7F51;&#x7EDC;&#x8F93;&#x51FA;&#x6D41;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x7528;ByteArrayOutputStream&#x6765;&#x4EE3;&#x66FF;</span><br><span class="line">        ByteArrayOutputStream output = new ByteArrayOutputStream();</span><br><span class="line">        xxg.writeTo(output);</span><br><span class="line"></span><br><span class="line">        // -------------- &#x5206;&#x5272;&#x7EBF;&#xFF1A;&#x4E0A;&#x9762;&#x662F;&#x53D1;&#x9001;&#x65B9;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x5E8F;&#x5217;&#x5316;&#x540E;&#x53D1;&#x9001; ---------------</span><br><span class="line"></span><br><span class="line">        byte[] byteArray = output.toByteArray();</span><br><span class="line"></span><br><span class="line">        // -------------- &#x5206;&#x5272;&#x7EBF;&#xFF1A;&#x4E0B;&#x9762;&#x662F;&#x63A5;&#x6536;&#x65B9;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x63A5;&#x6536;&#x540E;&#x53CD;&#x5E8F;&#x5217;&#x5316; ---------------</span><br><span class="line"></span><br><span class="line">        // &#x63A5;&#x6536;&#x5230;&#x6D41;&#x5E76;&#x8BFB;&#x53D6;&#xFF0C;&#x5982;&#x7F51;&#x7EDC;&#x8F93;&#x5165;&#x6D41;&#xFF0C;&#x8FD9;&#x91CC;&#x7528;ByteArrayInputStream&#x6765;&#x4EE3;&#x66FF;</span><br><span class="line">        ByteArrayInputStream input = new ByteArrayInputStream(byteArray);</span><br><span class="line"></span><br><span class="line">        // &#x53CD;&#x5E8F;&#x5217;&#x5316;</span><br><span class="line">        PersonMsg.Person xxg2 = PersonMsg.Person.parseFrom(input);</span><br><span class="line">        System.out.println(&quot;ID:&quot; + xxg2.getId());</span><br><span class="line">        System.out.println(&quot;name:&quot; + xxg2.getName());</span><br><span class="line">        System.out.println(&quot;email:&quot; + xxg2.getEmail());</span><br><span class="line">        System.out.println(&quot;friend:&quot;);</span><br><span class="line">        List&lt;String&gt; friends = xxg2.getFriendsList();</span><br><span class="line">        for (String friend : friends) {</span><br><span class="line">            System.out.println(friend);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<h2 id="HTTP-2"><a href="#HTTP-2" class="headerlink" title="HTTP/2"></a>HTTP/2</h2><blockquote>
+<p>Building on the HTTP/2 standard brings many capabilities such as bidirectional streaming, flow control, header compression, multiplexing requests over a single TCP connection and more.<br>These features save battery life and data usage on mobile devices while speeding up services and web applications running in the cloud.</p>
+</blockquote>
+<p><code>gRPC</code>&#x662F;&#x57FA;&#x4E8E;<code>HTTP/2</code>&#x6807;&#x51C6;&#x8BBE;&#x8BA1;, &#x5E26;&#x6765;&#x4E86;&#x8BF8;&#x5982;&#x53CC;&#x5411;&#x6D41;,&#x6D41;&#x63A7;,&#x5934;&#x90E8;&#x538B;&#x7F29;, &#x5355;<code>TCP</code>&#x8FDE;&#x63A5;&#x4E0A;&#x7684;&#x591A;&#x8DEF;&#x590D;&#x7528;&#x7B49;&#x7B49;, &#x8FD9;&#x4E9B;&#x7279;&#x6027;&#x4F7F;&#x5F97;&#x5B83;&#x5728;&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x4E0A;&#x8868;&#x73B0;&#x66F4;&#x597D;, &#x66F4;&#x7701;&#x7535;&#x548C;&#x8282;&#x7701;&#x7A7A;&#x95F4;&#x5360;&#x7528;(&#x8282;&#x7701;&#x5E26;&#x5BBD;&#x3001;&#x964D;&#x4F4E;<code>TCP</code>&#x94FE;&#x63A5;&#x6B21;&#x6570;&#x3001;&#x8282;&#x7701;<code>CPU</code>&#x4F7F;&#x7528;&#x548C;&#x5EF6;&#x957F;&#x7535;&#x6C60;&#x5BFF;&#x547D;)</p>
+<h2 id="&#x4F7F;&#x7528;gRPC"><a href="#&#x4F7F;&#x7528;gRPC" class="headerlink" title="&#x4F7F;&#x7528;gRPC"></a>&#x4F7F;&#x7528;gRPC</h2><p>&#x60F3;&#x4F7F;&#x7528;<code>gRPC</code>, &#x53EF;&#x4EE5;&#x5728;<code>github</code>&#x4E0A;&#x641C;&#x7D22;<code>grpc</code>, &#x6BD4;&#x5982;java&#x7248;&#x672C;&#x7684;<a href="https://github.com/grpc/grpc-java" target="_blank" rel="external">grpc-java</a></p>
+<h1 id="gRPC&#x548C;thrift&#x6BD4;&#x8F83;"><a href="#gRPC&#x548C;thrift&#x6BD4;&#x8F83;" class="headerlink" title="gRPC&#x548C;thrift&#x6BD4;&#x8F83;"></a>gRPC&#x548C;thrift&#x6BD4;&#x8F83;</h1><p><img src="/2016/07/04/&#x6742;/gRPC/1467720154.png" alt=""><br><img src="/2016/07/04/&#x6742;/gRPC/1467720178.png" alt=""></p>
+<h1 id="&#x8BE5;&#x9009;&#x62E9;gRPC&#x8FD8;&#x662F;thrift"><a href="#&#x8BE5;&#x9009;&#x62E9;gRPC&#x8FD8;&#x662F;thrift" class="headerlink" title="&#x8BE5;&#x9009;&#x62E9;gRPC&#x8FD8;&#x662F;thrift?"></a>&#x8BE5;&#x9009;&#x62E9;gRPC&#x8FD8;&#x662F;thrift?</h1><h2 id="&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9009;&#x62E9;gRPC"><a href="#&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9009;&#x62E9;gRPC" class="headerlink" title="&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9009;&#x62E9;gRPC?"></a>&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9009;&#x62E9;gRPC?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. &#x9700;&#x8981;&#x826F;&#x597D;&#x7684;&#x6587;&#x6863;&#x3001;&#x793A;&#x4F8B;</span><br><span class="line">2. &#x559C;&#x6B22;&#x3001;&#x4E60;&#x60EF;HTTP/2&#x3001;ProtoBuf</span><br><span class="line">3. &#x5BF9;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#x5E26;&#x5BBD;&#x654F;&#x611F;</span><br></pre></td></tr></table></figure>
+<h2 id="&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9009;&#x62E9;thrift"><a href="#&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9009;&#x62E9;thrift" class="headerlink" title="&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9009;&#x62E9;thrift?"></a>&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9009;&#x62E9;thrift?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. &#x9700;&#x8981;&#x5728;&#x975E;&#x5E38;&#x591A;&#x7684;&#x8BED;&#x8A00;&#x95F4;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4EA4;&#x6362; (&#x652F;&#x6301;&#x8BED;&#x8A00;&#x66F4;&#x591A;)</span><br><span class="line">2. &#x534F;&#x8BAE;&#x5C42;&#x3001;&#x4F20;&#x8F93;&#x5C42;&#x6709;&#x591A;&#x79CD;&#x63A7;&#x5236;&#x8981;&#x6C42; (&#x652F;&#x6301;&#x7684;&#x534F;&#x8BAE;&#x66F4;&#x591A;)</span><br><span class="line">3. &#x9700;&#x8981;&#x7A33;&#x5B9A;&#x7684;&#x7248;&#x672C; </span><br><span class="line">4. &#x4E0D;&#x9700;&#x8981;&#x826F;&#x597D;&#x7684;&#x6587;&#x6863;&#x548C;&#x793A;&#x4F8B;</span><br></pre></td></tr></table></figure>
+<h1 id="etcd3&#x4E2D;&#x7684;gRPC"><a href="#etcd3&#x4E2D;&#x7684;gRPC" class="headerlink" title="etcd3&#x4E2D;&#x7684;gRPC"></a>etcd3&#x4E2D;&#x7684;gRPC</h1><p>&#x6700;&#x65B0;&#x53D1;&#x5E03;&#x7684;<code>etcd3</code>&#x4E2D;&#x4F7F;&#x7528;&#x4E86;&#x7684;<code>gRPC</code></p>
+<blockquote>
+<p>Native etcd3 clients communicate over a gRPC protocol. The protocol messages are defined using protobuf, which simplifies the generation of efficient RPC stub code and makes protocol extensions easier to manage. For comparison, even after optimizing etcd2&#x2019;s client-side JSON parsing, etcd3 gRPC still holds a 2x message processing performance edge over etcd2. Likewise, gRPC is better at handling connections. Where gRPC uses HTTP2 to multiplex multiple streams of RPCs over a single TCP connection, a JSON client must establish a new connection for every request.</p>
+</blockquote>
+<p>&#x4E0B;&#x9762;&#x662F;<code>centos</code>&#x4E2D;&#x5B98;&#x7F51;&#x7684;&#x5BF9;&#x4F7F;&#x7528;<code>gRPC</code>&#x7684;&#x4ECB;&#x7ECD;<br><a href="http://www.grpc.io/posts/coreos" target="_blank" rel="external">grpc&#x4E2D;&#x5173;&#x4E8E;&#x4F7F;&#x7528;rest&#x7684;&#x4ECB;&#x7ECD;</a><br><a href="https://coreos.com/blog/gRPC-protobufs-swagger.html" target="_blank" rel="external">CoreOS&#x4E2D;&#x5173;&#x4E8E;grpc&#x7684;&#x4ECB;&#x7ECD;</a><br><img src="/2016/07/04/&#x6742;/gRPC/1467723507.png" alt=""></p>
+<h1 id="&#x53C2;&#x8003;"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</h1><p><a href="https://coreos.com/blog/gRPC-protobufs-swagger.html" target="_blank" rel="external">Take a REST with HTTP/2, Protobufs, and Swagger</a><br><a href="http://www.grpc.io/posts/coreos" target="_blank" rel="external">gRPC with REST and Open APIs</a><br><a href="https://coreos.com/blog/etcd3-a-new-etcd.html" target="_blank" rel="external">etcd3: A new etcd</a><br><a href="https://www.zhihu.com/question/25536695" target="_blank" rel="external">&#x8C01;&#x80FD;&#x7528;&#x901A;&#x4FD7;&#x7684;&#x8BED;&#x8A00;&#x89E3;&#x91CA;&#x4E00;&#x4E0B;&#x4EC0;&#x4E48;&#x662F;RPC&#x6846;&#x67B6;&#xFF1F;</a><br><a href="https://segmentfault.com/q/1010000003064904?_ea=298208" target="_blank" rel="external">&#x4EC0;&#x4E48;&#x662F; RESTful &#xFF1F;&#x5230;&#x5E95; REST &#x548C; SOAP&#x3001;RPC &#x6709;&#x4F55;&#x533A;&#x522B;&#xFF1F;</a><br><a href="http://www.jianshu.com/p/0f4113d6ec4b" target="_blank" rel="external">thrift&#x5165;&#x95E8;&#x6559;&#x7A0B;</a><br><a href="http://www.jianshu.com/p/c95cc11ef001" target="_blank" rel="external">Protocol Buffer &#x57FA;&#x7840;&#x6559;&#x7A0B;: Java</a><br><a href="http://blog.csdn.net/dazheng/article/details/48830511" target="_blank" rel="external">gRPC vs Thrift</a><br><a href="http://www.tuicool.com/articles/2q2iuy2" target="_blank" rel="external">Java&#x4F7F;&#x7528;Protocol Buffers&#x5165;&#x95E8;&#x56DB;&#x6B65;&#x9AA4;</a><br><a href="http://doc.oschina.net/grpc" target="_blank" rel="external">gRPC &#x5B98;&#x65B9;&#x6587;&#x6863;&#x4E2D;&#x6587;&#x7248;</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/etcd/" rel="tag">#etcd</a>
+          
+            <a href="/tags/gRPC/" rel="tag">#gRPC</a>
+          
+            <a href="/tags/RPC/" rel="tag">#RPC</a>
+          
+            <a href="/tags/HTTP-2/" rel="tag">#HTTP/2</a>
+          
+            <a href="/tags/google/" rel="tag">#google</a>
+          
+            <a href="/tags/protocol-buffers/" rel="tag">#protocol buffers</a>
+          
+            <a href="/tags/远程过程调用协议/" rel="tag">#远程过程调用协议</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/04/爬虫/scrapy教程/" rel="next" title="scrapy教程">
+                <i class="fa fa-chevron-left"></i> scrapy教程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/20/爬虫/scrapy教程/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/04/杂/gRPC/"
+     data-title="gRPC"
+     data-content=""
+     data-url="http://yoursite.com/2016/07/04/杂/gRPC/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/04/杂/gRPC/"
+           data-title="gRPC" data-url="http://yoursite.com/2016/07/04/杂/gRPC/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/thunder.jpg"
+               alt="忍者神龟" />
+          <p class="site-author-name" itemprop="name">忍者神龟</p>
+          <p class="site-description motion-element" itemprop="description">爱打篮球的程序狗</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">57</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maqiangThunder" target="_blank" title="github">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ma-qiang-97-67" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2357192812?is_all=1" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/54292285/" target="_blank" title="douban">
+                  
+                    <i class="fa fa-douban"></i>
+                  
+                  douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RPC"><span class="nav-number">3.</span> <span class="nav-text">RPC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是RPC"><span class="nav-number">3.1.</span> <span class="nav-text">什么是RPC?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPC的发展路程"><span class="nav-number">3.2.</span> <span class="nav-text">RPC的发展路程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#thrift"><span class="nav-number">4.</span> <span class="nav-text">thrift</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IDL"><span class="nav-number">4.1.</span> <span class="nav-text">IDL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#helloword"><span class="nav-number">4.2.</span> <span class="nav-text">helloword</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thrift的优点"><span class="nav-number">4.3.</span> <span class="nav-text">thrift的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thrift的缺点"><span class="nav-number">4.4.</span> <span class="nav-text">thrift的缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gRPC"><span class="nav-number">5.</span> <span class="nav-text">gRPC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#protocal-buffers"><span class="nav-number">5.1.</span> <span class="nav-text">protocal buffers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Powerful-IDL"><span class="nav-number">5.1.1.</span> <span class="nav-text">Powerful IDL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译成java文件"><span class="nav-number">5.1.2.</span> <span class="nav-text">编译成java文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用API"><span class="nav-number">5.1.3.</span> <span class="nav-text">使用API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-2"><span class="nav-number">5.2.</span> <span class="nav-text">HTTP/2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用gRPC"><span class="nav-number">5.3.</span> <span class="nav-text">使用gRPC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gRPC和thrift比较"><span class="nav-number">6.</span> <span class="nav-text">gRPC和thrift比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#该选择gRPC还是thrift"><span class="nav-number">7.</span> <span class="nav-text">该选择gRPC还是thrift?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么时候选择gRPC"><span class="nav-number">7.1.</span> <span class="nav-text">什么时候选择gRPC?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么时候选择thrift"><span class="nav-number">7.2.</span> <span class="nav-text">什么时候选择thrift?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#etcd3中的gRPC"><span class="nav-number">8.</span> <span class="nav-text">etcd3中的gRPC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">忍者神龟</span>
+</div>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"thunder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Jami1E0cgfUeRuh2tT7nCTiD-gzGzoHsz", "fIQ3Jv2Nad8zoCKQ8oMxphTh");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

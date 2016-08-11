@@ -1,0 +1,844 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,scrapy,xpath,爬虫," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x76EE;&amp;#x5F55;[TOC]
+&amp;#x524D;&amp;#x8A00;scrapy&amp;#x73B0;&amp;#x5728;&amp;#x5DF2;&amp;#x7ECF;&amp;#x5728;&amp;#x6211;&amp;#x4EEC;&amp;#x7684;&amp;#x201D;&amp;#x96C5;&amp;#x5178;&amp;#x5A1C;&amp;#x201D;&amp;#x7CFB;&amp;#x7EDF;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;, &amp;#x5B83;&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scrapy教程">
+<meta property="og:url" content="http://yoursite.com/2016/07/04/爬虫/scrapy教程/index.html">
+<meta property="og:site_name" content="一个爬虫工程师的技术博客">
+<meta property="og:description" content="&amp;#x76EE;&amp;#x5F55;[TOC]
+&amp;#x524D;&amp;#x8A00;scrapy&amp;#x73B0;&amp;#x5728;&amp;#x5DF2;&amp;#x7ECF;&amp;#x5728;&amp;#x6211;&amp;#x4EEC;&amp;#x7684;&amp;#x201D;&amp;#x96C5;&amp;#x5178;&amp;#x5A1C;&amp;#x201D;&amp;#x7CFB;&amp;#x7EDF;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;, &amp;#x5B83;&amp;#">
+<meta property="og:image" content="http://yoursite.com/2016/07/04/爬虫/scrapy教程/1469020331.png">
+<meta property="og:updated_time" content="2016-07-21T01:34:35.841Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scrapy教程">
+<meta name="twitter:description" content="&amp;#x76EE;&amp;#x5F55;[TOC]
+&amp;#x524D;&amp;#x8A00;scrapy&amp;#x73B0;&amp;#x5728;&amp;#x5DF2;&amp;#x7ECF;&amp;#x5728;&amp;#x6211;&amp;#x4EEC;&amp;#x7684;&amp;#x201D;&amp;#x96C5;&amp;#x5178;&amp;#x5A1C;&amp;#x201D;&amp;#x7CFB;&amp;#x7EDF;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;, &amp;#x5B83;&amp;#">
+<meta name="twitter:image" content="http://yoursite.com/2016/07/04/爬虫/scrapy教程/1469020331.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6261769725999580000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> scrapy教程 | 一个爬虫工程师的技术博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7840c40eebaccc88eb16af700e755c7c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一个爬虫工程师的技术博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">thunder</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                scrapy教程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-04T14:42:00+08:00" content="2016-07-04">
+              2016-07-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/scrapy/" itemprop="url" rel="index">
+                    <span itemprop="name">scrapy</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/04/爬虫/scrapy教程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/04/爬虫/scrapy教程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/04/爬虫/scrapy教程/" class="leancloud_visitors" data-flag-title="scrapy教程">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="&#x76EE;&#x5F55;"><a href="#&#x76EE;&#x5F55;" class="headerlink" title="&#x76EE;&#x5F55;"></a>&#x76EE;&#x5F55;</h1><p>[TOC]</p>
+<h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>scrapy&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x201D;&#x96C5;&#x5178;&#x5A1C;&#x201D;&#x7CFB;&#x7EDF;&#x4E2D;&#x4F7F;&#x7528;, &#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x7684;&#x7531;python&#x7F16;&#x5199;&#x7684;&#x6210;&#x719F;&#x7684;&#x722C;&#x866B;&#x6846;&#x67B6;, git&#x5730;&#x5740;<a href="https://github.com/scrapy/scrapy" target="_blank" rel="external">scrapy</a></p>
+<h1 id="&#x9700;&#x8981;&#x638C;&#x63E1;&#x7684;&#x6280;&#x672F;&#x548C;&#x5DE5;&#x5177;"><a href="#&#x9700;&#x8981;&#x638C;&#x63E1;&#x7684;&#x6280;&#x672F;&#x548C;&#x5DE5;&#x5177;" class="headerlink" title="&#x9700;&#x8981;&#x638C;&#x63E1;&#x7684;&#x6280;&#x672F;&#x548C;&#x5DE5;&#x5177;"></a>&#x9700;&#x8981;&#x638C;&#x63E1;&#x7684;&#x6280;&#x672F;&#x548C;&#x5DE5;&#x5177;</h1><ol>
+<li>&#x722C;&#x866B;&#x76F8;&#x5173;&#x77E5;&#x8BC6;(&#x722C;&#x866B;&#x53CD;&#x722C;&#x866B;)</li>
+<li>xpath&#x8BED;&#x6CD5;, css&#x9009;&#x62E9;&#x5668;&#x8BED;&#x6CD5;</li>
+<li>scrapy</li>
+<li>Bloom Filter</li>
+<li>python-rq</li>
+<li>redis&#x6216;mongodb</li>
+</ol>
+<h1 id="&#x5B89;&#x88C5;scrapy"><a href="#&#x5B89;&#x88C5;scrapy" class="headerlink" title="&#x5B89;&#x88C5;scrapy"></a>&#x5B89;&#x88C5;scrapy</h1><p>&#x8FD9;&#x91CC;&#x5728;ubuntu&#x4E0A;&#x5B89;&#x88C5;</p>
+<ol>
+<li>&#x9996;&#x5148;&#x5B89;&#x88C5;python, &#x7248;&#x672C;2.7.3</li>
+<li><code>sudo apt-get install python-dev</code></li>
+<li><code>sudo apt-get install libevent-dev</code></li>
+<li><code>pip install Scrapy</code><br>&#x4E0B;&#x9762;&#x662F;&#x5728;windows 64&#x4E0A;&#x5B89;&#x88C5;scrapy&#x7684;&#x6559;&#x7A0B;<a href="http://www.waitalone.cn/python-scrapy-install.html" target="_blank" rel="external">[python]Win7 X64&#x5B89;&#x88C5;python Scrapy</a></li>
+</ol>
+<h1 id="&#x5165;&#x95E8;&#x6848;&#x4F8B;-&#x4ECE;w3school-com-cn&#x5F00;&#x59CB;"><a href="#&#x5165;&#x95E8;&#x6848;&#x4F8B;-&#x4ECE;w3school-com-cn&#x5F00;&#x59CB;" class="headerlink" title="&#x5165;&#x95E8;&#x6848;&#x4F8B;: &#x4ECE;w3school.com.cn&#x5F00;&#x59CB;"></a>&#x5165;&#x95E8;&#x6848;&#x4F8B;: &#x4ECE;<code>w3school.com.cn</code>&#x5F00;&#x59CB;</h1><ol>
+<li>&#x5EFA;&#x7ACB;&#x9879;&#x76EE;: <code>scrapy startproject w3school</code></li>
+<li><p>&#x7F16;&#x5199;Item: &#x7F16;&#x8F91;items.py, &#x5BF9;&#x6293;&#x53D6;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x7ED3;&#x6784;&#x5316;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import scrapy</span><br><span class="line">from scrapy.item import Item,Field</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class W3SchoolItem(scrapy.Item):</span><br><span class="line">    # define the fields for your item here like:</span><br><span class="line">    # name = scrapy.Field()</span><br><span class="line">    title = Field()</span><br><span class="line">    link = Field()  </span><br><span class="line">    desc = Field()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x7F16;&#x5199;pipelines.py: &#x4E3B;&#x8981;&#x5B8C;&#x6210;&#x6570;&#x636E;&#x7684;&#x67E5;&#x91CD;&#x3001;&#x4E22;&#x5F03;&#xFF0C;&#x9A8C;&#x8BC1;item&#x4E2D;&#x6570;&#x636E;&#xFF0C;&#x5C06;&#x5F97;&#x5230;&#x7684;item&#x6570;&#x636E;&#x4FDD;&#x5B58;&#x7B49;&#x5DE5;&#x4F5C;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import json  </span><br><span class="line">import codecs  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">class W3SchoolPipeline(object):  </span><br><span class="line">    def __init__(self):  </span><br><span class="line">        self.file = codecs.open(&apos;w3school_data_utf8.json&apos;, &apos;wb&apos;, encoding=&apos;utf-8&apos;)  </span><br><span class="line">  </span><br><span class="line">    def process_item(self, item, spider):  </span><br><span class="line">        line = json.dumps(dict(item)) + &apos;\n&apos;  </span><br><span class="line">        # print line  </span><br><span class="line">        self.file.write(line.decode(&quot;unicode_escape&quot;))  </span><br><span class="line">        return item</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>settings.py &#x5F00;&#x542F;piplines</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = {  </span><br><span class="line">    &apos;w3school.pipelines.W3SchoolPipeline&apos;:300  </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x7F16;&#x5199;&#x722C;&#x866B;: &#x5728;spiders&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x65B0;&#x5EFA;: w3cshool_spider.py</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python  </span><br><span class="line"># -*- coding:utf-8 -*-  </span><br><span class="line">  </span><br><span class="line">from scrapy.spider import Spider  </span><br><span class="line">from scrapy.selector import Selector  </span><br><span class="line">from scrapy import log  </span><br><span class="line">  </span><br><span class="line">from w3school.items import W3schoolItem  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">class W3schoolSpider(Spider):  </span><br><span class="line">    &quot;&quot;&quot;&#x722C;&#x53D6;w3school&#x6807;&#x7B7E;&quot;&quot;&quot;  </span><br><span class="line">    #log.start(&quot;log&quot;,loglevel=&apos;INFO&apos;)  </span><br><span class="line">    name = &quot;w3school&quot;  </span><br><span class="line">    allowed_domains = [&quot;w3school.com.cn&quot;]  </span><br><span class="line">    start_urls = [  </span><br><span class="line">        &quot;http://www.w3school.com.cn/xml/xml_syntax.asp&quot;  </span><br><span class="line">    ]  </span><br><span class="line">  </span><br><span class="line">    def parse(self, response):  </span><br><span class="line">  </span><br><span class="line">        sel = Selector(response)  </span><br><span class="line">        sites = sel.xpath(&apos;//div[@id=&quot;navsecond&quot;]/div[@id=&quot;course&quot;]/ul[1]/li&apos;)  </span><br><span class="line">        items = []  </span><br><span class="line">  </span><br><span class="line">        for site in sites:  </span><br><span class="line">            item = W3schoolItem()  </span><br><span class="line">  </span><br><span class="line">            title = site.xpath(&apos;a/text()&apos;).extract()  </span><br><span class="line">            link = site.xpath(&apos;a/@href&apos;).extract()  </span><br><span class="line">            desc = site.xpath(&apos;a/@title&apos;).extract()  </span><br><span class="line">  </span><br><span class="line">            item[&apos;title&apos;] = [t.encode(&apos;utf-8&apos;) for t in title]  </span><br><span class="line">            item[&apos;link&apos;] = [l.encode(&apos;utf-8&apos;) for l in link]  </span><br><span class="line">            item[&apos;desc&apos;] = [d.encode(&apos;utf-8&apos;) for d in desc]  </span><br><span class="line">            items.append(item)  </span><br><span class="line">  </span><br><span class="line">            #&#x8BB0;&#x5F55;  </span><br><span class="line">            log.msg(&quot;Appending item...&quot;,level=&apos;INFO&apos;)  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">        log.msg(&quot;Append done.&quot;,level=&apos;INFO&apos;)  </span><br><span class="line">        return items</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x6267;&#x884C;&#x722C;&#x866B;<br><code>scrapy crawl w3school --set LOG_FILE=log</code></p>
+</li>
+</ol>
+<h1 id="Scrapy&#x6838;&#x5FC3;&#x67B6;&#x6784;&#x4E0E;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x5206;&#x6790;"><a href="#Scrapy&#x6838;&#x5FC3;&#x67B6;&#x6784;&#x4E0E;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x5206;&#x6790;" class="headerlink" title="Scrapy&#x6838;&#x5FC3;&#x67B6;&#x6784;&#x4E0E;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x5206;&#x6790;"></a>Scrapy&#x6838;&#x5FC3;&#x67B6;&#x6784;&#x4E0E;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x5206;&#x6790;</h1><p><img src="/2016/07/04/&#x722C;&#x866B;/scrapy&#x6559;&#x7A0B;/1469020331.png" alt=""><br>&#x8FD9;&#x4E2A;&#x662F;&#x5B98;&#x7F51;&#x7684;scrapy&#x6846;&#x67B6;&#x56FE;, &#x4ECB;&#x7ECD;&#x7684;&#x5F88;&#x8BE6;&#x7EC6;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. &#x5F15;&#x64CE;(Scrapy Engine)&#xFF0C;&#x7528;&#x6765;&#x5904;&#x7406;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x6570;&#x636E;&#x6D41;&#x5904;&#x7406;&#xFF0C;&#x89E6;&#x53D1;&#x4E8B;&#x52A1;&#x3002;</span><br><span class="line">2. &#x8C03;&#x5EA6;&#x5668;(Scheduler)&#xFF0C;&#x7528;&#x6765;&#x63A5;&#x53D7;&#x5F15;&#x64CE;&#x53D1;&#x8FC7;&#x6765;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x538B;&#x5165;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x5E76;&#x5728;&#x5F15;&#x64CE;&#x518D;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x5019;&#x8FD4;&#x56DE;&#x3002;</span><br><span class="line">3. &#x4E0B;&#x8F7D;&#x5668;(Downloader)&#xFF0C;&#x7528;&#x4E8E;&#x4E0B;&#x8F7D;&#x7F51;&#x9875;&#x5185;&#x5BB9;&#xFF0C;&#x5E76;&#x5C06;&#x7F51;&#x9875;&#x5185;&#x5BB9;&#x8FD4;&#x56DE;&#x7ED9;&#x8718;&#x86DB;&#x3002;</span><br><span class="line">4. &#x8718;&#x86DB;(Spiders)&#xFF0C;&#x8718;&#x86DB;&#x662F;&#x4E3B;&#x8981;&#x5E72;&#x6D3B;&#x7684;&#xFF0C;&#x7528;&#x5B83;&#x6765;&#x5236;&#x8BA2;&#x7279;&#x5B9A;&#x57DF;&#x540D;&#x6216;&#x7F51;&#x9875;&#x7684;&#x89E3;&#x6790;&#x89C4;&#x5219;&#x3002;&#x7F16;&#x5199;&#x7528;&#x4E8E;&#x5206;&#x6790;response&#x5E76;&#x63D0;&#x53D6;item(&#x5373;&#x83B7;&#x53D6;&#x5230;&#x7684;item)&#x6216;&#x989D;&#x5916;&#x8DDF;&#x8FDB;&#x7684;URL&#x7684;&#x7C7B;&#x3002; &#x6BCF;&#x4E2A;spider&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x4E00;&#x4E2A;&#x7279;&#x5B9A;(&#x6216;&#x4E00;&#x4E9B;)&#x7F51;&#x7AD9;&#x3002;</span><br><span class="line">5. &#x9879;&#x76EE;&#x7BA1;&#x9053;(Item Pipeline)&#xFF0C;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x6709;&#x8718;&#x86DB;&#x4ECE;&#x7F51;&#x9875;&#x4E2D;&#x62BD;&#x53D6;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x4ED6;&#x7684;&#x4E3B;&#x8981;&#x4EFB;&#x52A1;&#x662F;&#x6E05;&#x6670;&#x3001;&#x9A8C;&#x8BC1;&#x548C;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x3002;&#x5F53;&#x9875;&#x9762;&#x88AB;&#x8718;&#x86DB;&#x89E3;&#x6790;&#x540E;&#xFF0C;&#x5C06;&#x88AB;&#x53D1;&#x9001;&#x5230;&#x9879;&#x76EE;&#x7BA1;&#x9053;&#xFF0C;&#x5E76;&#x7ECF;&#x8FC7;&#x51E0;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x6B21;&#x5E8F;&#x5904;&#x7406;&#x6570;&#x636E;&#x3002;</span><br><span class="line">6. &#x4E0B;&#x8F7D;&#x5668;&#x4E2D;&#x95F4;&#x4EF6;(Downloader Middlewares)&#xFF0C;&#x4F4D;&#x4E8E;Scrapy&#x5F15;&#x64CE;&#x548C;&#x4E0B;&#x8F7D;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x94A9;&#x5B50;&#x6846;&#x67B6;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x5904;&#x7406;Scrapy&#x5F15;&#x64CE;&#x4E0E;&#x4E0B;&#x8F7D;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x8BF7;&#x6C42;&#x53CA;&#x54CD;&#x5E94;&#x3002;</span><br><span class="line">7. &#x8718;&#x86DB;&#x4E2D;&#x95F4;&#x4EF6;(Spider Middlewares)&#xFF0C;&#x4ECB;&#x4E8E;Scrapy&#x5F15;&#x64CE;&#x548C;&#x8718;&#x86DB;&#x4E4B;&#x95F4;&#x7684;&#x94A9;&#x5B50;&#x6846;&#x67B6;&#xFF0C;&#x4E3B;&#x8981;&#x5DE5;&#x4F5C;&#x662F;&#x5904;&#x7406;&#x8718;&#x86DB;&#x7684;&#x54CD;&#x5E94;&#x8F93;&#x5165;&#x548C;&#x8BF7;&#x6C42;&#x8F93;&#x51FA;&#x3002;</span><br><span class="line">8. &#x8C03;&#x5EA6;&#x4E2D;&#x95F4;&#x4EF6;(Scheduler Middlewares)&#xFF0C;&#x4ECB;&#x4E8E;Scrapy&#x5F15;&#x64CE;&#x548C;&#x8C03;&#x5EA6;&#x4E4B;&#x95F4;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x4ECE;Scrapy&#x5F15;&#x64CE;&#x53D1;&#x9001;&#x5230;&#x8C03;&#x5EA6;&#x7684;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x3002;</span><br></pre></td></tr></table></figure></p>
+<h1 id="&#x81EA;&#x52A8;&#x722C;&#x53D6;&#x7F51;&#x9875;&#x4E4B;-crawlspider"><a href="#&#x81EA;&#x52A8;&#x722C;&#x53D6;&#x7F51;&#x9875;&#x4E4B;-crawlspider" class="headerlink" title="&#x81EA;&#x52A8;&#x722C;&#x53D6;&#x7F51;&#x9875;&#x4E4B;:crawlspider"></a>&#x81EA;&#x52A8;&#x722C;&#x53D6;&#x7F51;&#x9875;&#x4E4B;:crawlspider</h1><h1 id="&#x5982;&#x4F55;&#x9632;&#x6B62;&#x88AB;ban&#x4E4B;&#x7B56;&#x7565;&#x5927;&#x96C6;&#x5408;"><a href="#&#x5982;&#x4F55;&#x9632;&#x6B62;&#x88AB;ban&#x4E4B;&#x7B56;&#x7565;&#x5927;&#x96C6;&#x5408;" class="headerlink" title="&#x5982;&#x4F55;&#x9632;&#x6B62;&#x88AB;ban&#x4E4B;&#x7B56;&#x7565;&#x5927;&#x96C6;&#x5408;"></a>&#x5982;&#x4F55;&#x9632;&#x6B62;&#x88AB;ban&#x4E4B;&#x7B56;&#x7565;&#x5927;&#x96C6;&#x5408;</h1><h1 id="&#x53C2;&#x8003;"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</h1><p><a href="http://www.jianshu.com/p/a8aad3bf4dc4" target="_blank" rel="external">&#x5B66;&#x4E60;Scrapy&#x5165;&#x95E8;</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/scrapy/" rel="tag">#scrapy</a>
+          
+            <a href="/tags/xpath/" rel="tag">#xpath</a>
+          
+            <a href="/tags/爬虫/" rel="tag">#爬虫</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/15/杂/加菲猫帮助教程/" rel="next" title="加菲猫帮助教程">
+                <i class="fa fa-chevron-left"></i> 加菲猫帮助教程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/04/杂/gRPC/" rel="prev" title="gRPC">
+                gRPC <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/04/爬虫/scrapy教程/"
+     data-title="scrapy教程"
+     data-content=""
+     data-url="http://yoursite.com/2016/07/04/爬虫/scrapy教程/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/04/爬虫/scrapy教程/"
+           data-title="scrapy教程" data-url="http://yoursite.com/2016/07/04/爬虫/scrapy教程/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/thunder.jpg"
+               alt="忍者神龟" />
+          <p class="site-author-name" itemprop="name">忍者神龟</p>
+          <p class="site-description motion-element" itemprop="description">爱打篮球的程序狗</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">57</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maqiangThunder" target="_blank" title="github">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ma-qiang-97-67" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2357192812?is_all=1" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/54292285/" target="_blank" title="douban">
+                  
+                    <i class="fa fa-douban"></i>
+                  
+                  douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需要掌握的技术和工具"><span class="nav-number">3.</span> <span class="nav-text">需要掌握的技术和工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装scrapy"><span class="nav-number">4.</span> <span class="nav-text">安装scrapy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#入门案例-从w3school-com-cn开始"><span class="nav-number">5.</span> <span class="nav-text">入门案例: 从w3school.com.cn开始</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scrapy核心架构与代码运行分析"><span class="nav-number">6.</span> <span class="nav-text">Scrapy核心架构与代码运行分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动爬取网页之-crawlspider"><span class="nav-number">7.</span> <span class="nav-text">自动爬取网页之:crawlspider</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何防止被ban之策略大集合"><span class="nav-number">8.</span> <span class="nav-text">如何防止被ban之策略大集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">忍者神龟</span>
+</div>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"thunder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Jami1E0cgfUeRuh2tT7nCTiD-gzGzoHsz", "fIQ3Jv2Nad8zoCKQ8oMxphTh");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
