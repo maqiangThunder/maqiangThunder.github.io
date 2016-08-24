@@ -269,6 +269,125 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/22/加菲猫/加菲猫4.0Demo/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-22T13:40:16+08:00" content="2016-08-22">
+              2016-08-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/22/加菲猫/加菲猫4.0Demo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/22/加菲猫/加菲猫4.0Demo/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/22/加菲猫/加菲猫4.0Demo/" class="leancloud_visitors" data-flag-title="">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="&#x64CD;&#x4F5C;&#x7684;&#x987A;&#x5E8F;"><a href="#&#x64CD;&#x4F5C;&#x7684;&#x987A;&#x5E8F;" class="headerlink" title="&#x64CD;&#x4F5C;&#x7684;&#x987A;&#x5E8F;"></a>&#x64CD;&#x4F5C;&#x7684;&#x987A;&#x5E8F;</h1><p>&#x6E05;&#x7A7A;jenkins&#x4E2D;&#x5185;&#x5BB9;<br>&#x91CD;&#x542F;celery_publisher</p>
+<h2 id="&#x673A;&#x5668;"><a href="#&#x673A;&#x5668;" class="headerlink" title="&#x673A;&#x5668;"></a>&#x673A;&#x5668;</h2><p>&#x5EFA;&#x7ACB;&#x673A;&#x5668;, &#x56E0;&#x4E3A;&#x673A;&#x5668;&#x662F;&#x5DF2;&#x7ECF;&#x81EA;&#x52A8;&#x53D1;&#x73B0;&#x4E86;, &#x6240;&#x4EE5;&#x8FD9;&#x90E8;&#x5206;&#x673A;&#x5668;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x6DFB;&#x52A0;&#x4E86;<br>&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x57DF;&#x540D;:<br>10.19.172.72 01<br>10.19.23.219 02<br>10.19.108.45 03<br>10.19.139.77 04<br>test.jfm.tvmore.com.cn</p>
+<h2 id="&#x670D;&#x52A1;"><a href="#&#x670D;&#x52A1;" class="headerlink" title="&#x670D;&#x52A1;"></a>&#x670D;&#x52A1;</h2><p>&#x5EFA;&#x7ACB;&#x662F;&#x4E2A;5&#x4E2A;&#x670D;&#x52A1;<br>ServerA, ServerB, ServerC, ServerD, JFM</p>
+<h2 id="&#x5EFA;&#x7ACB;&#x8282;&#x70B9;"><a href="#&#x5EFA;&#x7ACB;&#x8282;&#x70B9;" class="headerlink" title="&#x5EFA;&#x7ACB;&#x8282;&#x70B9;"></a>&#x5EFA;&#x7ACB;&#x8282;&#x70B9;</h2><p>&#x7AEF;&#x53E3;&#x53F7;: 4321<br>JFM - test.jfm.tvmore.com.cn<br>&#x5176;&#x5B83;&#x7684;&#x670D;&#x52A1;&#x548C;&#x5B9E;&#x4F53;&#x673A;&#x5173;&#x8054;</p>
+<h2 id="&#x5EFA;&#x7ACB;&#x63A5;&#x53E3;"><a href="#&#x5EFA;&#x7ACB;&#x63A5;&#x53E3;" class="headerlink" title="&#x5EFA;&#x7ACB;&#x63A5;&#x53E3;"></a>&#x5EFA;&#x7ACB;&#x63A5;&#x53E3;</h2><p>&#x56DB;&#x4E2A;&#x63A5;&#x53E3;, &#x52A0;&#x4E0A;&#x4E00;&#x4E2A;irc&#x7684;&#x63A5;&#x53E3;<br>GET&#x8BF7;&#x6C42;: /left?delay=1000<br>GET&#x8BF7;&#x6C42;: /right/1000<br>POST&#x8BF7;&#x6C42;: /front<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    &quot;delay&quot;: 1000</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>POST&#x8BF7;&#x6C42;: /back/1000<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    &quot;delay&quot;: 1000</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  &quot;$schema&quot;: &quot;http://json-schema.org/draft-04/schema#&quot;,</span><br><span class="line">  &quot;type&quot;: &quot;object&quot;,</span><br><span class="line">  &quot;properties&quot;: {</span><br><span class="line">    &quot;delay&quot;: {</span><br><span class="line">      &quot;type&quot;: &quot;integer&quot;</span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  &quot;required&quot;: [</span><br><span class="line">    &quot;delay&quot;</span><br><span class="line">  ]</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>GET&#x8BF7;&#x6C42;: /irc/user/query?email=jfm&amp;page=1&amp;size=10<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">## &#x6D4B;&#x8BD5;&#x7528;&#x4F8B;</span><br><span class="line">5&#x4E2A;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;</span><br><span class="line"></span><br><span class="line">## &#x6267;&#x884C;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;</span><br><span class="line"></span><br><span class="line">## &#x53D1;&#x5E03;</span><br><span class="line">&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x53D1;&#x5E03;</span><br></pre></td></tr></table></figure></p>
+<p>clean install<br><a href="http://116.236.232.242:8107/ma.qiang/jenkins_maven.git" target="_blank" rel="external">http://116.236.232.242:8107/ma.qiang/jenkins_maven.git</a><br>*/master<br>svn://10.10.96.33/JFM</p>
+<p>ma.qiang@whaley.cn<br>jfm@whaley.cn<br>tan.yang@whaley.cn<br>```</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/10/加菲猫/测试环境/" itemprop="url">
                   加菲猫测试环境
                 </a>
@@ -353,7 +472,7 @@
 <h2 id="&#x8D26;&#x53F7;"><a href="#&#x8D26;&#x53F7;" class="headerlink" title="&#x8D26;&#x53F7;"></a>&#x8D26;&#x53F7;</h2><p>&#x8D85;&#x7EA7;&#x6743;&#x9650;role: <code>&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;</code></p>
 <p>&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;user:<br>&#x7528;&#x6237;&#x540D;: <code>jfm@whaley.cn</code><br>&#x5BC6;&#x7801;: <code>jfmisaboy</code></p>
 <h1 id="&#x6D4B;&#x8BD5;&#x673A;&#x4F7F;&#x7528;"><a href="#&#x6D4B;&#x8BD5;&#x673A;&#x4F7F;&#x7528;" class="headerlink" title="&#x6D4B;&#x8BD5;&#x673A;&#x4F7F;&#x7528;"></a>&#x6D4B;&#x8BD5;&#x673A;&#x4F7F;&#x7528;</h1><h2 id="&#x5821;&#x5792;&#x673A;"><a href="#&#x5821;&#x5792;&#x673A;" class="headerlink" title="&#x5821;&#x5792;&#x673A;"></a>&#x5821;&#x5792;&#x673A;</h2><p>123.59.83.112<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Hi, &#x9A6C;&#x5F3A;</span><br><span class="line">    &#x60A8;&#x7684;&#x7528;&#x6237;&#x540D;&#xFF1A; maqiang</span><br><span class="line">    &#x60A8;&#x7684;&#x90E8;&#x95E8;: &#x5F00;&#x53D1;&#x90E8;</span><br><span class="line">    &#x60A8;&#x7684;&#x89D2;&#x8272;&#xFF1A; &#x666E;&#x901A;&#x7528;&#x6237;</span><br><span class="line">    &#x60A8;&#x7684;web&#x767B;&#x5F55;&#x5BC6;&#x7801;&#xFF1A; ln7mG96hGU8YLfTd</span><br><span class="line">    &#x60A8;&#x7684;ssh&#x5BC6;&#x94A5;&#x6587;&#x4EF6;&#x5BC6;&#x7801;&#xFF1A; y4ia1FnhxYoUDckm</span><br><span class="line">    &#x5BC6;&#x94A5;&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF1A; http://123.59.83.112:8011/juser/down_key/?id=5058</span><br><span class="line">    &#x8BF4;&#x660E;&#xFF1A; &#x8BF7;&#x767B;&#x9646;&#x540E;&#x518D;&#x4E0B;&#x8F7D;&#x5BC6;&#x94A5;&#xFF01;</span><br></pre></td></tr></table></figure></p>
-<h1 id="&#x6D4B;&#x8BD5;&#x673A;"><a href="#&#x6D4B;&#x8BD5;&#x673A;" class="headerlink" title="&#x6D4B;&#x8BD5;&#x673A;"></a>&#x6D4B;&#x8BD5;&#x673A;</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x5185;&#x7F51;IP:10.19.23.219</span><br><span class="line">&#x5916;&#x7F51;IP:106.75.35.210 </span><br><span class="line"></span><br><span class="line">&#x5185;&#x7F51;IP:10.19.108.45</span><br><span class="line">&#x5916;&#x7F51;IP:106.75.35.213 </span><br><span class="line"></span><br><span class="line">&#x5185;&#x7F51;IP:10.19.139.77</span><br><span class="line">&#x5916;&#x7F51;IP:106.75.35.208</span><br><span class="line"></span><br><span class="line">&#x5185;&#x7F51;IP:10.19.172.72</span><br><span class="line">&#x5916;&#x7F51;IP:123.59.131.43</span><br></pre></td></tr></table></figure>
+<h1 id="&#x6D4B;&#x8BD5;&#x673A;"><a href="#&#x6D4B;&#x8BD5;&#x673A;" class="headerlink" title="&#x6D4B;&#x8BD5;&#x673A;"></a>&#x6D4B;&#x8BD5;&#x673A;</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x5185;&#x7F51;IP:10.19.23.219</span><br><span class="line">&#x5916;&#x7F51;IP:106.75.35.210 </span><br><span class="line"></span><br><span class="line">&#x5185;&#x7F51;IP:10.19.108.45</span><br><span class="line">&#x5916;&#x7F51;IP:106.75.35.213 </span><br><span class="line"></span><br><span class="line">&#x5185;&#x7F51;IP:10.19.139.77</span><br><span class="line">&#x5916;&#x7F51;IP:106.75.35.208</span><br><span class="line">d f</span><br><span class="line">&#x5185;&#x7F51;IP:10.19.172.72</span><br><span class="line">&#x5916;&#x7F51;IP:123.59.131.43</span><br></pre></td></tr></table></figure>
 <h1 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ftp server&#xFF1A; 10.10.26.94&#xFF08;&#x5185;&#x7F51;IP&#xFF09;  180.150.187.229(&#x5916;&#x7F51;IP)  </span><br><span class="line">username&#xFF1A; ftpuser</span><br><span class="line">password&#xFF1A;gZy4humhqb5wosUc</span><br><span class="line">-----------------------------------------</span><br><span class="line">ftp 180.150.187.229  &#x8FDE;&#x63A5;ftp, &#x8F93;&#x5165;&#x8D26;&#x53F7;&#x5BC6;&#x7801;</span><br><span class="line">cd maqiang &#x5207;&#x6362;&#x76EE;&#x5F55;</span><br><span class="line">dir &#x67E5;&#x770B;&#x5F53;&#x524D;&#x76EE;&#x5F55;</span><br><span class="line">get test_server.py &#x4ECE;ftp&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x5230;&#x672C;&#x5730;&#x7684;&#x5F53;&#x524D;&#x76EE;&#x5F55;</span><br><span class="line">ctrl+z &#x9000;&#x51FA;ftp&#x8FDE;&#x63A5;</span><br></pre></td></tr></table></figure>
 <h1 id="test-server"><a href="#test-server" class="headerlink" title="test_server"></a>test_server</h1><p>test_server&#x63D0;&#x4F9B;&#x4E86;&#x4E94;&#x4E2A;&#x63A5;&#x53E3;</p>
 <h2 id="left"><a href="#left" class="headerlink" title="left"></a>left</h2><p>&#x8BF4;&#x660E;: GET&#x8BF7;&#x6C42;, &#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;, &#x8868;&#x793A;&#x670D;&#x52A1;&#x7AEF;&#x5EF6;&#x8FDF;&#x591A;&#x5C11;&#x6BEB;&#x79D2;&#x8FD4;&#x56DE;(&#x91CD;&#x70B9;&#x662F;&#x53C2;&#x6570;&#x5728;args&#x4E2D;)<br>path: <code>/left</code><br>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;: <code>GET</code><br>&#x53C2;&#x6570;: <code>delay</code>, &#x8868;&#x793A;&#x670D;&#x52A1;&#x5668;&#x5EF6;&#x8FDF;&#x591A;&#x4E45;&#x8FD4;&#x56DE;(&#x5355;&#x4F4D;: &#x6BEB;&#x79D2;)<br>&#x793A;&#x4F8B;: <code>http://ip:4321/left?delay=1000</code><br>&#x8FD4;&#x56DE;&#x793A;&#x4F8B;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{&quot;status&quot;: 200, &quot;message&quot;: &quot;success&quot;, &quot;data&quot;: &quot;Left\u63a5\u53e3GET\u8bf7\u6c42\u6210\u529f&quot;}</span><br></pre></td></tr></table></figure></p>
@@ -366,6 +485,7 @@
 <h2 id="form"><a href="#form" class="headerlink" title="form"></a>form</h2><p>&#x8BF4;&#x660E;: &#x6A21;&#x62DF;form&#x8868;&#x5355;&#x8BF7;&#x6C42;<br>path: <code>/form</code><br>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;: <code>POST</code><br>&#x53C2;&#x6570;: delay<br>&#x793A;&#x4F8B;: <code>http://ip:4321/form</code>, &#x8868;&#x5355;: delay=1000<br>&#x8FD4;&#x56DE;&#x793A;&#x4F8B;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{&quot;status&quot;: 200, &quot;message&quot;: &quot;success&quot;, &quot;data&quot;: &quot;Form\u63a5\u53e3GET\u8bf7\u6c42\u6210\u529f&quot;}</span><br></pre></td></tr></table></figure></p>
 <h2 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h2><p>&#x8BF4;&#x660E;: &#x6A21;&#x62DF;&#x8BF7;&#x6C42;xml&#x6570;&#x636E;<br>path: <code>/xml</code><br>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;: <code>POST</code><br>&#x53C2;&#x6570;: &#x65E0;<br>&#x793A;&#x4F8B;: <code>http://ip:4321/xml</code><br>&#x8BF7;&#x6C42;&#x6570;&#x636E;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;slaves&gt;</span><br><span class="line">    &lt;local status=&quot;1&quot; type=&quot;0&quot; version=&quot;1.0.1&quot;&gt;&lt;/local&gt;</span><br><span class="line">&lt;/slaves&gt;</span><br></pre></td></tr></table></figure></p>
 <p>&#x8FD4;&#x56DE;&#x793A;&#x4F8B;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">{&quot;status&quot;: 200, &quot;message&quot;: &quot;success&quot;, &quot;data&quot;: &quot;Xml\u63a5\u53e3POST\u8bf7\u6c42\u6210\u529f:</span><br><span class="line">&lt;slaves&gt;\r\n    </span><br><span class="line">    &lt;local status=\&quot;1\&quot; type=\&quot;0\&quot; version=\&quot;1.0.1\&quot;&gt;&lt;/local&gt;\r\n</span><br><span class="line">&lt;/slaves&gt;&quot;}</span><br></pre></td></tr></table></figure></p>
+<h2 id="form2"><a href="#form2" class="headerlink" title="form2"></a>form2</h2><p>&#x8BF4;&#x660E;: &#x6A21;&#x62DF;form&#x8868;&#x5355;&#x8BF7;&#x6C42;, &#x4E0D;&#x5E26;&#x53C2;&#x6570;<br>path: <code>/form2</code><br>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;: <code>POST</code><br>&#x53C2;&#x6570;: &#x65E0;<br>&#x793A;&#x4F8B;: <code>http://ip:4321/form2</code><br>&#x8FD4;&#x56DE;&#x793A;&#x4F8B;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{&quot;status&quot;: 200, &quot;message&quot;: &quot;success&quot;, &quot;data&quot;: &quot;Form2\u63a5\u53e3GET\u8bf7\u6c42\u6210\u529f&quot;}</span><br></pre></td></tr></table></figure></p>
 <h1 id="shell&#x63D0;&#x4F9B;&#x5916;&#x90E8;&#x63A5;&#x53E3;"><a href="#shell&#x63D0;&#x4F9B;&#x5916;&#x90E8;&#x63A5;&#x53E3;" class="headerlink" title="shell&#x63D0;&#x4F9B;&#x5916;&#x90E8;&#x63A5;&#x53E3;"></a>shell&#x63D0;&#x4F9B;&#x5916;&#x90E8;&#x63A5;&#x53E3;</h1><h2 id="proxy&#x63A5;&#x53E3;"><a href="#proxy&#x63A5;&#x53E3;" class="headerlink" title="proxy&#x63A5;&#x53E3;"></a>proxy&#x63A5;&#x53E3;</h2><p>&#x8BF4;&#x660E;: &#x4EE3;&#x7406;&#x63A5;&#x53E3;, &#x7C7B;&#x4F3C;&#x4E8E;&#x4E2D;&#x4ECB;<br>path: <a href="http://ipshell:port/proxy/forward" target="_blank" rel="external">http://ipshell:port/proxy/forward</a><br>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;: POST<br>&#x53C2;&#x6570;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    &quot;srv_from&quot;:&quot;spider123&quot;,  </span><br><span class="line">    &quot;srv_target&quot;:&quot;engine1&quot;,  </span><br><span class="line">    &quot;path&quot;:&quot;add&quot;,           </span><br><span class="line">    &quot;data&quot;:{&quot;a&quot;:1,&quot;b&quot;:2},   </span><br><span class="line">    &quot;method&quot;:&quot;get&quot;        </span><br><span class="line">    &quot;header&quot; : {}   </span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 <p>&#x53C2;&#x6570;&#x8BF4;&#x660E;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">srv_from: slave&#x670D;&#x52A1;&#x540D;(&#x8C03;&#x7528;&#x670D;&#x52A1;)</span><br><span class="line">srv_target: master&#x670D;&#x52A1;&#x540D;(&#x88AB;&#x8C03;&#x7528;&#x7684;&#x670D;&#x52A1;)</span><br><span class="line">path: path(&#x8DEF;&#x5F84;)</span><br><span class="line">data: &#x8BF7;&#x6C42;&#x7684;&#x53C2;&#x6570;, args&#x6216;form&#x6216;json   </span><br><span class="line">method: get&#x6216;post&#x8BF7;&#x6C42; </span><br><span class="line">header : &#x8BF7;&#x6C42;&#x5934;&#x53C2;&#x6570;</span><br></pre></td></tr></table></figure></p>
 <p>&#x8FD4;&#x56DE;&#x793A;&#x4F8B;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    &quot;data&quot;: {</span><br><span class="line">        &quot;body&quot;: &quot;{\&quot;status\&quot;: \&quot;200\&quot;, \&quot;message\&quot;: \&quot;success\&quot;, \&quot;data\&quot;: {\&quot;cityid\&quot;: \&quot;101010100\&quot;, \&quot;city\&quot;: \&quot;\&#x5317;\&#x4EAC; \&#x57CE;\&#x533A;\&quot;, \&quot;updatetime\&quot;: 1468214291.0, \&quot;weather\&quot;: {\&quot;weather4\&quot;: \&quot;\&#x591A;\&#x4E91;\&#x8F6C;\&#x9634;\&quot;, \&quot;weather5\&quot;: \&quot;\&#x9634;\&#x8F6C;\&#x96F7;\&#x9635;\&#x96E8;\&quot;, \&quot;weather6\&quot;: \&quot;\&#x96F7;\&#x9635;\&#x96E8;\&quot;, \&quot;weather7\&quot;: \&quot;\&#x96F7;\&#x9635;\&#x96E8;\&#x8F6C;\&#x591A;\&#x4E91;\&quot;, \&quot;weather1\&quot;: \&quot;\&#x591A;\&#x4E91;\&#x8F6C;\&#x9634;\&quot;, \&quot;weather2\&quot;: \&quot;\&#x9634;\&quot;, \&quot;weather3\&quot;: \&quot;\&#x6674;\&#x8F6C;\&#x591A;\&#x4E91;\&quot;}, \&quot;img\&quot;: {\&quot;img14\&quot;: \&quot;1\&quot;, \&quot;img13\&quot;: \&quot;4\&quot;, \&quot;img12\&quot;: \&quot;4\&quot;, \&quot;img11\&quot;: \&quot;4\&quot;, \&quot;img10\&quot;: \&quot;4\&quot;, \&quot;img9\&quot;: \&quot;2\&quot;, \&quot;img8\&quot;: \&quot;2\&quot;, \&quot;img3\&quot;: \&quot;1\&quot;, \&quot;img2\&quot;: \&quot;4\&quot;, \&quot;img1\&quot;: \&quot;1\&quot;, \&quot;img7\&quot;: \&quot;1\&quot;, \&quot;img6\&quot;: \&quot;1\&quot;, \&quot;img5\&quot;: \&quot;0\&quot;, \&quot;img4\&quot;: \&quot;0\&quot;}, \&quot;temp\&quot;: {\&quot;currenttemp\&quot;: \&quot;33\&quot;, \&quot;temp3\&quot;: \&quot;35\&#x2103;~25\&#x2103;\&quot;, \&quot;temp2\&quot;: \&quot;34\&#x2103;~25\&#x2103;\&quot;, \&quot;temp1\&quot;: \&quot;36\&#x2103;~24\&#x2103;\&quot;, \&quot;temp7\&quot;: \&quot;28\&#x2103;~21\&#x2103;\&quot;, \&quot;temp6\&quot;: \&quot;29\&#x2103;~21\&#x2103;\&quot;, \&quot;temp5\&quot;: \&quot;30\&#x2103;~22\&#x2103;\&quot;, \&quot;temp4\&quot;: \&quot;32\&#x2103;~23\&#x2103;\&quot;}, \&quot;date\&quot;: \&quot;2016-07-11\&quot;, \&quot;wind\&quot;: {\&quot;wind3\&quot;: \&quot;\&#x65E0;\&#x6301;\&#x7EED;\&#x98CE;\&#x5411;\&#x5FAE;\&#x98CE;\&quot;, \&quot;wind2\&quot;: \&quot;\&#x65E0;\&#x6301;\&#x7EED;\&#x98CE;\&#x5411;\&#x5FAE;\&#x98CE;\&quot;, \&quot;wind1\&quot;: \&quot;\&#x65E0;\&#x6301;\&#x7EED;\&#x98CE;\&#x5411;\&#x5FAE;\&#x98CE;\&quot;, \&quot;wind7\&quot;: \&quot;\&#x65E0;\&#x6301;\&#x7EED;\&#x98CE;\&#x5411;\&#x5FAE;\&#x98CE;\&quot;, \&quot;wind6\&quot;: \&quot;\&#x65E0;\&#x6301;\&#x7EED;\&#x98CE;\&#x5411;\&#x5FAE;\&#x98CE;\&quot;, \&quot;wind5\&quot;: \&quot;\&#x65E0;\&#x6301;\&#x7EED;\&#x98CE;\&#x5411;\&#x5FAE;\&#x98CE;\&quot;, \&quot;wind4\&quot;: \&quot;\&#x65E0;\&#x6301;\&#x7EED;\&#x98CE;\&#x5411;\&#x5FAE;\&#x98CE;\&quot;}}}&quot;,</span><br><span class="line">        &quot;node&quot;: {</span><br><span class="line">            &quot;status&quot;: &quot;1&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;1&quot;,</span><br><span class="line">            &quot;port&quot;: &quot;8080&quot;,</span><br><span class="line">            &quot;username&quot;: &quot;&quot;,</span><br><span class="line">            &quot;password&quot;: &quot;&quot;,</span><br><span class="line">            &quot;dbname&quot;: &quot;&quot;,</span><br><span class="line">            &quot;weight&quot;: &quot;1&quot;,</span><br><span class="line">            &quot;ip&quot;: &quot;10.10.75.184&quot;,</span><br><span class="line">            &quot;shell_status&quot;: &quot;1&quot;,</span><br><span class="line">            &quot;shell_type&quot;: &quot;1&quot;</span><br><span class="line">        },</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    },</span><br><span class="line">    &quot;message&quot;: &quot;success&quot;,</span><br><span class="line">    &quot;status&quot;: 200</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
@@ -1841,138 +1961,6 @@ class W3SchoolItem(scrapy.Item):
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/04/杂/gRPC/" itemprop="url">
-                  gRPC
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-04T14:42:00+08:00" content="2016-07-04">
-              2016-07-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/gRPC/" itemprop="url" rel="index">
-                    <span itemprop="name">gRPC</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/04/杂/gRPC/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/04/杂/gRPC/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/04/杂/gRPC/" class="leancloud_visitors" data-flag-title="gRPC">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="&#x76EE;&#x5F55;"><a href="#&#x76EE;&#x5F55;" class="headerlink" title="&#x76EE;&#x5F55;"></a>&#x76EE;&#x5F55;</h1><p>[TOC]</p>
-<h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p><code>gRPC</code>&#x662F;&#x7531;<code>Google</code>&#x4E3B;&#x5BFC;&#x5F00;&#x53D1;&#x7684;<code>RPC</code>&#x6846;&#x67B6;, &#x4F7F;&#x7528;<code>HTTP/2</code>&#x534F;&#x8BAE;&#x5E76;&#x7528;<code>ProtoBuf</code>&#x4F5C;&#x4E3A;&#x5E8F;&#x5217;&#x5316;&#x5DE5;&#x5177;.<br>&#x5728;<code>gRPC</code>&#x91CC;&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x7528;&#x53EF;&#x4EE5;&#x50CF;&#x8C03;&#x7528;&#x672C;&#x5730;&#x5BF9;&#x8C61;&#x4E00;&#x6837;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x53E6;&#x4E00;&#x53F0;&#x4E0D;&#x540C;&#x7684;&#x673A;&#x5668;&#x4E0A;&#x670D;&#x52A1;&#x7AEF;&#x5E94;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x5F97;&#x7528;&#x6237;&#x80FD;&#x591F;&#x66F4;&#x5BB9;&#x6613;&#x5730;&#x521B;&#x5EFA;&#x5206;&#x5E03;&#x5F0F;&#x5E94;&#x7528;&#x548C;&#x670D;&#x52A1;. <a href="http://www.grpc.io/">grpc&#x5B98;&#x7F51;</a><br><img src="/2016/07/04/&#x6742;/gRPC/1467636396.png" alt=""><br></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/04/杂/gRPC/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2018,7 +2006,7 @@ class W3SchoolItem(scrapy.Item):
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">57</span>
+              <span class="site-state-item-count">58</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
